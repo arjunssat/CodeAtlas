@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Broker Connection (AMQP)"
+parent: "Celery"
+nav_order: 4
+---
+
 # Chapter 4: Broker Connection (AMQP) - Celery's Postal Service
 
 In [Chapter 3: Task](03_task.md), we learned how to define "job descriptions" (Tasks) like `add(x, y)` and how to request them using `.delay()`. But when you call `add.delay(2, 2)`, how does that request actually *get* to a worker process that can perform the addition? It doesn't just magically appear!

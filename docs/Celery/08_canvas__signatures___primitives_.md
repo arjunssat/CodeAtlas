@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Canvas (Signatures & Primitives)"
+parent: "Celery"
+nav_order: 8
+---
+
 # Chapter 8: Canvas (Signatures & Primitives) - Building Task Workflows
 
 In the previous chapter, [Chapter 7: Beat (Scheduler)](07_beat__scheduler_.md), we learned how to schedule tasks to run automatically at specific times using Celery Beat. This is great for recurring jobs. But what if you need to run a sequence of tasks, where one task depends on the result of another? Or run multiple tasks in parallel and then collect their results?

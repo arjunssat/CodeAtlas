@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Crew"
+parent: "CrewAI"
+nav_order: 1
+---
+
 # Chapter 1: Crew - Your AI Team Manager
 
 Welcome to the world of CrewAI! We're excited to help you build teams of AI agents that can work together to accomplish complex tasks.

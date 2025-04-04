@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Click Exceptions"
+parent: "Click"
+nav_order: 7
+---
+
 # Chapter 7: Click Exceptions - Handling Errors Gracefully
 
 In the last chapter, [Chapter 6: Term UI (Terminal User Interface)](06_term_ui__terminal_user_interface_.md), we explored how to make our command-line tools interactive and visually appealing using functions like `click.prompt`, `click.confirm`, and `click.secho`. We learned how to communicate effectively *with* the user.
@@ -153,7 +160,7 @@ What exactly happens when a Click exception is raised, either by Click itself or
     *   The formatted message is printed to `stderr` using `click.echo()`, respecting color settings from the context.
 5.  **Exit:** After showing the message, Click calls `sys.exit()` with the exception's `exit_code` (usually `1` for general errors, `2` for usage errors). This terminates the program and signals the error status to the calling shell or script.
 
-Here’s a simplified sequence diagram for the `BadParameter` case when a user provides invalid input that fails type conversion:
+Here's a simplified sequence diagram for the `BadParameter` case when a user provides invalid input that fails type conversion:
 
 ```mermaid
 sequenceDiagram

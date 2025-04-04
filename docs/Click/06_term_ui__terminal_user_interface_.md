@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Term UI (Terminal User Interface)"
+parent: "Click"
+nav_order: 6
+---
+
 # Chapter 6: Term UI (Terminal User Interface)
 
 Welcome back! In [Chapter 5: Context](05_context.md), we learned how Click uses the `Context` object (`ctx`) to manage the state of a command while it's running, allowing us to share information and call other commands.

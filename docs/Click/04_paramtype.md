@@ -1,3 +1,10 @@
+---
+layout: default
+title: "ParamType"
+parent: "Click"
+nav_order: 4
+---
+
 # Chapter 4: ParamType - Checking and Converting Inputs
 
 In [Chapter 3: Parameter (Option / Argument)](03_parameter__option___argument_.md), we learned how to define inputs for our commands using `@click.option` and `@click.argument`. Our `greet` command could take a `--name` option, and our `copy` command took `SRC` and `DST` arguments.

@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Worker"
+parent: "Celery"
+nav_order: 5
+---
+
 # Chapter 5: Worker - The Task Doer
 
 In [Chapter 4: Broker Connection (AMQP)](04_broker_connection__amqp_.md), we learned how Celery uses a message broker, like a postal service, to send task messages. When you call `add.delay(2, 2)`, a message asking to run the `add` task with arguments `(2, 2)` gets dropped into a mailbox (the broker queue).

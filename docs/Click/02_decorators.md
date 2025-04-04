@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Decorators"
+parent: "Click"
+nav_order: 2
+---
+
 # Chapter 2: Decorators: Magic Wands for Your Functions
 
 In [Chapter 1: Commands and Groups](01_command___group.md), we learned how to create basic command-line actions (`Command`) and group them together (`Group`). You might have noticed those strange `@click.command()` and `@click.group()` lines above our functions. What are they, and why do we use them?

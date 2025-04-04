@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Events"
+parent: "Celery"
+nav_order: 9
+---
+
 # Chapter 9: Events - Listening to Celery's Heartbeat
 
 In [Chapter 8: Canvas (Signatures & Primitives)](08_canvas__signatures___primitives_.md), we saw how to build complex workflows by chaining tasks together or running them in parallel. But as your Celery system gets busier, you might wonder: "What are my workers doing *right now*? Which tasks have started? Which ones finished successfully or failed?"

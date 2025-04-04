@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Task"
+parent: "CrewAI"
+nav_order: 3
+---
+
 # Chapter 3: Task - Defining the Work
 
 In [Chapter 1](01_crew.md), we met the `Crew` - our AI team manager. In [Chapter 2](02_agent.md), we met the `Agent`s - our specialized AI workers. Now, we need to tell these agents *exactly* what to do. How do we give them specific assignments?

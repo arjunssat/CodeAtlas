@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Configuration"
+parent: "Celery"
+nav_order: 2
+---
+
 # Chapter 2: Configuration - Telling Celery How to Work
 
 In [Chapter 1: The Celery App](01_celery_app.md), we created our first `Celery` app instance. We gave it a name and told it where our message broker and result backend were located using the `broker` and `backend` arguments:

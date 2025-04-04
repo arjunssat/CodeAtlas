@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Command & Group"
+parent: "Click"
+nav_order: 1
+---
+
 # Chapter 1: Commands and Groups: The Building Blocks
 
 Welcome to your first step in learning Click! Imagine you want to create your own command-line tool, maybe something like `git` or `docker`. How do you tell your program what to do when someone types `git commit` or `docker build`? That's where **Commands** and **Groups** come in. They are the fundamental building blocks for any Click application.

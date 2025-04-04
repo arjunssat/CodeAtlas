@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Tool"
+parent: "CrewAI"
+nav_order: 4
+---
+
 # Chapter 4: Tool - Equipping Your Agents
 
 In [Chapter 3: Task](03_task.md), we learned how to define specific assignments (`Task`s) for our AI `Agent`s. We told the 'Travel Researcher' agent to find sunny cities and the 'Activity Planner' agent to create an itinerary.

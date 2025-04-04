@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Bootsteps"
+parent: "Celery"
+nav_order: 10
+---
+
 # Chapter 10: Bootsteps - How Celery Workers Start Up
 
 In [Chapter 9: Events](09_events.md), we learned how to monitor the real-time activity within our Celery system. We've now covered most of the key parts of Celery: the [Celery App](01_celery_app.md), [Task](03_task.md)s, the [Broker Connection (AMQP)](04_broker_connection__amqp_.md), the [Worker](05_worker.md), the [Result Backend](06_result_backend.md), [Beat (Scheduler)](07_beat__scheduler_.md), [Canvas (Signatures & Primitives)](08_canvas__signatures___primitives_.md), and [Events](09_events.md).

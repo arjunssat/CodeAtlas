@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Agent"
+parent: "CrewAI"
+nav_order: 2
+---
+
 # Chapter 2: Agent - Your Specialized AI Worker
 
 In [Chapter 1](01_crew.md), we learned about the `Crew` – the manager that organizes our AI team. But a manager needs a team to manage! That's where `Agent`s come in.

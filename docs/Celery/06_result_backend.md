@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Result Backend"
+parent: "Celery"
+nav_order: 6
+---
+
 # Chapter 6: Result Backend - Checking Your Task's Homework
 
 In [Chapter 5: Worker](05_worker.md), we met the Celery Worker, the diligent entity that picks up task messages from the [Broker Connection (AMQP)](04_broker_connection__amqp_.md) and executes the code defined in our [Task](03_task.md).

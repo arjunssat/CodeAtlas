@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Task"
+parent: "Celery"
+nav_order: 3
+---
+
 # Chapter 3: Task - The Job Description
 
 In [Chapter 1: The Celery App](01_celery_app.md), we set up our Celery headquarters, and in [Chapter 2: Configuration](02_configuration.md), we learned how to give it instructions. Now, we need to define the *actual work* we want Celery to do. This is where **Tasks** come in.

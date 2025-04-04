@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Parameter (Option & Argument)"
+parent: "Click"
+nav_order: 3
+---
+
 # Chapter 3: Parameter (Option / Argument) - Giving Your Commands Input
 
 In the last chapter, [Decorators](02_decorators.md), we saw how decorators like `@click.command()` and `@click.option()` act like magic wands, transforming our Python functions into CLI commands and adding features like command-line options.

@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Beat (Scheduler)"
+parent: "Celery"
+nav_order: 7
+---
+
 # Chapter 7: Beat (Scheduler) - Celery's Alarm Clock
 
 In the last chapter, [Chapter 6: Result Backend](06_result_backend.md), we learned how to track the status and retrieve the results of our background tasks. This is great when we manually trigger tasks from our application. But what if we want tasks to run automatically, without us needing to press a button every time?

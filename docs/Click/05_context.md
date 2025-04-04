@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Context"
+parent: "Click"
+nav_order: 5
+---
+
 # Chapter 5: Context - The Command's Nervous System
 
 In the last chapter, [ParamType](04_paramtype.md), we saw how Click helps validate and convert user input into the right Python types, making our commands more robust. We used types like `click.INT` and `click.Path` to ensure data correctness.

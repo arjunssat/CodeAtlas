@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Process"
+parent: "CrewAI"
+nav_order: 5
+---
+
 # Chapter 5: Process - Orchestrating the Workflow
 
 In [Chapter 4: Tool](04_tool.md), we learned how to give our [Agent](02_agent.md)s special abilities using `Tool`s, like searching the web. Now we have specialized agents, defined tasks, and equipped agents. But how do they actually *work together*? Does Agent 1 finish its work before Agent 2 starts? Or is there a manager overseeing everything?
