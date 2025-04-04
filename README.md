@@ -5,16 +5,20 @@
 > *Ever stared at a new codebase written by others feeling completely lost? This tutorial shows you how to build an AI agent that analyzes GitHub repositories and creates beginner-friendly tutorials explaining exactly how the code works.*
 
 <p align="center">
-  <a href="https://github.com/The-Pocket/PocketFlow" target="_blank">
-    <img 
-      src="./assets/banner.png" width="800"
-    />
-  </a>
+  <img 
+    src="./assets/banner.png" width="800"
+  />
 </p>
 
 This is a tutorial project of [Pocket Flow](https://github.com/The-Pocket/PocketFlow), a 100-line LLM framework. It crawls GitHub repositories and build a knowledge base from the code. It analyzes entire codebases to identify core abstractions and how they interact, and transforms complex code into beginner-friendly tutorials with clear visualizations.
 
 ## ⭐ Example Tutorials for Popular GitHub Repositories!
+
+<p align="center">
+    <img 
+      src="./assets/example.png" width="600"
+    />
+</p>
 
 - [AutoGen Core](https://the-pocket.github.io/Tutorial-Codebase-Knowledge/AutoGen%20Core) - Build AI teams that talk, think, and solve problems together like coworkers!
 
