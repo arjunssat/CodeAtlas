@@ -1,3 +1,10 @@
+---
+layout: default
+title: "FastAPI Application & Routing"
+parent: "FastAPI"
+nav_order: 1
+---
+
 # Chapter 1: FastAPI Application & Routing
 
 Welcome to your first adventure with FastAPI! 👋

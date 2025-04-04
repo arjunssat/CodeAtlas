@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Dependency Injection"
+parent: "FastAPI"
+nav_order: 5
+---
+
 # Chapter 5: Dependency Injection
 
 Welcome back! In [Chapter 4: OpenAPI & Automatic Docs](04_openapi___automatic_docs.md), we saw how FastAPI automatically generates interactive documentation for our API, making it easy for others (and ourselves!) to understand and use. This works because FastAPI understands the structure of our paths, parameters, and Pydantic models.

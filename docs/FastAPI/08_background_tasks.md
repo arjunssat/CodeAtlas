@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Background Tasks"
+parent: "FastAPI"
+nav_order: 8
+---
+
 # Chapter 8: Background Tasks
 
 Welcome back! In [Chapter 7: Security Utilities](07_security_utilities.md), we learned how to protect our API endpoints using FastAPI's security features. Now, let's explore how to perform actions *after* we've already sent a response back to the user.

@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Path Operations & Parameter Declaration"
+parent: "FastAPI"
+nav_order: 2
+---
+
 # Chapter 2: Path Operations & Parameter Declaration
 
 Welcome back! In [Chapter 1: FastAPI Application & Routing](01_fastapi_application___routing.md), we learned how to set up a basic FastAPI application and organize our code using `APIRouter`. We saw how to connect a URL like `/` to a Python function using `@app.get("/")`.

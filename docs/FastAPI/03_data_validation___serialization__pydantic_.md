@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Data Validation & Serialization (Pydantic)"
+parent: "FastAPI"
+nav_order: 3
+---
+
 # Chapter 3: Data Validation & Serialization (Pydantic)
 
 Welcome back! In [Chapter 2: Path Operations & Parameter Declaration](02_path_operations___parameter_declaration.md), we learned how FastAPI uses type hints to understand path parameters (like `/items/{item_id}`) and query parameters (like `/?skip=0&limit=10`). We even saw a sneak peek of how Pydantic models can define the structure of a JSON request body.

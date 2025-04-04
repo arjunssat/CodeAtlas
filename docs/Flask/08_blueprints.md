@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Blueprints"
+parent: "Flask"
+nav_order: 8
+---
+
 # Chapter 8: Blueprints
 
 Welcome back! In [Chapter 7: Application and Request Contexts](07_application_and_request_contexts.md), we explored the "magic" behind Flask's context system, understanding how variables like `request` and `current_app` work reliably even with multiple concurrent requests.

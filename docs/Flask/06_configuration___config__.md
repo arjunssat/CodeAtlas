@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Configuration (config)"
+parent: "Flask"
+nav_order: 6
+---
+
 # Chapter 6: Configuration (`Config`)
 
 Welcome back! In [Chapter 5: Context Globals (`current_app`, `request`, `session`, `g`)](05_context_globals___current_app____request____session____g__.md), we saw how Flask uses context globals like `current_app` and `session`. We even learned that using the `session` requires setting a `SECRET_KEY` on our application object. But where is the best place to put settings like the secret key, or maybe a database connection string, or a flag to turn debugging features on or off? We definitely don't want to hardcode these directly into our main application logic!

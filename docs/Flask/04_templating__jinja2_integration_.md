@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Templating (Jinja2 Integration)"
+parent: "Flask"
+nav_order: 4
+---
+
 # Chapter 4: Templating (Jinja2 Integration)
 
 Welcome back! In [Chapter 3: Request and Response Objects](03_request_and_response_objects.md), we saw how to handle incoming requests and craft outgoing responses. We even created a simple HTML form, but we had to write the HTML code directly as a string inside our Python function. Imagine building a whole website like that – it would get very messy very quickly!

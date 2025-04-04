@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Application and Request Contexts"
+parent: "Flask"
+nav_order: 7
+---
+
 # Chapter 7: Application and Request Contexts
 
 Welcome back! In [Chapter 6: Configuration (`Config`)](06_configuration___config__.md), we learned how to manage settings for our Flask application using the `app.config` object. And in [Chapter 5: Context Globals (`current_app`, `request`, `session`, `g`)](05_context_globals___current_app____request____session____g__.md), we met special variables like `request` and `current_app` that seem to magically know about the current request or application.

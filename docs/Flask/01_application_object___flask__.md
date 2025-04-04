@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Application Object (Flask)"
+parent: "Flask"
+nav_order: 1
+---
+
 # Chapter 1: Application Object (`Flask`)
 
 Welcome to your first step into the world of Flask! Flask is a "microframework" for building web applications in Python. "Micro" doesn't mean it's limited; it means Flask provides the essentials to get started quickly, letting you add features as needed.

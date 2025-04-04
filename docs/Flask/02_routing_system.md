@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Routing System"
+parent: "Flask"
+nav_order: 2
+---
+
 # Chapter 2: Routing System
 
 Welcome back! In [Chapter 1: Application Object (`Flask`)](01_application_object___flask__.md), we learned how to create the central `app` object, the control tower for our Flask application. We even added a simple "Hello, World!" page using `@app.route('/')`.

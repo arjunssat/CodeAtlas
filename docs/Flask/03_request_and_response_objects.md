@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Request and Response Objects"
+parent: "Flask"
+nav_order: 3
+---
+
 # Chapter 3: Request and Response Objects
 
 Welcome back! In [Chapter 2: Routing System](02_routing_system.md), we learned how Flask uses routes (`@app.route(...)`) to direct incoming web requests to the correct Python view functions. We saw how to create static routes like `/about` and dynamic routes like `/user/<username>`.

@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Error Handling"
+parent: "FastAPI"
+nav_order: 6
+---
+
 # Chapter 6: Error Handling
 
 Welcome back! In [Chapter 5: Dependency Injection](05_dependency_injection.md), we learned how to structure our code using dependencies to manage common tasks like pagination or database sessions. This helps keep our code clean and reusable.

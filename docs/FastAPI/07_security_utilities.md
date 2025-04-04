@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Security Utilities"
+parent: "FastAPI"
+nav_order: 7
+---
+
 # Chapter 7: Security Utilities
 
 Hi there! 👋 In [Chapter 6: Error Handling](06_error_handling.md), we learned how to handle situations where things go wrong in our API, like when a user requests an item that doesn't exist. Now, let's talk about protecting our API endpoints.

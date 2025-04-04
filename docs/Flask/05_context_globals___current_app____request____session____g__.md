@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Context Globals"
+parent: "Flask"
+nav_order: 5
+---
+
 # Chapter 5: Context Globals (`current_app`, `request`, `session`, `g`)
 
 Welcome back! In [Chapter 4: Templating (Jinja2 Integration)](04_templating__jinja2_integration_.md), we learned how to separate our HTML structure from our Python code using templates and the `render_template` function. We saw how variables like `request` and functions like `url_for` seemed to be magically available in our templates.

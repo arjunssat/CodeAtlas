@@ -1,3 +1,10 @@
+---
+layout: default
+title: "OpenAPI & Automatic Docs"
+parent: "FastAPI"
+nav_order: 4
+---
+
 # Chapter 4: OpenAPI & Automatic Docs
 
 Welcome back! In [Chapter 3: Data Validation & Serialization (Pydantic)](03_data_validation___serialization__pydantic_.md), we saw how FastAPI uses Pydantic models to automatically validate incoming data and serialize outgoing data, making our API robust and predictable. But how do we tell others (or remind ourselves later) how to actually *use* our API? What endpoints exist? What data should they send? What will they get back?
