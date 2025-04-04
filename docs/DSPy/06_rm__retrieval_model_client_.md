@@ -1,3 +1,10 @@
+---
+layout: default
+title: "RM (Retrieval Model Client)"
+parent: "DSPy"
+nav_order: 6
+---
+
 # Chapter 6: RM (Retrieval Model Client) - Your Program's Librarian
 
 In [Chapter 5: LM (Language Model Client)](05_lm__language_model_client_.md), we learned how to connect our DSPy programs to the powerful "brain" of a Language Model (LM) using the LM Client. The LM is great at generating creative text, answering questions based on its vast training data, and reasoning.

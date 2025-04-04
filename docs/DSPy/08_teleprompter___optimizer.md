@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Teleprompter & Optimizer"
+parent: "DSPy"
+nav_order: 8
+---
+
 # Chapter 8: Teleprompter / Optimizer - Your Program's Coach
 
 Welcome to Chapter 8! In [Chapter 7: Evaluate](07_evaluate.md), we learned how to grade our DSPy programs using metrics and datasets to see how well they perform. That's great for knowing our score, but what if the score isn't high enough?

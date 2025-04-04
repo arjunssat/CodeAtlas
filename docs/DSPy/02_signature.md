@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Signature"
+parent: "DSPy"
+nav_order: 2
+---
+
 # Chapter 2: Signatures - Defining the Task
 
 In [Chapter 1: Modules and Programs](01_module___program.md), we learned that `Module`s are like Lego bricks that perform specific tasks, often using Language Models ([LM](05_lm__language_model_client_.md)). We saw how `Program`s combine these modules.

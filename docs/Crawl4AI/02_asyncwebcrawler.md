@@ -1,3 +1,10 @@
+---
+layout: default
+title: "AsyncWebCrawler"
+parent: "Crawl4AI"
+nav_order: 2
+---
+
 # Chapter 2: Meet the General Manager - AsyncWebCrawler
 
 In [Chapter 1: How We Fetch Webpages - AsyncCrawlerStrategy](01_asynccrawlerstrategy.md), we learned about the different ways Crawl4AI can fetch the raw content of a webpage, like choosing between a fast drone (`AsyncHTTPCrawlerStrategy`) or a versatile delivery truck (`AsyncPlaywrightCrawlerStrategy`).

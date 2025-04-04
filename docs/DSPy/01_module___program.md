@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Module & Program"
+parent: "DSPy"
+nav_order: 1
+---
+
 # Chapter 1: Modules and Programs: Building Blocks of DSPy
 
 Welcome to the first chapter of our journey into DSPy! We're excited to have you here.

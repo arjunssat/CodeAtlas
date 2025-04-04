@@ -1,3 +1,10 @@
+---
+layout: default
+title: "ContentScrapingStrategy"
+parent: "Crawl4AI"
+nav_order: 4
+---
+
 # Chapter 4: Cleaning Up the Mess - ContentScrapingStrategy
 
 In [Chapter 3: Giving Instructions - CrawlerRunConfig](03_crawlerrunconfig.md), we learned how to give specific instructions to our `AsyncWebCrawler` using `CrawlerRunConfig`. This included telling it *how* to fetch the page and potentially take screenshots or PDFs.

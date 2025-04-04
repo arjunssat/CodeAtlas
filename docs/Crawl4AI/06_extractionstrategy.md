@@ -1,3 +1,10 @@
+---
+layout: default
+title: "ExtractionStrategy"
+parent: "Crawl4AI"
+nav_order: 6
+---
+
 # Chapter 6: Getting Specific Data - ExtractionStrategy
 
 In the previous chapter, [Chapter 5: Focusing on What Matters - RelevantContentFilter](05_relevantcontentfilter.md), we learned how to sift through the cleaned webpage content to keep only the parts relevant to our query or goal, producing a focused `fit_markdown`. This is great for tasks like summarization or getting the main gist of an article.

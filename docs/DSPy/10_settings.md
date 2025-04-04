@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Settings"
+parent: "DSPy"
+nav_order: 10
+---
+
 # Chapter 10: Settings - Your Program's Control Panel
 
 Welcome to the final chapter of our introductory DSPy tutorial! In [Chapter 9: Adapter](09_adapter.md), we saw how Adapters act as translators, allowing our DSPy programs to communicate seamlessly with different types of Language Models (LMs).

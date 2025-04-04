@@ -1,3 +1,10 @@
+---
+layout: default
+title: "CrawlResult"
+parent: "Crawl4AI"
+nav_order: 7
+---
+
 # Chapter 7: Understanding the Results - CrawlResult
 
 In the previous chapter, [Chapter 6: Getting Specific Data - ExtractionStrategy](06_extractionstrategy.md), we learned how to teach Crawl4AI to act like an analyst, extracting specific, structured data points from a webpage using an `ExtractionStrategy`. We've seen how Crawl4AI can fetch pages, clean them, filter them, and even extract precise information.
@@ -247,7 +254,7 @@ if __name__ == "__main__":
 
 You don't interact with the `CrawlResult` constructor directly. The `AsyncWebCrawler` creates it for you at the very end of the `arun` process, typically inside its internal `aprocess_html` method (or just before returning if fetching from cache).
 
-Here’s a simplified sequence:
+Here's a simplified sequence:
 
 1.  **Fetch:** `AsyncWebCrawler` calls the [AsyncCrawlerStrategy](01_asynccrawlerstrategy.md) to get the raw `html`, `status_code`, `response_headers`, etc.
 2.  **Scrape:** It passes the `html` to the [ContentScrapingStrategy](04_contentscrapingstrategy.md) to get `cleaned_html`, `links`, `media`, `metadata`.

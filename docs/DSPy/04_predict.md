@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Predict"
+parent: "DSPy"
+nav_order: 4
+---
+
 # Chapter 4: Predict - The Basic LM Caller
 
 In [Chapter 3: Example](03_example.md), we learned how to create `dspy.Example` objects to represent our data points – like flashcards holding an input and its corresponding desired output. We also saw in [Chapter 2: Signature](02_signature.md) how to define the *task* itself using `dspy.Signature`.

@@ -1,3 +1,10 @@
+---
+layout: default
+title: "CrawlerRunConfig"
+parent: "Crawl4AI"
+nav_order: 3
+---
+
 # Chapter 3: Giving Instructions - CrawlerRunConfig
 
 In [Chapter 2: Meet the General Manager - AsyncWebCrawler](02_asyncwebcrawler.md), we met the `AsyncWebCrawler`, the central coordinator for our web crawling tasks. We saw how to tell it *what* URL to crawl using the `arun` method.

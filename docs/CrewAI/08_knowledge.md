@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Knowledge"
+parent: "CrewAI"
+nav_order: 8
+---
+
 # Chapter 8: Knowledge - Providing External Information
 
 In [Chapter 7: Memory](07_memory.md), we learned how to give our [Crew](01_crew.md) the ability to remember past interactions and details using `Memory`. This helps them maintain context within a single run and potentially across runs.

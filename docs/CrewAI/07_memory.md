@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Memory"
+parent: "CrewAI"
+nav_order: 7
+---
+
 # Chapter 7: Memory - Giving Your Crew Recall
 
 In the [previous chapter](06_llm.md), we looked at the Large Language Model ([LLM](06_llm.md)) – the "brain" that allows each [Agent](02_agent.md) to understand, reason, and generate text. Now we have agents that can think, perform [Task](03_task.md)s using [Tool](04_tool.md)s, and follow a [Process](05_process.md).

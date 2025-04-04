@@ -1,3 +1,10 @@
+---
+layout: default
+title: "BaseDispatcher"
+parent: "Crawl4AI"
+nav_order: 10
+---
+
 # Chapter 10: Orchestrating the Crawl - BaseDispatcher
 
 In [Chapter 9: Smart Fetching with Caching - CacheContext / CacheMode](09_cachecontext___cachemode.md), we learned how Crawl4AI uses caching to cleverly avoid re-fetching the same webpage multiple times, which is especially helpful when crawling many URLs. We've also seen how methods like `arun_many()` ([Chapter 2: Meet the General Manager - AsyncWebCrawler](02_asyncwebcrawler.md)) or strategies like [DeepCrawlStrategy](08_deepcrawlstrategy.md) can lead to potentially hundreds or thousands of individual URLs needing to be crawled.

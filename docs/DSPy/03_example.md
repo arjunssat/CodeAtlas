@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Example"
+parent: "DSPy"
+nav_order: 3
+---
+
 # Chapter 3: Example - Your Data Points
 
 In [Chapter 2: Signature](02_signature.md), we learned how to define the *task* for a DSPy module using `Signatures` – specifying the inputs, outputs, and instructions. It's like writing a recipe card.

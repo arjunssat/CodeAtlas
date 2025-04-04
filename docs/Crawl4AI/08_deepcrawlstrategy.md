@@ -1,3 +1,10 @@
+---
+layout: default
+title: "DeepCrawlStrategy"
+parent: "Crawl4AI"
+nav_order: 8
+---
+
 # Chapter 8: Exploring Websites - DeepCrawlStrategy
 
 In [Chapter 7: Understanding the Results - CrawlResult](07_crawlresult.md), we saw the final report (`CrawlResult`) that Crawl4AI gives us after processing a single URL. This report contains cleaned content, links, metadata, and maybe even extracted data.

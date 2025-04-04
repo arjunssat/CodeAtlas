@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Evaluate"
+parent: "DSPy"
+nav_order: 7
+---
+
 # Chapter 7: Evaluate - Grading Your Program
 
 In the previous chapter, [Chapter 6: RM (Retrieval Model Client)](06_rm__retrieval_model_client_.md), we learned how to connect our DSPy program to external knowledge sources using Retrieval Models (RMs). We saw how combining RMs with Language Models (LMs) allows us to build sophisticated programs like Retrieval-Augmented Generation (RAG) systems.

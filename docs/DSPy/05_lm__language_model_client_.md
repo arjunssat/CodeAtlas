@@ -1,3 +1,10 @@
+---
+layout: default
+title: "LM (Language Model Client)"
+parent: "DSPy"
+nav_order: 5
+---
+
 # Chapter 5: LM (Language Model Client) - The Engine Room
 
 In [Chapter 4: Predict](04_predict.md), we saw how `dspy.Predict` takes a [Signature](02_signature.md) and input data to magically generate an output. We used our `translator` example:

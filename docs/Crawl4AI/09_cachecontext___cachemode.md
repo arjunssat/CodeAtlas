@@ -1,3 +1,10 @@
+---
+layout: default
+title: "CacheContext & CacheMode"
+parent: "Crawl4AI"
+nav_order: 9
+---
+
 # Chapter 9: Smart Fetching with Caching - CacheContext / CacheMode
 
 In the previous chapter, [Chapter 8: Exploring Websites - DeepCrawlStrategy](08_deepcrawlstrategy.md), we saw how Crawl4AI can explore websites by following links, potentially visiting many pages. During such explorations, or even when you run the same crawl multiple times, the crawler might try to fetch the exact same webpage again and again. This can be slow and might unnecessarily put a load on the website you're crawling. Wouldn't it be smarter to remember the result from the first time and just reuse it?

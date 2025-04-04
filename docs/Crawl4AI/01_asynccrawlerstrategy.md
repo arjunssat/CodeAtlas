@@ -1,3 +1,10 @@
+---
+layout: default
+title: "AsyncCrawlerStrategy"
+parent: "Crawl4AI"
+nav_order: 1
+---
+
 # Chapter 1: How We Fetch Webpages - AsyncCrawlerStrategy
 
 Welcome to the Crawl4AI tutorial series! Our goal is to build intelligent agents that can understand and extract information from the web. The very first step in this process is actually *getting* the content from a webpage. This chapter explains how Crawl4AI handles that fundamental task.

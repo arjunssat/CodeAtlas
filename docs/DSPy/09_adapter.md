@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Adapter"
+parent: "DSPy"
+nav_order: 9
+---
+
 # Chapter 9: Adapter - The Universal Translator
 
 Welcome to Chapter 9! In [Chapter 8: Teleprompter / Optimizer](08_teleprompter___optimizer.md), we saw how DSPy can automatically optimize our programs by finding better prompts or few-shot examples. We ended up with a `compiled_program` that should perform better.

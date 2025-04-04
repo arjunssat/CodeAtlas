@@ -1,3 +1,10 @@
+---
+layout: default
+title: "RelevantContentFilter"
+parent: "Crawl4AI"
+nav_order: 5
+---
+
 # Chapter 5: Focusing on What Matters - RelevantContentFilter
 
 In [Chapter 4: Cleaning Up the Mess - ContentScrapingStrategy](04_contentscrapingstrategy.md), we learned how Crawl4AI takes the raw, messy HTML from a webpage and cleans it up using a `ContentScrapingStrategy`. This gives us a tidier version of the HTML (`cleaned_html`) and extracts basic elements like links and images.

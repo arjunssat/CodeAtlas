@@ -1,3 +1,10 @@
+---
+layout: default
+title: "LLM"
+parent: "CrewAI"
+nav_order: 6
+---
+
 # Chapter 6: LLM - The Agent's Brain
 
 In the [previous chapter](05_process.md), we explored the `Process` - how the `Crew` organizes the workflow for its `Agent`s, deciding whether they work sequentially or are managed hierarchically. We now have specialized agents ([Agent](02_agent.md)), defined work ([Task](03_task.md)), useful abilities ([Tool](04_tool.md)), and a workflow strategy ([Process](05_process.md)).
