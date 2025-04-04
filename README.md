@@ -14,16 +14,9 @@
   </a>
 </p>
 
-This is a tutorial project of [Pocket Flow](https://github.com/The-Pocket/PocketFlow), a 100-line LLM framework. It crawls GitHub repositories and build a knowledge base from the code:
+This is a tutorial project of [Pocket Flow](https://github.com/The-Pocket/PocketFlow), a 100-line LLM framework. It crawls GitHub repositories and build a knowledge base from the code. It analyzes entire codebases to identify core abstractions and how they interact, and transforms complex code into beginner-friendly tutorials with clear visualizations.
 
-- **Analyze entire codebases** to identify core abstractions and how they interact
-
-- **Transform complex code** into beginner-friendly tutorials with clear visualizations
-
-- **Build understanding systematically** from fundamentals to advanced concepts in logical steps
-
-
-Check Out Example Tutorials for Popular GitHub Repositories:
+## Example Tutorials for Popular GitHub Repositories!
 
 - [AutoGen Core](./AutoGen Core/index.md) - Build AI teams that talk, think, and solve problems together like coworkers!
 
