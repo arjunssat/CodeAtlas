@@ -31,9 +31,9 @@ Built with [Pocket Flow](https://github.com/The-Pocket/PocketFlow), a 100-line L
 - [Flask](./Flask/index.md) - Craft web apps with minimal code that scales from prototype to production!
 - [LangGraph](./LangGraph/index.md) - Design AI agents as flowcharts where each step remembers what happened before!
 - [LevelDB](./LevelDB/index.md) - Store data at warp speed with Google's engine that powers blockchains!
-- [MCP Python SDK](./MCP Python SDK/index.md) - Command cloud infrastructure with Python instead of clicking buttons!
+- [MCP Python SDK](./MCP Python SDK/index.md) - Build powerful apps that communicate through an elegant protocol without sweating the details!
 - [NumPy Core](./NumPy Core/index.md) - Master the engine behind data science that makes Python as fast as C!
-- [OpenManus](./OpenManus/index.md) - Program robot hands that move with human-like precision and grace!
+- [OpenManus](./OpenManus/index.md) - Build AI agents with digital brains that think, learn, and use tools just like humans do!
 - [Pydantic Core](./Pydantic Core/index.md) - Validate data at rocket speed with just Python type hints!
 - [Requests](./Requests/index.md) - Talk to the internet in Python with code so simple it feels like cheating!
 - [SmolaAgents](./SmolaAgents/index.md) - Build tiny AI agents that punch way above their weight class!
