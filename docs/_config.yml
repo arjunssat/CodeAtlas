@@ -1,7 +1,5 @@
 # Basic site settings
-title: Pocket Flow
-tagline: A 100-line LLM framework
-description: Minimalist LLM Framework in 100 Lines, Enabling LLMs to Program Themselves
+title: Turns Codebase into Easy Tutorial
 
 # Theme settings
 remote_theme: just-the-docs/just-the-docs
@@ -12,7 +10,7 @@ nav_sort: case_sensitive
 # Aux links (shown in upper right)
 aux_links:
   "View on GitHub":
-    - "//github.com/the-pocket/PocketFlow"
+    - "https://github.com/the-pocket/Tutorial-Codebase-Knowledge"
     
 # Color scheme
 color_scheme: light
@@ -45,5 +43,5 @@ callouts:
 # The custom navigation
 nav:
   - Home: index.md       # Link to your main docs index
-  - GitHub: "https://github.com/the-pocket/PocketFlow"
+  - GitHub: "https://github.com/The-Pocket/Tutorial-Codebase-Knowledge"
   - Discord: "https://discord.gg/hUHHE9Sa6T"

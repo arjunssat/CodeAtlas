@@ -31,7 +31,7 @@ By default, Flask looks for template files in a folder named `templates` right n
 
 ```html
 <!-- templates/hello.html -->
-
+{% raw %}
 <!doctype html>
 <html>
   <head>
@@ -42,6 +42,7 @@ By default, Flask looks for template files in a folder named `templates` right n
     <p>Welcome to our templated page.</p>
   </body>
 </html>
+{% endraw %}
 ```
 
 **Explanation:**
@@ -138,7 +139,7 @@ def profile():
 
 ```html
 <!-- templates/profile.html -->
-
+{% raw %}
 <!doctype html>
 <html>
 <head><title>User Profile</title></head>
@@ -152,6 +153,7 @@ def profile():
   {% endif %}
 </body>
 </html>
+{% endraw %}
 ```
 
 **Explanation:**
@@ -184,7 +186,7 @@ def show_items():
 
 ```html
 <!-- templates/items.html -->
-
+{% raw %}
 <!doctype html>
 <html>
 <head><title>Item List</title></head>
@@ -199,6 +201,7 @@ def show_items():
   </ul>
 </body>
 </html>
+{% endraw %}
 ```
 
 **Explanation:**
@@ -218,6 +221,7 @@ Just like we used `url_for` in Python ([Chapter 2: Routing System](02_routing_sy
 
 ```html
 <!-- templates/navigation.html -->
+{% raw %}
 <nav>
   <ul>
     <li><a href="{{ url_for('index') }}">Home</a></li>
@@ -231,6 +235,7 @@ Just like we used `url_for` in Python ([Chapter 2: Routing System](02_routing_sy
     {% endif %}
   </ul>
 </nav>
+{% endraw %}
 ```
 
 **Explanation:**
