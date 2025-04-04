@@ -60,17 +60,14 @@ This is a tutorial project of [Pocket Flow](https://github.com/The-Pocket/Pocket
 1. Clone this repository
 
 2. Install dependencies: 
-
    ```bash
    pip install -r requirements.txt
    ```
 
 3. Generate a complete codebase tutorial by running the main script:
-
   ```bash
   python main.py https://github.com/username/repo --include "*.py" "*.js" --exclude "tests/*" --max-size 50000
   ```
-  
   - `repo_url` - URL of the GitHub repository (required)
   - `-n, --name` - Project name (optional, derived from URL if omitted)
   - `-t, --token` - GitHub token (or set GITHUB_TOKEN environment variable)
@@ -78,12 +75,7 @@ This is a tutorial project of [Pocket Flow](https://github.com/The-Pocket/Pocket
   - `-i, --include` - Files to include (e.g., "*.py" "*.js")
   - `-e, --exclude` - Files to exclude (e.g., "tests/*" "docs/*")
   - `-s, --max-size` - Maximum file size in bytes (default: 100KB)
-
-- Crawl GitHub repositories at specific commits or branches
-- Filter files by patterns (include/exclude)
-- Set maximum file size limits
-- Generate relative paths for simpler directory structures
-
+    
 The application will crawl the repository, analyze the codebase structure, generate tutorial content, and save the output in the specified directory (default: ./output).
 
 
