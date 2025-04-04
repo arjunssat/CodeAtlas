@@ -1,20 +1,23 @@
-<h1 align="center">Agentic Coding - Project Template</h1>
+<h1 align="center">Turns Codebase into Easy Tutorial</h1>
+
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+
+<p align="center">
+<i>Ever stared at a new codebase written by others feeling completely lost? This tutorial shows you how to build an AI agent that analyzes GitHub repositories and creates beginner-friendly tutorials explaining exactly how the code works.</i>
+</p>
 
 <p align="center">
   <a href="https://github.com/The-Pocket/PocketFlow" target="_blank">
     <img 
-      src="./assets/banner.png" width="600"
+      src="./assets/banner.png" width="800"
     />
   </a>
 </p>
 
-    
-This is a project template for Agentic Coding with [Pocket Flow](https://github.com/The-Pocket/PocketFlow), a 100-line LLM framework, and Cursor.
+This project crawls GitHub repositories and build a knowledge base from the code:
 
-- We have included the [.cursorrules](.cursorrules) file to let Cursor AI help you build LLM projects.
-  
-- Want to learn how to build LLM projects with Agentic Coding?
-  
-  - Check out the [Agentic Coding Guidance](https://the-pocket.github.io/PocketFlow/guide.html)
-    
-  - Check out the [YouTube Tutorial](https://www.youtube.com/@ZacharyLLM?sub_confirmation=1)
+- **Analyze entire codebases** to identify core abstractions and how they interact
+- **Transform complex code** into beginner-friendly tutorials with clear visualizations
+- **Build understanding systematically** from fundamentals to advanced concepts in logical steps
+
+Built with [Pocket Flow](https://github.com/The-Pocket/PocketFlow), a 100-line LLM framework.
