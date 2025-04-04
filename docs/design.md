@@ -1,3 +1,9 @@
+---
+layout: default
+title: "Design"
+nav_order: 2
+---
+
 # Design Doc: Your Project Name
 
 > Please DON'T remove notes for AI
