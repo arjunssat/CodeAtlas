@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Iterator"
+parent: "LevelDB"
+nav_order: 7
+---
+
 # Chapter 7: Iterator - Your Guide Through the Database
 
 Welcome back! In [Chapter 6: Version & VersionSet](06_version___versionset.md), we learned how LevelDB keeps track of all the live SSTable files using `Version` objects and the `VersionSet`. This catalog helps LevelDB efficiently find a single key by looking first in the [MemTable](02_memtable.md) and then pinpointing the right [SSTables](01_table___sstable___tablecache.md) to check.

@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Table, SSTable & TableCache"
+parent: "LevelDB"
+nav_order: 1
+---
+
 # Chapter 1: Table / SSTable & TableCache
 
 Welcome to your LevelDB journey! This is the first chapter where we'll start exploring the fundamental building blocks of LevelDB.

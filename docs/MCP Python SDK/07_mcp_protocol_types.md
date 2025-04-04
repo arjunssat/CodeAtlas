@@ -1,3 +1,10 @@
+---
+layout: default
+title: "MCP Protocol Types"
+parent: "MCP Python SDK"
+nav_order: 7
+---
+
 # Chapter 7: MCP Protocol Types - The Standard Language
 
 In the previous chapter, [Chapter 6: Talking Back - FastMCP Context (`Context`)](06_fastmcp_context___context__.md), we saw how the `Context` object gives our tools and resources a "backstage pass" to send logs, report progress, and access other server features during a request. We've built up a good understanding of how `FastMCP` helps us create powerful servers with tools ([Chapter 4](04_fastmcp_tools___tool____toolmanager__.md)), resources ([Chapter 3](03_fastmcp_resources___resource____resourcemanager__.md)), and prompts ([Chapter 5](05_fastmcp_prompts___prompt____promptmanager__.md)).

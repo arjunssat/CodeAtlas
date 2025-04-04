@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Compaction"
+parent: "LevelDB"
+nav_order: 8
+---
+
 # Chapter 8: Compaction - Keeping the Library Tidy
 
 In [Chapter 7: Iterator](07_iterator.md), we saw how LevelDB provides iterators to give us a unified, sorted view of our data, cleverly merging information from the in-memory [MemTable](02_memtable.md) and the various [SSTable](01_table___sstable___tablecache.md) files on disk.

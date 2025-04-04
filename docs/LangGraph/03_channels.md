@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Channels"
+parent: "LangGraph"
+nav_order: 3
+---
+
 # Chapter 3: Channels - The Communication System
 
 In [Chapter 1: Graph / StateGraph](01_graph___stategraph.md), we learned about the `StateGraph` as the blueprint for our application, holding the shared "whiteboard" or state. In [Chapter 2: Nodes (`PregelNode`)](02_nodes___pregelnode__.md), we met the "workers" or Nodes that perform tasks and read/write to this whiteboard.

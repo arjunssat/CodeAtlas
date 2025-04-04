@@ -1,3 +1,10 @@
+---
+layout: default
+title: "FastMCP Context (Context)"
+parent: "MCP Python SDK"
+nav_order: 6
+---
+
 # Chapter 6: Talking Back - FastMCP Context (`Context`)
 
 In [Chapter 5: Reusable Chat Starters - FastMCP Prompts (`Prompt`, `PromptManager`)](05_fastmcp_prompts___prompt____promptmanager__.md), we learned how to create reusable message templates for interacting with AI models. We've seen how to build servers with data resources ([Chapter 3](03_fastmcp_resources___resource____resourcemanager__.md)) and action tools ([Chapter 4](04_fastmcp_tools___tool____toolmanager__.md)).
@@ -153,7 +160,7 @@ if __name__ == "__main__":
 
 1.  **`@server.resource(...)`**: We added a simple resource named `config://task_settings` that just returns a string.
 2.  **`resource_contents = await ctx.read_resource("config://task_settings")`**: Inside our `run_long_task` tool, we now use `ctx.read_resource()` to fetch the content of our configuration resource. This allows the tool to dynamically access data managed by the server without having direct access to the resource's implementation function (`get_task_settings`).
-3.  **Processing Content**: The `read_resource` method returns an iterable of `ReadResourceContents` objects (often just one). We extract the string content to use it.
+3.  **Processing Content**: The `read_resource` method returns an iterable of `ReadResourceContents` objects (often just one). We extracted the string content to use it.
 
 Now, our tool can both communicate outwards (logs, progress) and interact inwards (read resources) using the same `Context` object, all within the scope of the single request it's handling.
 

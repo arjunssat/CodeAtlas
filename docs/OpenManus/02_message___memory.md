@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Message & Memory"
+parent: "OpenManus"
+nav_order: 2
+---
+
 # Chapter 2: Message / Memory - Remembering the Conversation
 
 In [Chapter 1: The LLM - Your Agent's Brainpower](01_llm.md), we learned how our agent uses the `LLM` class to access its "thinking" capabilities. But just like humans, an agent needs to remember what was said earlier in a conversation to make sense of new requests and respond appropriately.

@@ -1,3 +1,10 @@
+---
+layout: default
+title: "DBImpl"
+parent: "LevelDB"
+nav_order: 4
+---
+
 # Chapter 4: DBImpl - The Database General Manager
 
 In the previous chapters, we've explored some key ingredients of LevelDB:

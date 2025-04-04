@@ -1,3 +1,10 @@
+---
+layout: default
+title: "BaseAgent"
+parent: "OpenManus"
+nav_order: 3
+---
+
 # Chapter 3: BaseAgent - The Agent Blueprint
 
 In the previous chapters, we learned about the "brain" ([Chapter 1: The LLM](01_llm.md)) that powers our agents and how they remember conversations using [Chapter 2: Message / Memory](02_message___memory.md). Now, let's talk about the agent itself!
@@ -114,7 +121,7 @@ What actually happens when you call `agent.run()`? The `BaseAgent` provides a st
 9.  **Finalize:** Once the loop finishes (either `max_steps` reached or state changed to `FINISHED`/`ERROR`), it sets the state back to `IDLE` (unless it ended in `ERROR`).
 10. **Return Results:** It returns a string summarizing the results from all the steps.
 
-Here’s a simplified diagram showing the flow:
+Here's a simplified diagram showing the flow:
 
 ```mermaid
 sequenceDiagram

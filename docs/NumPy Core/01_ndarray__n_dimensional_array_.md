@@ -1,3 +1,10 @@
+---
+layout: default
+title: "ndarray (N-dimensional array)"
+parent: "NumPy Core"
+nav_order: 1
+---
+
 # Chapter 1: ndarray (N-dimensional array)
 
 Welcome to the NumPy Core tutorial! If you're interested in how NumPy works under the hood, you're in the right place. NumPy is the foundation for scientific computing in Python, and its core strength comes from a special object called the `ndarray`.

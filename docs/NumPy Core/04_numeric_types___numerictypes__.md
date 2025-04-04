@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Numeric Types (numerictypes)"
+parent: "NumPy Core"
+nav_order: 4
+---
+
 # Chapter 4: Numeric Types (`numerictypes`)
 
 Hello again! In [Chapter 3: ufunc (Universal Function)](03_ufunc__universal_function_.md), we saw how NumPy uses universal functions (`ufuncs`) to perform fast calculations on arrays. We learned that these `ufuncs` operate element by element and can handle different data types using optimized C loops.

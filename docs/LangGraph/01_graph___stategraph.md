@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Graph & StateGraph"
+parent: "LangGraph"
+nav_order: 1
+---
+
 # Chapter 1: Graph / StateGraph - The Blueprint of Your Application
 
 Welcome to the LangGraph tutorial! We're excited to help you learn how to build powerful, stateful applications with Large Language Models (LLMs).

@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Nodes (PregelNode)"
+parent: "LangGraph"
+nav_order: 2
+---
+
 # Chapter 2: Nodes (`PregelNode`) - The Workers of Your Graph
 
 In [Chapter 1: Graph / StateGraph](01_graph___stategraph.md), we learned how `StateGraph` acts as a blueprint or a flowchart for our application. It defines the overall structure and the shared "whiteboard" (the State) that holds information.

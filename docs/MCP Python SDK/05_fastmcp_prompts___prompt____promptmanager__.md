@@ -1,3 +1,10 @@
+---
+layout: default
+title: "FastMCP Prompts (Prompt, PromptManager)"
+parent: "MCP Python SDK"
+nav_order: 5
+---
+
 # Chapter 5: Reusable Chat Starters - FastMCP Prompts (`Prompt`, `PromptManager`)
 
 In [Chapter 4: FastMCP Tools (`Tool`, `ToolManager`)](04_fastmcp_tools___tool____toolmanager__.md), we learned how to give our server specific *actions* it can perform, like a calculator tool. But modern AI often involves conversations, especially with Large Language Models (LLMs). How do we manage the instructions and conversation starters we send to these models?

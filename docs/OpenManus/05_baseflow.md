@@ -1,3 +1,10 @@
+---
+layout: default
+title: "BaseFlow"
+parent: "OpenManus"
+nav_order: 5
+---
+
 # Chapter 5: BaseFlow - Managing Multi-Step Projects
 
 In [Chapter 4: Tool / ToolCollection](04_tool___toolcollection.md), we saw how to give agents specific skills like web searching or running code using Tools. Now, imagine you have a task that requires multiple steps, maybe even using different skills (tools) or agents along the way. How do you coordinate this complex work?

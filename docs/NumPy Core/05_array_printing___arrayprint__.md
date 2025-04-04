@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Array Printing (arrayprint)"
+parent: "NumPy Core"
+nav_order: 5
+---
+
 # Chapter 5: Array Printing (`arrayprint`)
 
 In the previous chapter, [Chapter 4: Numeric Types (`numerictypes`)](04_numeric_types___numerictypes__.md), we explored the different kinds of data NumPy can store in its arrays, like `int32`, `float64`, and more. Now that we know about the arrays ([`ndarray`](01_ndarray__n_dimensional_array_.md)), their data types ([`dtype`](02_dtype__data_type_object_.md)), the functions that operate on them ([`ufunc`](03_ufunc__universal_function_.md)), and the specific number types (`numerictypes`), a practical question arises: How do we actually *look* at these arrays, especially if they are very large?

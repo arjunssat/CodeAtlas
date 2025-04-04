@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Version & VersionSet"
+parent: "LevelDB"
+nav_order: 6
+---
+
 # Chapter 6: Version & VersionSet - The Database Catalog
 
 In the previous chapter, [Chapter 5: WriteBatch](05_writebatch.md), we learned how LevelDB groups multiple `Put` and `Delete` operations together to apply them atomically and efficiently. We saw that writes go first to the [Write-Ahead Log (WAL)](03_write_ahead_log__wal____logwriter_logreader.md) for durability, and then to the in-memory [MemTable](02_memtable.md).

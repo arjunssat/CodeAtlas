@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Pregel Execution Engine"
+parent: "LangGraph"
+nav_order: 5
+---
+
 # Chapter 5: Pregel Execution Engine - The Engine Room
 
 In the previous chapters, we learned how to build the blueprint of our application using [`StateGraph`](01_graph___stategraph.md), define the workers with [`Nodes`](02_nodes___pregelnode__.md), manage the shared state with [`Channels`](03_channels.md), and direct the traffic using [Control Flow Primitives](04_control_flow_primitives___branch____send____interrupt__.md).

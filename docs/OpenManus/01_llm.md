@@ -1,3 +1,10 @@
+---
+layout: default
+title: "LLM"
+parent: "OpenManus"
+nav_order: 1
+---
+
 # Chapter 1: The LLM - Your Agent's Brainpower
 
 Welcome to the OpenManus tutorial! We're thrilled to have you on board. Let's start with the absolute core of any intelligent agent: the "brain" that does the thinking and understanding. In OpenManus, this brainpower comes from something called a **Large Language Model (LLM)**, and we interact with it using our `LLM` class.

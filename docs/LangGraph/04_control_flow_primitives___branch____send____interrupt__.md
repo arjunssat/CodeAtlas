@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Control Flow Primitives"
+parent: "LangGraph"
+nav_order: 4
+---
+
 # Chapter 4: Control Flow Primitives (`Branch`, `Send`, `Interrupt`)
 
 In [Chapter 3: Channels](03_channels.md), we saw how information is stored and updated in our graph's shared state using Channels. We have the blueprint ([`StateGraph`](01_graph___stategraph.md)), the workers ([`Nodes`](02_nodes___pregelnode__.md)), and the communication system ([Channels](03_channels.md)).

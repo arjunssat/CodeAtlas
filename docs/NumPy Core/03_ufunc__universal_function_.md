@@ -1,3 +1,10 @@
+---
+layout: default
+title: "ufunc (universal function)"
+parent: "NumPy Core"
+nav_order: 3
+---
+
 # Chapter 3: ufunc (Universal Function)
 
 Welcome back! In [Chapter 1: ndarray (N-dimensional array)](01_ndarray__n_dimensional_array_.md), we met the `ndarray`, NumPy's powerful container for numerical data. In [Chapter 2: dtype (Data Type Object)](02_dtype__data_type_object_.md), we learned how `dtype`s specify the exact *kind* of data stored within those arrays.

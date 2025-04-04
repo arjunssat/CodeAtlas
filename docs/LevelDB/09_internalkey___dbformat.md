@@ -1,3 +1,10 @@
+---
+layout: default
+title: "InternalKey & DBFormat"
+parent: "LevelDB"
+nav_order: 9
+---
+
 # Chapter 9: InternalKey & DBFormat - LevelDB's Internal Bookkeeping
 
 Welcome to the final chapter of our deep dive into LevelDB's core components! In [Chapter 8: Compaction](08_compaction.md), we saw how LevelDB keeps its storage tidy by merging and rewriting [SSTables](01_table___sstable___tablecache.md) in the background. This compaction process relies heavily on being able to correctly compare different versions of the same key and discard old or deleted data.

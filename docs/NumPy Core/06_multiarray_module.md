@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Multiarray Module"
+parent: "NumPy Core"
+nav_order: 6
+---
+
 # Chapter 6: multiarray Module
 
 Welcome back! In [Chapter 5: Array Printing (`arrayprint`)](05_array_printing___arrayprint__.md), we saw how NumPy takes complex arrays and presents them in a readable format. We've now covered the array container ([`ndarray`](01_ndarray__n_dimensional_array_.md)), its data types ([`dtype`](02_dtype__data_type_object_.md)), the functions that compute on them ([`ufunc`](03_ufunc__universal_function_.md)), the catalog of types ([`numerictypes`](04_numeric_types___numerictypes__.md)), and how arrays are displayed ([`arrayprint`](05_array_printing___arrayprint__.md)).

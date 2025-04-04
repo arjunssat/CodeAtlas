@@ -1,3 +1,10 @@
+---
+layout: default
+title: "FastMCP Tools (Tool, ToolManager)"
+parent: "MCP Python SDK"
+nav_order: 4
+---
+
 # Chapter 4: FastMCP Tools (`Tool`, `ToolManager`)
 
 In [Chapter 3: Sharing Data - FastMCP Resources (`Resource`, `ResourceManager`)](03_fastmcp_resources___resource____resourcemanager__.md), we learned how to make data available for clients to read using `Resource` objects, like putting books in a digital library. That's great for sharing information, but what if we want the client to be able to ask the server to *do* something?

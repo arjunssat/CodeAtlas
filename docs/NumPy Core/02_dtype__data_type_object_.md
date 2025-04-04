@@ -1,3 +1,10 @@
+---
+layout: default
+title: "dtype (data type object)"
+parent: "NumPy Core"
+nav_order: 2
+---
+
 # Chapter 2: dtype (Data Type Object)
 
 In [Chapter 1: ndarray (N-dimensional array)](01_ndarray__n_dimensional_array_.md), we learned that NumPy's `ndarray` is a powerful grid designed to hold items **of the same type**. This "same type" requirement is fundamental to NumPy's speed and efficiency. But how does NumPy know *what kind* of data it's storing? That's where the `dtype` comes in!

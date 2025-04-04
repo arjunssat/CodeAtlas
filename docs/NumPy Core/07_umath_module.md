@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Umath Module"
+parent: "NumPy Core"
+nav_order: 7
+---
+
 # Chapter 7: umath Module
 
 Welcome to Chapter 7! In [Chapter 6: multiarray Module](06_multiarray_module.md), we explored the core C engine that defines the `ndarray` object and handles fundamental operations like creating arrays and accessing elements. We saw that the actual power comes from C code.

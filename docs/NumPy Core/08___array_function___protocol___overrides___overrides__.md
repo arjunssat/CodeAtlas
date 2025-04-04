@@ -1,3 +1,10 @@
+---
+layout: default
+title: "__array_function__ Protocol (overrides)"
+parent: "NumPy Core"
+nav_order: 8
+---
+
 # Chapter 8: __array_function__ Protocol / Overrides (`overrides`)
 
 Welcome to the final chapter of our NumPy Core exploration! In [Chapter 7: umath Module](07_umath_module.md), we learned how NumPy implements its fast, element-wise mathematical functions (`ufuncs`) using optimized C code. We've seen the core components: the `ndarray` container, `dtype` descriptions, `ufunc` operations, numeric types, printing, and the C modules (`multiarray`, `umath`) that power them.

@@ -1,3 +1,10 @@
+---
+layout: default
+title: "CLI (mcp command)"
+parent: "MCP Python SDK"
+nav_order: 1
+---
+
 # Chapter 1: Your Control Panel - The `mcp` Command-Line Interface
 
 Welcome to the MCP Python SDK! This is your starting point for building powerful, interactive AI tools.

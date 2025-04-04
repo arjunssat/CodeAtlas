@@ -1,3 +1,10 @@
+---
+layout: default
+title: "FastMCP Resources (Resource, ResourceManager)"
+parent: "MCP Python SDK"
+nav_order: 3
+---
+
 # Chapter 3: Sharing Data - FastMCP Resources (`Resource`, `ResourceManager`)
 
 In [Chapter 2: Easier Server Building with `FastMCP`](02_fastmcp_server___fastmcp__.md), we saw how `FastMCP` and the `@server.tool()` decorator make it easy to create servers that can *perform actions* for clients, like our `echo` tool.

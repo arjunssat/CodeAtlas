@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Communication Transports"
+parent: "MCP Python SDK"
+nav_order: 9
+---
+
 # Chapter 9: Communication Transports (Stdio, SSE, WebSocket, Memory)
 
 Welcome to the final chapter of our introductory journey into the `MCP Python SDK`! In [Chapter 8: Client/Server Sessions (`ClientSession`, `ServerSession`)](08_client_server_sessions___clientsession____serversession__.md), we learned how `Session` objects manage the ongoing conversation and state for a single connection between a client and a server, like dedicated phone operators handling a call.

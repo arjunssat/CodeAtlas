@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Write-Ahead Log (WAL)"
+parent: "LevelDB"
+nav_order: 3
+---
+
 # Chapter 3: Write-Ahead Log (WAL) & LogWriter/LogReader
 
 In [Chapter 2: MemTable](02_memtable.md), we saw how LevelDB uses an in-memory `MemTable` (like a fast notepad) to quickly accept new writes (`Put` or `Delete`) before they are eventually flushed to an [SSTable](01_table___sstable___tablecache.md) file on disk.

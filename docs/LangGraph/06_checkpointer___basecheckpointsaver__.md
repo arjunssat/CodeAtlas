@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Checkpointer (BaseCheckpointSaver)"
+parent: "LangGraph"
+nav_order: 6
+---
+
 # Chapter 6: Checkpointer (`BaseCheckpointSaver`) - Saving Your Progress
 
 In [Chapter 5: Pregel Execution Engine](05_pregel_execution_engine.md), we saw how the engine runs our graph step-by-step. But what happens if a graph takes hours to run, or if it needs to pause and wait for a human? If the program crashes or we need to stop it, do we lose all the progress?

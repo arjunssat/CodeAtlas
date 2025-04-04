@@ -1,3 +1,10 @@
+---
+layout: default
+title: "MemTable"
+parent: "LevelDB"
+nav_order: 2
+---
+
 # Chapter 2: MemTable
 
 In [Chapter 1: Table / SSTable & TableCache](01_table___sstable___tablecache.md), we learned how LevelDB stores the bulk of its data permanently on disk in sorted, immutable files called SSTables. We also saw how the `TableCache` helps access these files efficiently.

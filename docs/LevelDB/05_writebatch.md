@@ -1,3 +1,10 @@
+---
+layout: default
+title: "WriteBatch"
+parent: "LevelDB"
+nav_order: 5
+---
+
 # Chapter 5: WriteBatch - Grouping Changes Together
 
 Welcome back! In [Chapter 4: DBImpl](04_dbimpl.md), we saw how `DBImpl` acts as the general manager, coordinating writes, reads, and background tasks. We learned that when you call `Put` or `Delete`, `DBImpl` handles writing to the [Write-Ahead Log (WAL)](03_write_ahead_log__wal____logwriter_logreader.md) and then updating the [MemTable](02_memtable.md).

@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Tool & ToolCollection"
+parent: "OpenManus"
+nav_order: 4
+---
+
 # Chapter 4: Tool / ToolCollection - Giving Your Agent Skills
 
 In [Chapter 3: BaseAgent - The Agent Blueprint](03_baseagent.md), we learned how `BaseAgent` provides the standard structure for our agents, including a brain ([LLM](01_llm.md)) and memory ([Message / Memory](02_message___memory.md)). But what if we want our agent to do more than just *think* and *remember*? What if we want it to *act* in the world – like searching the web, running code, or editing files?

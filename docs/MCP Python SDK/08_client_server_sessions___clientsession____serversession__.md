@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Client/Server Sessions (ClientSession, ServerSession)"
+parent: "MCP Python SDK"
+nav_order: 8
+---
+
 # Chapter 8: Client/Server Sessions (`ClientSession`, `ServerSession`)
 
 Welcome back! In [Chapter 7: MCP Protocol Types](07_mcp_protocol_types.md), we learned about the standardized "digital forms" – the Pydantic models – that define the structure of messages exchanged between an MCP client and server. We saw examples like `CallToolRequest` and `ProgressNotification`.

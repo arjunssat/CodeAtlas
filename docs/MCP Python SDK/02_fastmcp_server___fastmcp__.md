@@ -1,3 +1,10 @@
+---
+layout: default
+title: "FastMCP Server (FastMCP)"
+parent: "MCP Python SDK"
+nav_order: 2
+---
+
 # Chapter 2: Easier Server Building with `FastMCP`
 
 In [Chapter 1: Your Control Panel - The `mcp` Command-Line Interface](01_cli___mcp__command_.md), we learned how to use the `mcp` command to run, test, and install MCP servers. We even saw a tiny example of a server file. But how do we *build* that server code without getting lost in complex details?
