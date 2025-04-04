@@ -258,6 +258,7 @@ Using `url_for` in templates ensures that your links will always point to the co
 
 When you call `render_template('some_template.html', var=value)`, here's a simplified sequence of what happens inside Flask and Jinja2:
 
+{% raw %}
 1.  **Get Jinja Environment:** Flask accesses its configured Jinja2 environment (`current_app.jinja_env`). This environment holds the settings, filters, globals, and crucially, the **template loader**. (See `templating.py:render_template` which accesses `current_app.jinja_env`).
 2.  **Find Template:** The environment asks its loader (`app.jinja_env.loader`, which is typically a `DispatchingJinjaLoader` as created in `app.py:create_jinja_environment` and `templating.py:Environment`) to find the template file (`'some_template.html'`).
 3.  **Loader Search:** The `DispatchingJinjaLoader` knows where to look:
@@ -270,6 +271,7 @@ When you call `render_template('some_template.html', var=value)`, here's a simpl
 8.  **Return HTML:** The `render()` method returns the final, fully rendered HTML string.
 9.  **Signal:** Flask sends the `template_rendered` signal.
 10. **Send Response:** Flask takes this HTML string and builds an HTTP Response object to send back to the browser ([Chapter 3](03_request_and_response_objects.md)).
+{% endraw %}
 
 ```mermaid
 sequenceDiagram
