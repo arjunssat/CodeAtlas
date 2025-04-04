@@ -25,39 +25,39 @@ This is a tutorial project of [Pocket Flow](https://github.com/The-Pocket/Pocket
 
 Check Out Example Tutorials for Popular GitHub Repositories:
 
-- [AutoGen Core](./AutoGen Core/index.md) - Build AI teams that talk, think, and solve problems together like coworkers!
+- [AutoGen Core](https://the-pocket.github.io/Tutorial-Codebase-Knowledge/AutoGen%20Core) - Build AI teams that talk, think, and solve problems together like coworkers!
 
-- [Browser Use](./Browser Use/index.md) - Let AI surf the web for you, clicking buttons and filling forms like a digital assistant!
+- [Browser Use](https://the-pocket.github.io/Tutorial-Codebase-Knowledge/Browser%20Use) - Let AI surf the web for you, clicking buttons and filling forms like a digital assistant!
 
-- [Celery](./Celery/index.md) - Supercharge your app with background tasks that run while you sleep!
+- [Celery](https://the-pocket.github.io/Tutorial-Codebase-Knowledge/Celery) - Supercharge your app with background tasks that run while you sleep!
 
-- [Click](./Click/index.md) - Turn Python functions into slick command-line tools with just a decorator!
+- [Click](https://the-pocket.github.io/Tutorial-Codebase-Knowledge/Click) - Turn Python functions into slick command-line tools with just a decorator!
 
-- [Crawl4AI](./Crawl4AI/index.md) - Train your AI to extract exactly what matters from any website!
+- [Crawl4AI](https://the-pocket.github.io/Tutorial-Codebase-Knowledge/Crawl4AI) - Train your AI to extract exactly what matters from any website!
 
-- [CrewAI](./CrewAI/index.md) - Assemble a dream team of AI specialists to tackle impossible problems!
+- [CrewAI](https://the-pocket.github.io/Tutorial-Codebase-Knowledge/CrewAI) - Assemble a dream team of AI specialists to tackle impossible problems!
 
-- [DSPy](./DSPy/index.md) - Build LLM apps like Lego blocks that optimize themselves!
+- [DSPy](https://the-pocket.github.io/Tutorial-Codebase-Knowledge/DSPy) - Build LLM apps like Lego blocks that optimize themselves!
 
-- [FastAPI](./FastAPI/index.md) - Create APIs at lightning speed with automatic docs that clients will love!
+- [FastAPI](https://the-pocket.github.io/Tutorial-Codebase-Knowledge/FastAPI) - Create APIs at lightning speed with automatic docs that clients will love!
 
-- [Flask](./Flask/index.md) - Craft web apps with minimal code that scales from prototype to production!
+- [Flask](https://the-pocket.github.io/Tutorial-Codebase-Knowledge/Flask) - Craft web apps with minimal code that scales from prototype to production!
 
-- [LangGraph](./LangGraph/index.md) - Design AI agents as flowcharts where each step remembers what happened before!
+- [LangGraph](https://the-pocket.github.io/Tutorial-Codebase-Knowledge/LangGraph) - Design AI agents as flowcharts where each step remembers what happened before!
 
-- [LevelDB](./LevelDB/index.md) - Store data at warp speed with Google's engine that powers blockchains!
+- [LevelDB](https://the-pocket.github.io/Tutorial-Codebase-Knowledge/LevelDB) - Store data at warp speed with Google's engine that powers blockchains!
 
-- [MCP Python SDK](./MCP Python SDK/index.md) - Command cloud infrastructure with Python instead of clicking buttons!
+- [MCP Python SDK](https://the-pocket.github.io/Tutorial-Codebase-Knowledge/MCP%20Python%20SDK) - Command cloud infrastructure with Python instead of clicking buttons!
 
-- [NumPy Core](./NumPy Core/index.md) - Master the engine behind data science that makes Python as fast as C!
+- [NumPy Core](https://the-pocket.github.io/Tutorial-Codebase-Knowledge/NumPy%20Core) - Master the engine behind data science that makes Python as fast as C!
 
-- [OpenManus](./OpenManus/index.md) - Program robot hands that move with human-like precision and grace!
+- [OpenManus](https://the-pocket.github.io/Tutorial-Codebase-Knowledge/OpenManus) - Program robot hands that move with human-like precision and grace!
 
-- [Pydantic Core](./Pydantic Core/index.md) - Validate data at rocket speed with just Python type hints!
+- [Pydantic Core](https://the-pocket.github.io/Tutorial-Codebase-Knowledge/Pydantic%20Core) - Validate data at rocket speed with just Python type hints!
 
-- [Requests](./Requests/index.md) - Talk to the internet in Python with code so simple it feels like cheating!
+- [Requests](https://the-pocket.github.io/Tutorial-Codebase-Knowledge/Requests) - Talk to the internet in Python with code so simple it feels like cheating!
 
-- [SmolaAgents](./SmolaAgents/index.md) - Build tiny AI agents that punch way above their weight class!
+- [SmolaAgents](https://the-pocket.github.io/Tutorial-Codebase-Knowledge/SmolaAgents) - Build tiny AI agents that punch way above their weight class!
 
 
 
