@@ -302,11 +302,13 @@ The key players are the `Flask` application instance (which holds the Jinja2 env
 
 Templating is a fundamental technique for building dynamic web pages. Flask integrates seamlessly with the powerful Jinja2 template engine.
 
+{% raw %}
 *   We learned that templating separates HTML structure from Python logic.
 *   Flask looks for templates in a `templates` folder by default.
 *   The `render_template()` function is used to load a template file and pass data (context variables) to it.
 *   Jinja2 templates use `{{ variable }}` to display data and `{% statement %}` for control flow (like `if` and `for`).
 *   The `url_for()` function is available in templates for generating URLs dynamically.
+{% endraw %}
 
 Now you can create clean, maintainable HTML pages driven by your Flask application's data and logic.
 
