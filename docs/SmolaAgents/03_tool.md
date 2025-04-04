@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Tool"
+parent: "SmolaAgents"
+nav_order: 3
+---
+
 # Chapter 3: Tool - Giving Your Agent Superpowers
 
 Welcome back! In [Chapter 2: Model Interface](02_model_interface.md), we learned how our `MultiStepAgent` uses a "universal remote" (the Model Interface) to talk to its LLM "brain". The LLM thinks and suggests what the agent should do next.

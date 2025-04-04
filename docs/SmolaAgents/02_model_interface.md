@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Model Interface"
+parent: "SmolaAgents"
+nav_order: 2
+---
+
 # Chapter 2: Model Interface - Your Agent's Universal Translator
 
 Welcome back! In [Chapter 1: The MultiStepAgent - Your Task Orchestrator](01_multistepagent.md), we met the `MultiStepAgent`, our AI project manager. We learned that it follows a "Think -> Act -> Observe" cycle to solve tasks. A crucial part of the "Think" phase is consulting its "brain" – a Large Language Model (LLM).

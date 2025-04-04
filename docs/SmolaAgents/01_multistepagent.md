@@ -1,3 +1,10 @@
+---
+layout: default
+title: "MultiStepAgent"
+parent: "SmolaAgents"
+nav_order: 1
+---
+
 # Chapter 1: The MultiStepAgent - Your Task Orchestrator
 
 Welcome to the SmolaAgents library! If you're looking to build smart AI agents that can tackle complex problems, you're in the right place.

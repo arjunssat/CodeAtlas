@@ -1,3 +1,10 @@
+---
+layout: default
+title: "AgentLogger & Monitor"
+parent: "SmolaAgents"
+nav_order: 8
+---
+
 # Chapter 8: AgentLogger & Monitor - Observing Your Agent in Action
 
 Welcome to the final chapter of the SmolaAgents tutorial! In [Chapter 7: AgentType](07_agenttype.md), we saw how `SmolaAgents` handles different kinds of data like text, images, and audio using specialized containers. Now that our agent can perform complex tasks ([Chapter 1: MultiStepAgent](01_multistepagent.md)), use various [Tools](03_tool.md), remember its progress ([Chapter 4: AgentMemory](04_agentmemory.md)), and even handle diverse data types, a new question arises: **How do we actually see what the agent is doing?**
@@ -49,7 +56,7 @@ When you create a `MultiStepAgent`, it automatically creates an `AgentLogger` in
 
 **Example Output (Simulated)**
 
-The `AgentLogger` uses `rich` to make the output colorful and easy to read. Here’s a simplified idea of what you might see in your console for our "Capital and Weather" example:
+The `AgentLogger` uses `rich` to make the output colorful and easy to read. Here's a simplified idea of what you might see in your console for our "Capital and Weather" example:
 
 ```console
 ╭─[bold] New run ─ ToolCallingAgent [/bold]────────────────────────────────╮

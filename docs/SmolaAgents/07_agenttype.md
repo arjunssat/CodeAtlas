@@ -1,3 +1,10 @@
+---
+layout: default
+title: "AgentType"
+parent: "SmolaAgents"
+nav_order: 7
+---
+
 # Chapter 7: AgentType - Handling More Than Just Text
 
 Welcome back! In the previous chapters, especially when discussing [Tools](03_tool.md) and the [PythonExecutor](06_pythonexecutor.md), we saw how agents can perform actions and generate results. So far, we've mostly focused on text-based tasks and results.

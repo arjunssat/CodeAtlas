@@ -1,3 +1,10 @@
+---
+layout: default
+title: "PythonExecutor"
+parent: "SmolaAgents"
+nav_order: 6
+---
+
 # Chapter 6: PythonExecutor - Running Code Safely
 
 Welcome back! In [Chapter 5: PromptTemplates](05_prompttemplates.md), we saw how agents use templates to create clear instructions for their LLM brain. These instructions often involve asking the LLM to generate code, especially for agents like `CodeAgent`, which are designed to solve problems by writing and running Python.

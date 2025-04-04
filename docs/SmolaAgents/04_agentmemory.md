@@ -1,3 +1,10 @@
+---
+layout: default
+title: "AgentMemory"
+parent: "SmolaAgents"
+nav_order: 4
+---
+
 # Chapter 4: AgentMemory - The Agent's Notepad
 
 Welcome back! In [Chapter 3: Tool](03_tool.md), we equipped our agent with "superpowers" – tools like web search or calculators that let it interact with the world and perform actions. We saw how the agent's "brain" (the LLM) decides which tool to use, and the agent executes it.

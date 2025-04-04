@@ -1,3 +1,10 @@
+---
+layout: default
+title: "PromptTemplates"
+parent: "SmolaAgents"
+nav_order: 5
+---
+
 # Chapter 5: PromptTemplates - Crafting Your Agent's Script
 
 Welcome back! In [Chapter 4: AgentMemory](04_agentmemory.md), we learned how our agent uses its "logbook" (`AgentMemory`) to remember the task, its past actions, and observations. This memory is crucial for deciding the next step.
