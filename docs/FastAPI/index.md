@@ -7,6 +7,8 @@ has_children: true
 
 # Tutorial: FastAPI
 
+> This tutorial is AI-generated! To learn more: https://github.com/The-Pocket/Tutorial-Codebase-Knowledge
+
 FastAPI is a modern, *high-performance* web framework for building APIs with Python.
 It's designed to be **easy to use**, fast to code, and ready for production.
 Key features include **automatic data validation** (using Pydantic), **dependency injection**, and **automatic interactive API documentation** (OpenAPI and Swagger UI).

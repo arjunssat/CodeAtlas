@@ -7,6 +7,8 @@ has_children: true
 
 # Tutorial: AutoGen Core
 
+> This tutorial is AI-generated! To learn more: https://github.com/The-Pocket/Tutorial-Codebase-Knowledge
+
 AutoGen Core helps you build applications with multiple **_Agents_** that can work together.
 Think of it like creating a team of specialized workers (*Agents*) who can communicate and use tools to solve problems.
 The **_AgentRuntime_** acts as the manager, handling messages and agent lifecycles.

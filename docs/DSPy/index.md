@@ -7,6 +7,8 @@ has_children: true
 
 # Tutorial: DSPy
 
+> This tutorial is AI-generated! To learn more: https://github.com/The-Pocket/Tutorial-Codebase-Knowledge
+
 DSPy helps you build and optimize *programs* that use **Language Models (LMs)** and **Retrieval Models (RMs)**.
 Think of it like composing Lego bricks (**Modules**) where each brick performs a specific task (like generating text or retrieving information).
 **Signatures** define what each Module does (its inputs and outputs), and **Teleprompters** automatically tune these modules (like optimizing prompts or examples) to get the best performance on your data.

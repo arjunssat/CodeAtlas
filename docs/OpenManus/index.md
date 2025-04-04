@@ -7,6 +7,8 @@ has_children: true
 
 # Tutorial: OpenManus
 
+> This tutorial is AI-generated! To learn more: https://github.com/The-Pocket/Tutorial-Codebase-Knowledge
+
 OpenManus is a framework for building autonomous *AI agents*.
 Think of it like a digital assistant that can perform tasks. It uses a central **brain** (an `LLM` like GPT-4) to understand requests and decide what to do next.
 Agents can use various **tools** (like searching the web or writing code) to interact with the world or perform specific actions. Some complex tasks might involve a **flow** that coordinates multiple agents.

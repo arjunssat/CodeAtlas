@@ -7,6 +7,8 @@ has_children: true
 
 # Tutorial: CrewAI
 
+> This tutorial is AI-generated! To learn more: https://github.com/The-Pocket/Tutorial-Codebase-Knowledge
+
 **CrewAI** is a framework for orchestrating *autonomous AI agents*.
 Think of it like building a specialized team (a **Crew**) where each member (**Agent**) has a role, goal, and tools.
 You assign **Tasks** to Agents, defining what needs to be done. The **Crew** manages how these Agents collaborate, following a specific **Process** (like sequential steps).

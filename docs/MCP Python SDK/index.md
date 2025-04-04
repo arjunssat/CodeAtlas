@@ -7,6 +7,8 @@ has_children: true
 
 # Tutorial: MCP Python SDK
 
+> This tutorial is AI-generated! To learn more: https://github.com/The-Pocket/Tutorial-Codebase-Knowledge
+
 The **MCP Python SDK** helps developers build applications (clients and servers) that talk to each other using the *Model Context Protocol (MCP)* specification.
 It simplifies communication by handling the low-level details like standard **message formats** (Abstraction 0), connection **sessions** (Abstraction 1), and different ways to send/receive data (**transports**, Abstraction 2).
 It also provides a high-level framework, **`FastMCP`** (Abstraction 3), making it easy to create servers that expose **tools** (Abstraction 5), **resources** (Abstraction 4), and **prompts** (Abstraction 6) to clients.

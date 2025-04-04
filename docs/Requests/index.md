@@ -7,6 +7,8 @@ has_children: true
 
 # Tutorial: Requests
 
+> This tutorial is AI-generated! To learn more: https://github.com/The-Pocket/Tutorial-Codebase-Knowledge
+
 Requests is a Python library that makes sending *HTTP requests* incredibly simple.
 Instead of dealing with complex details, you can use straightforward functions (like `requests.get()`) or **Session objects** to interact with web services.
 It automatically handles things like *cookies*, *redirects*, *authentication*, and connection pooling, returning easy-to-use **Response objects** with all the server's data.

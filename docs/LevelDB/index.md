@@ -7,6 +7,8 @@ has_children: true
 
 # Tutorial: LevelDB
 
+> This tutorial is AI-generated! To learn more: https://github.com/The-Pocket/Tutorial-Codebase-Knowledge
+
 LevelDB is a fast *key-value storage library* written at Google.
 Think of it like a simple database where you store pieces of data (values) associated with unique names (keys).
 It's designed to be **very fast** for both writing new data and reading existing data, and it reliably stores everything on **disk**.

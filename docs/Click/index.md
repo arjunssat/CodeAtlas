@@ -7,6 +7,8 @@ has_children: true
 
 # Tutorial: Click
 
+> This tutorial is AI-generated! To learn more: https://github.com/The-Pocket/Tutorial-Codebase-Knowledge
+
 Click is a Python library that makes creating **command-line interfaces (CLIs)** *easy and fun*.
 It uses simple Python **decorators** (`@click.command`, `@click.option`, etc.) to turn your functions into CLI commands with options and arguments.
 Click handles parsing user input, generating help messages, validating data types, and managing the flow between commands, letting you focus on your application's logic.

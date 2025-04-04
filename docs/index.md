@@ -6,7 +6,7 @@ nav_order: 1
 
 # Turns Codebase into Easy Tutorial
 
-Ever stared at a new codebase written by others feeling completely lost? This project analyzes GitHub repositories and creates beginner-friendly tutorials explaining exactly how the code works.
+Ever stared at a new codebase written by others feeling completely lost? This project analyzes GitHub repositories and creates beginner-friendly tutorials explaining exactly how the code works - all powered by AI! Our intelligent system automatically breaks down complex codebases into digestible explanations that even beginners can understand.
 
 <p align="center">
   <a href="https://github.com/The-Pocket/PocketFlow" target="_blank">
@@ -16,7 +16,7 @@ Ever stared at a new codebase written by others feeling completely lost? This pr
   </a>
 </p>
 
-Built with [Pocket Flow](https://github.com/The-Pocket/PocketFlow), a 100-line LLM framework.
+This is a tutorial project of [Pocket Flow](https://github.com/The-Pocket/PocketFlow), a 100-line LLM framework. It crawls GitHub repositories and build a knowledge base from the code.
 
 ## Example Tutorials for Popular GitHub Repositories
 

@@ -7,6 +7,8 @@ has_children: true
 
 # Tutorial: LangGraph
 
+> This tutorial is AI-generated! To learn more: https://github.com/The-Pocket/Tutorial-Codebase-Knowledge
+
 LangGraph helps you build complex **stateful applications**, like chatbots or agents, using a *graph-based approach*.
 You define your application's logic as a series of steps (**Nodes**) connected by transitions (**Edges**) in a **Graph**.
 The system manages the application's *shared state* using **Channels** and executes the graph step-by-step with its **Pregel engine**, handling things like branching, interruptions, and saving progress (**Checkpointing**).

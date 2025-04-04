@@ -7,6 +7,8 @@ has_children: true
 
 # Tutorial: Flask
 
+> This tutorial is AI-generated! To learn more: https://github.com/The-Pocket/Tutorial-Codebase-Knowledge
+
 Flask is a lightweight **web framework** for Python.
 It helps you build web applications by handling incoming *web requests* and sending back *responses*.
 Flask provides tools for **routing** URLs to your Python functions, managing *request data*, creating *responses*, and using *templates* to generate HTML.
