@@ -231,7 +231,10 @@ system_prompt: |-
   You can use imports in your code, but only from the following list of modules: {{authorized_imports}}
   # ... (rest of the prompt) ...
 ```
+
+{% raw %}
 You can see the `{{ tools }}`, `{{ managed_agents }}`, and `{{ authorized_imports }}` placeholders ready to be filled in. The `{%- for ... %}` syntax is Jinja2's way of looping through lists (like the list of tools).
+{% endraw %}
 
 ## Conclusion
 
@@ -239,12 +242,14 @@ You can see the `{{ tools }}`, `{{ managed_agents }}`, and `{{ authorized_import
 
 You've learned:
 
+{% raw %}
 *   Why structured prompts are necessary for guiding LLMs effectively.
 *   The "Mad Libs" analogy for `PromptTemplates`.
 *   How Jinja2 is used to fill placeholders like `{{ task }}` and `{{ tools }}`.
 *   The main types of prompts stored (`system_prompt`, `planning`, `final_answer`).
 *   That `SmolaAgents` provides sensible default templates, especially the crucial `system_prompt`.
 *   How the agent automatically renders these templates with current data before sending them to the LLM.
+{% endraw %}
 
 Understanding `PromptTemplates` helps you grasp how the agent frames its requests to the LLM. While you might stick to the defaults initially, knowing this mechanism exists opens the door to customizing agent behavior later on.
 
