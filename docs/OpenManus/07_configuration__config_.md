@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Configuration (config)"
+parent: "OpenManus"
+nav_order: 7
+---
+
 # Chapter 7: Configuration (Config)
 
 Welcome to Chapter 7! In [Chapter 6: Schema](06_schema.md), we learned how OpenManus uses schemas to define the structure of data passed between different components, like official forms ensuring everyone fills them out correctly.

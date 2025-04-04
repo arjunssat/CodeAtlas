@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Authentication Handlers"
+parent: "Requests"
+nav_order: 5
+---
+
 # Chapter 5: Authentication Handlers - Showing Your ID Card
 
 In [Chapter 4: The Cookie Jar](04_cookie_jar.md), we learned how `requests` uses `Session` objects and cookie jars to automatically remember things like login cookies. This is great for websites that use cookies to manage sessions after you log in.

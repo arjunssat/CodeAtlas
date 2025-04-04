@@ -1,3 +1,10 @@
+---
+layout: default
+title: "TypeAdapter"
+parent: "Pydantic Core"
+nav_order: 6
+---
+
 # Chapter 6: TypeAdapter - Your Universal Data Handler
 
 Welcome to the final chapter of our Pydantic Core tutorial! In [Chapter 5: Core Schema & Validation/Serialization](05_core_schema___validation_serialization.md), we dove deep into how Pydantic uses the `CoreSchema` and the `pydantic-core` engine to efficiently validate and serialize data for your `BaseModel` classes.

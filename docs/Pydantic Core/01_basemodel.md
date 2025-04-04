@@ -1,3 +1,10 @@
+---
+layout: default
+title: "BaseModel"
+parent: "Pydantic Core"
+nav_order: 1
+---
+
 # Chapter 1: BaseModel - Your Data Blueprint
 
 Welcome to the Pydantic tutorial! We're excited to guide you through the powerful features of Pydantic, starting with the absolute core concept: `BaseModel`.

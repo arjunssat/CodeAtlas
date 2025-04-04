@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Functional API"
+parent: "Requests"
+nav_order: 1
+---
+
 # Chapter 1: The Simplest Way - The Functional API
 
 Welcome to the world of `Requests`! If you need to get information from a website or interact with a web service using Python, `Requests` is your friendly helper.

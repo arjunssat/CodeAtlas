@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Transport Adapters"
+parent: "Requests"
+nav_order: 7
+---
+
 # Chapter 7: Transport Adapters - Custom Delivery Routes
 
 In the previous chapter, [Chapter 6: Exception Hierarchy](06_exception_hierarchy.md), we learned how `requests` signals problems like network errors or bad responses. Most of the time, we rely on the default way `requests` handles sending our requests and managing connections.

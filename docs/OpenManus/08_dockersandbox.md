@@ -1,3 +1,10 @@
+---
+layout: default
+title: "DockerSandbox"
+parent: "OpenManus"
+nav_order: 8
+---
+
 # Chapter 8: DockerSandbox - A Safe Play Area for Code
 
 Welcome to Chapter 8! In [Chapter 7: Configuration (Config)](07_configuration__config_.md), we learned how OpenManus manages settings using the `config.toml` file and the `Config` object. We saw settings for the [LLM](01_llm.md), search tools, and something called `[sandbox]`. Now, let's dive into what that sandbox is!

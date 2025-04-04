@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Hook System"
+parent: "Requests"
+nav_order: 8
+---
+
 # Chapter 8: The Hook System - Setting Up Checkpoints
 
 In [Chapter 7: Transport Adapters](07_transport_adapters.md), we saw how to customize the low-level details of *how* requests are sent and connections are managed, like setting custom retry strategies. Transport Adapters give you control over the delivery mechanism itself.

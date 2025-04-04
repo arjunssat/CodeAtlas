@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Session"
+parent: "Requests"
+nav_order: 3
+---
+
 # Chapter 3: Remembering Things - The Session Object
 
 In [Chapter 1](01_functional_api.md), we learned the easiest way to make web requests using functions like `requests.get()`. In [Chapter 2](02_request___response_models.md), we looked at the `Request` and `Response` objects that structure our communication with web servers.

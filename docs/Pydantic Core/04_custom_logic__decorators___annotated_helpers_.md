@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Custom Logic (Decorators & Annotated Helpers)"
+parent: "Pydantic Core"
+nav_order: 4
+---
+
 # Chapter 4: Custom Logic (Decorators & Annotated Helpers)
 
 In [Chapter 3: Configuration (ConfigDict / ConfigWrapper)](03_configuration__configdict___configwrapper_.md), we learned how to set global rules for our data blueprints using `model_config`. But what if we need more specific, custom rules or transformations that go beyond simple settings?

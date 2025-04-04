@@ -1,3 +1,10 @@
+---
+layout: default
+title: "MCP (Model Context Protocol)"
+parent: "OpenManus"
+nav_order: 9
+---
+
 # Chapter 9: MCP (Model Context Protocol)
 
 Welcome to the final chapter of our core concepts tutorial! In [Chapter 8: DockerSandbox](08_dockersandbox.md), we saw how OpenManus can safely run code in an isolated environment. Now, let's explore a powerful way to extend your agent's capabilities *without* changing its internal code: the **Model Context Protocol (MCP)**.

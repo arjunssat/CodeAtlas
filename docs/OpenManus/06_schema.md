@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Schema"
+parent: "OpenManus"
+nav_order: 6
+---
+
 # Chapter 6: Schema - The Official Data Forms
 
 In [Chapter 5: BaseFlow](05_baseflow.md), we saw how Flows act like project managers, coordinating different [Agents](03_baseagent.md) and [Tools](04_tool___toolcollection.md) to complete complex tasks. But for all these different parts (Flows, Agents, LLMs, Tools) to work together smoothly, they need to speak the same language and use the same formats when exchanging information.

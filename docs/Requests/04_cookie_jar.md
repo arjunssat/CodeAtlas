@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Cookie Jar"
+parent: "Requests"
+nav_order: 4
+---
+
 # Chapter 4: The Cookie Jar - Remembering Website Visits
 
 In [Chapter 3: Remembering Things - The Session Object](03_session.md), we saw how `Session` objects are super useful for making multiple requests to the same website. A big reason they work so well is that they automatically remember **cookies** sent by the server, just like your web browser does.

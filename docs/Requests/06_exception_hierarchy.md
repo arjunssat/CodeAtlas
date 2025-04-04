@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Exception Hierarchy"
+parent: "Requests"
+nav_order: 6
+---
+
 # Chapter 6: When Things Go Wrong - The Exception Hierarchy
 
 In [Chapter 5: Authentication Handlers](05_authentication_handlers.md), we learned how to prove our identity to websites that require login or API keys. We assumed our requests would work if we provided the correct credentials.

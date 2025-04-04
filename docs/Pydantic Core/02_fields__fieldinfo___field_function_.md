@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Fields (FieldInfo & Field function)"
+parent: "Pydantic Core"
+nav_order: 2
+---
+
 # Chapter 2: Customizing Your Blueprint's Rooms - Fields
 
 In [Chapter 1: BaseModel - Your Data Blueprint](01_basemodel.md), we learned how `BaseModel` acts like a blueprint for our data, defining the expected structure and types using simple Python type hints. We saw how Pydantic uses this blueprint to parse, validate, and serialize data.

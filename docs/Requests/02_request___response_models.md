@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Request & Response Models"
+parent: "Requests"
+nav_order: 2
+---
+
 # Chapter 2: What Happens When You Order? Request & Response Models
 
 In [Chapter 1: The Simplest Way - The Functional API](01_functional_api.md), we saw how easy it is to fetch a webpage or send data using simple functions like `requests.get()` and `requests.post()`. We also noticed that these functions return something called a `Response` object.

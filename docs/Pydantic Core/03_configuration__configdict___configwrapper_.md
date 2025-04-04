@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Configuration (ConfigDict & ConfigWrapper)"
+parent: "Pydantic Core"
+nav_order: 3
+---
+
 # Chapter 3: Configuring Your Blueprint - Model Settings
 
 In [Chapter 1](01_basemodel.md), we learned about `BaseModel` as our data blueprint, and in [Chapter 2](02_fields__fieldinfo___field_function_.md), we saw how `Field()` lets us add specific notes (like defaults or aliases) to individual rooms (fields) on that blueprint.

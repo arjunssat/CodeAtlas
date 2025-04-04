@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Core Schema & Validation/Serialization"
+parent: "Pydantic Core"
+nav_order: 5
+---
+
 # Chapter 5: Core Schema & Validation/Serialization
 
 In the previous chapters, we've seen how to define data structures using [BaseModel](01_basemodel.md), customize fields with [Field()](02_fields__fieldinfo___field_function_.md), set model-wide behavior with [Configuration](03_configuration__configdict___configwrapper_.md), and even add [Custom Logic](04_custom_logic__decorators___annotated_helpers_.md) using decorators. You might be wondering: how does Pydantic take all these Python definitions and use them to perform such fast and reliable validation and serialization?
