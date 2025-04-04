@@ -110,8 +110,10 @@ Jinja2 offers more than just variable substitution. You can use basic programmin
 
 There are two main types of delimiters:
 
+{% raw %}
 *   `{{ ... }}`: Used for **expressions**. This is where you put variables you want to display, or even simple calculations or function calls. The result is inserted into the HTML.
 *   `{% ... %}`: Used for **statements**. This includes things like `if`/`else` blocks, `for` loops, and other control structures. These don't directly output text but control how the template is rendered.
+{% endraw %}
 
 Let's look at some examples.
 
@@ -158,10 +160,12 @@ def profile():
 
 **Explanation:**
 
+{% raw %}
 *   `{% if user and user.is_logged_in %}`: Starts an `if` block. Jinja2 checks if the `user` variable exists and if its `is_logged_in` attribute is true.
 *   `{% else %}`: If the `if` condition is false, the code under `else` is used.
 *   `{% endif %}`: Marks the end of the `if` block.
 *   `{{ user.name }}`: Accesses the `name` attribute of the `user` dictionary passed from Python.
+{% endraw %}
 
 If you run this and visit `/profile`, you'll see the "Welcome back, Charlie!" message. If you change `current_user` to `None` in the Python code and refresh, you'll see the "Welcome, Guest!" message.
 
@@ -206,10 +210,12 @@ def show_items():
 
 **Explanation:**
 
+{% raw %}
 *   `{% for fruit in items %}`: Starts a `for` loop. It iterates over the `items` list passed from Python. In each iteration, the current item is assigned to the variable `fruit`.
 *   `<li>{{ fruit }}</li>`: Inside the loop, we display the current `fruit`.
 *   `{% else %}`: This optional block is executed if the `items` list was empty.
 *   `{% endfor %}`: Marks the end of the `for` loop.
+{% endraw %}
 
 Visiting `/items` will show a bulleted list of the fruits.
 
@@ -240,9 +246,11 @@ Just like we used `url_for` in Python ([Chapter 2: Routing System](02_routing_sy
 
 **Explanation:**
 
+{% raw %}
 *   `{{ url_for('index') }}`: Generates the URL for the view function associated with the endpoint `'index'` (which is likely `/`).
 *   `{{ url_for('show_items') }}`: Generates the URL for the `show_items` endpoint (likely `/items`).
 *   `{{ url_for('greet_user', username='Admin') }}`: Generates the URL for the `greet_user` endpoint, filling in the `username` variable (likely `/user/Admin`).
+{% endraw %}
 
 Using `url_for` in templates ensures that your links will always point to the correct place, even if you change the URL rules in your Python code later.
 
