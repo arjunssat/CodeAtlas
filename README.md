@@ -17,7 +17,9 @@
 This project crawls GitHub repositories and build a knowledge base from the code:
 
 - **Analyze entire codebases** to identify core abstractions and how they interact
+
 - **Transform complex code** into beginner-friendly tutorials with clear visualizations
+
 - **Build understanding systematically** from fundamentals to advanced concepts in logical steps
 
 Built with [Pocket Flow](https://github.com/The-Pocket/PocketFlow), a 100-line LLM framework.
