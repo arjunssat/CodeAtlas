@@ -1,3 +1,10 @@
+---
+layout: default
+title: "MCP Python SDK"
+nav_order: 14
+has_children: true
+---
+
 # Tutorial: MCP Python SDK
 
 The **MCP Python SDK** helps developers build applications (clients and servers) that talk to each other using the *Model Context Protocol (MCP)* specification.

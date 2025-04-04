@@ -1,3 +1,10 @@
+---
+layout: default
+title: "DSPy"
+nav_order: 9
+has_children: true
+---
+
 # Tutorial: DSPy
 
 DSPy helps you build and optimize *programs* that use **Language Models (LMs)** and **Retrieval Models (RMs)**.

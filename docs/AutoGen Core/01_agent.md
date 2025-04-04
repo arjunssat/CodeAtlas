@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Agent"
+parent: "AutoGen Core"
+nav_order: 1
+---
+
 # Chapter 1: Agent - The Workers of AutoGen
 
 Welcome to the AutoGen Core tutorial! We're excited to guide you through building powerful applications with autonomous agents.

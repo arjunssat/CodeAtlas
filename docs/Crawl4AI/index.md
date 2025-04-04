@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Crawl4AI"
+nav_order: 7
+has_children: true
+---
+
 # Tutorial: Crawl4AI
 
 `Crawl4AI` is a flexible Python library for *asynchronously crawling websites* and *extracting structured content*, specifically designed for **AI use cases**.

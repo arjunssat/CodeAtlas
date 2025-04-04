@@ -1,3 +1,10 @@
+---
+layout: default
+title: "ChatCompletionContext"
+parent: "AutoGen Core"
+nav_order: 6
+---
+
 # Chapter 6: ChatCompletionContext - Remembering the Conversation
 
 In [Chapter 5: ChatCompletionClient](05_chatcompletionclient.md), we learned how agents talk to Large Language Models (LLMs) using a `ChatCompletionClient`. We saw that we need to send a list of `messages` (the conversation history) to the LLM so it knows the context.

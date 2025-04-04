@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Component"
+parent: "AutoGen Core"
+nav_order: 8
+---
+
 # Chapter 8: Component - The Standardized Building Blocks
 
 Welcome to Chapter 8! In our journey so far, we've met several key players in AutoGen Core:

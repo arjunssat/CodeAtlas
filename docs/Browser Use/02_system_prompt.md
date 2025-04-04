@@ -1,3 +1,10 @@
+---
+layout: default
+title: "System Prompt"
+parent: "Browser Use"
+nav_order: 2
+---
+
 # Chapter 2: The System Prompt - Setting the Rules for Your AI Assistant
 
 In [Chapter 1: The Agent](01_agent.md), we met the `Agent`, our project manager for automating browser tasks. We saw it consults a Large Language Model (LLM) – the "planner" – to decide the next steps based on the current state of the webpage. But how does the Agent tell the LLM *how* it should think, behave, and respond? Just giving it the task isn't enough!

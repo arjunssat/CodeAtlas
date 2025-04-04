@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Tool"
+parent: "AutoGen Core"
+nav_order: 4
+---
+
 # Chapter 4: Tool - Giving Agents Specific Capabilities
 
 In the previous chapters, we learned about Agents as workers ([Chapter 1](01_agent.md)), how they can communicate directly or using announcements ([Chapter 2](02_messaging_system__topic___subscription_.md)), and the `AgentRuntime` that manages them ([Chapter 3](03_agentruntime.md)).

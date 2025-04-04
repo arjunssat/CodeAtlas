@@ -1,3 +1,10 @@
+---
+layout: default
+title: "NumPy Core"
+nav_order: 15
+has_children: true
+---
+
 # Tutorial: NumPy Core
 
 NumPy provides the powerful **ndarray** object, a *multi-dimensional grid* optimized for numerical computations on large datasets. It uses **dtypes** (data type objects) to precisely define the *kind of data* (like integers or floating-point numbers) stored within an array, ensuring memory efficiency and enabling optimized low-level operations. NumPy also features **ufuncs** (universal functions), which are functions like `add` or `sin` designed to operate *element-wise* on entire arrays very quickly, leveraging compiled code. Together, these components form the foundation for high-performance scientific computing in Python.

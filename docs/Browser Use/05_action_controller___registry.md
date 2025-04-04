@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Action Controller & Registry"
+parent: "Browser Use"
+nav_order: 5
+---
+
 # Chapter 5: Action Controller & Registry - The Agent's Hands and Toolbox
 
 In the [previous chapter](04_dom_representation.md), we saw how the `DomService` creates a simplified map (`DOMState`) of the webpage, allowing the Agent and its LLM planner to identify interactive elements like buttons and input fields using unique numbers (`highlight_index`). The LLM uses this map to decide *what* specific action to take next, like "click element [5]" or "type 'hello world' into element [12]".

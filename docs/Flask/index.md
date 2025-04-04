@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Flask"
+nav_order: 11
+has_children: true
+---
+
 # Tutorial: Flask
 
 Flask is a lightweight **web framework** for Python.

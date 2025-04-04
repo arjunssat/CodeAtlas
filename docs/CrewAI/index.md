@@ -1,3 +1,10 @@
+---
+layout: default
+title: "CrewAI"
+nav_order: 8
+has_children: true
+---
+
 # Tutorial: CrewAI
 
 **CrewAI** is a framework for orchestrating *autonomous AI agents*.

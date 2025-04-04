@@ -1,3 +1,10 @@
+---
+layout: default
+title: "LevelDB"
+nav_order: 13
+has_children: true
+---
+
 # Tutorial: LevelDB
 
 LevelDB is a fast *key-value storage library* written at Google.

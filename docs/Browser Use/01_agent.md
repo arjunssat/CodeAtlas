@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Agent"
+parent: "Browser Use"
+nav_order: 1
+---
+
 # Chapter 1: The Agent - Your Browser Assistant's Brain
 
 Welcome to the `Browser Use` tutorial! We're excited to help you learn how to automate web tasks using the power of Large Language Models (LLMs).

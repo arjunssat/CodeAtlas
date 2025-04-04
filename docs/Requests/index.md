@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Requests"
+nav_order: 18
+has_children: true
+---
+
 # Tutorial: Requests
 
 Requests is a Python library that makes sending *HTTP requests* incredibly simple.

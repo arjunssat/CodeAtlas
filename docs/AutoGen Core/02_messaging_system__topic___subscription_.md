@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Messaging System"
+parent: "AutoGen Core"
+nav_order: 2
+---
+
 # Chapter 2: Messaging System (Topic & Subscription)
 
 In [Chapter 1: Agent](01_agent.md), we learned about Agents as individual workers. But how do they coordinate when one agent doesn't know exactly *who* needs the information it produces? Imagine our Researcher finds some facts. Maybe the Writer needs them, but maybe a Fact-Checker agent or a Summary agent also needs them later. How can the Researcher just announce "Here are the facts!" without needing a specific mailing list?

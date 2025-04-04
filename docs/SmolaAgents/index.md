@@ -1,3 +1,10 @@
+---
+layout: default
+title: "SmolaAgents"
+nav_order: 19
+has_children: true
+---
+
 # Tutorial: SmolaAgents
 
 `SmolaAgents` is a project for building *autonomous agents* that can solve complex tasks.

@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Click"
+nav_order: 6
+has_children: true
+---
+
 # Tutorial: Click
 
 Click is a Python library that makes creating **command-line interfaces (CLIs)** *easy and fun*.

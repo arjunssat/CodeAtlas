@@ -1,3 +1,10 @@
+---
+layout: default
+title: "DOM Representation"
+parent: "Browser Use"
+nav_order: 4
+---
+
 # Chapter 4: DOM Representation - Mapping the Webpage
 
 In the [previous chapter](03_browsercontext.md), we learned about the `BrowserContext`, the Agent's private workspace for browsing. We saw that the Agent uses `browser_context.get_state()` to get a snapshot of the current webpage. But how does the Agent actually *understand* the content of that snapshot?

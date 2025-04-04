@@ -1,3 +1,10 @@
+---
+layout: default
+title: "FastAPI"
+nav_order: 10
+has_children: true
+---
+
 # Tutorial: FastAPI
 
 FastAPI is a modern, *high-performance* web framework for building APIs with Python.

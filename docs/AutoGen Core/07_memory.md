@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Memory"
+parent: "AutoGen Core"
+nav_order: 7
+---
+
 # Chapter 7: Memory - The Agent's Notebook
 
 In [Chapter 6: ChatCompletionContext](06_chatcompletioncontext.md), we saw how agents manage the *short-term* history of a single conversation before talking to an LLM. It's like remembering what was just said in the last few minutes.

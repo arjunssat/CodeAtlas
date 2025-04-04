@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Message Manager"
+parent: "Browser Use"
+nav_order: 6
+---
+
 # Chapter 6: Message Manager - Keeping the Conversation Straight
 
 In the [previous chapter](05_action_controller___registry.md), we learned how the `Action Controller` and `Registry` act as the Agent's "hands" and "toolbox", executing the specific actions decided by the LLM planner. But how does the LLM get all the information it needs to make those decisions in the first place? How does the Agent keep track of the ongoing conversation, including what it "saw" on the page and what happened after each action?

@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Pydantic Core"
+nav_order: 17
+has_children: true
+---
+
 # Tutorial: Pydantic Core
 
 Pydantic Core provides the fundamental machinery for **data validation**, **parsing**, and **serialization** in Pydantic. It takes Python *type hints* and uses them to define how data should be structured and processed. Users typically interact with it by defining classes that inherit from `BaseModel`, which automatically gets validation and serialization capabilities based on its annotated fields. Pydantic Core ensures data conforms to the defined types and allows converting between Python objects and formats like JSON efficiently, leveraging Rust for performance.

@@ -1,3 +1,10 @@
+---
+layout: default
+title: "LangGraph"
+nav_order: 12
+has_children: true
+---
+
 # Tutorial: LangGraph
 
 LangGraph helps you build complex **stateful applications**, like chatbots or agents, using a *graph-based approach*.

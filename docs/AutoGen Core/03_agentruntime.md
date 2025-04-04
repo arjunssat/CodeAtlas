@@ -1,3 +1,10 @@
+---
+layout: default
+title: "AgentRuntime"
+parent: "AutoGen Core"
+nav_order: 3
+---
+
 # Chapter 3: AgentRuntime - The Office Manager
 
 In [Chapter 1: Agent](01_agent.md), we met the workers (`Agent`) of our system. In [Chapter 2: Messaging System](02_messaging_system__topic___subscription_.md), we saw how they can communicate broadly using topics and subscriptions. But who hires these agents? Who actually delivers the messages, whether direct or published? And who keeps the whole system running smoothly?

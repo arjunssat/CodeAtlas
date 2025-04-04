@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Data Structures (Views)"
+parent: "Browser Use"
+nav_order: 7
+---
+
 # Chapter 7: Data Structures (Views) - The Project's Blueprints
 
 In the [previous chapter](06_message_manager.md), we saw how the `MessageManager` acts like a secretary, carefully organizing the conversation between the [Agent](01_agent.md) and the LLM. It manages different pieces of information – the browser's current state, the LLM's plan, the results of actions, and more.

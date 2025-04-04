@@ -1,3 +1,10 @@
+---
+layout: default
+title: "ChatCompletionClient"
+parent: "AutoGen Core"
+nav_order: 5
+---
+
 # Chapter 5: ChatCompletionClient - Talking to the Brains
 
 So far, we've learned about:

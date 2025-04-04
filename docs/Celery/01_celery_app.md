@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Celery App"
+parent: "Celery"
+nav_order: 1
+---
+
 # Chapter 1: The Celery App - Your Task Headquarters
 
 Welcome to the world of Celery! If you've ever thought, "I wish this slow part of my web request could run somewhere else later," or "How can I process this huge amount of data without freezing my main application?", then Celery is here to help.

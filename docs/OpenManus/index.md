@@ -1,3 +1,10 @@
+---
+layout: default
+title: "OpenManus"
+nav_order: 16
+has_children: true
+---
+
 # Tutorial: OpenManus
 
 OpenManus is a framework for building autonomous *AI agents*.

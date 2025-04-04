@@ -1,3 +1,10 @@
+---
+layout: default
+title: "AutoGen Core"
+nav_order: 3
+has_children: true
+---
+
 # Tutorial: AutoGen Core
 
 AutoGen Core helps you build applications with multiple **_Agents_** that can work together.

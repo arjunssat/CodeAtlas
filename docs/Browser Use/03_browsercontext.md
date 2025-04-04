@@ -1,3 +1,10 @@
+---
+layout: default
+title: "BrowserContext"
+parent: "Browser Use"
+nav_order: 3
+---
+
 # Chapter 3: BrowserContext - The Agent's Isolated Workspace
 
 In the [previous chapter](02_system_prompt.md), we learned how the `System Prompt` acts as the rulebook for the AI assistant (LLM) that guides our `Agent`. We know the Agent uses the LLM to decide *what* to do next based on the current situation in the browser.

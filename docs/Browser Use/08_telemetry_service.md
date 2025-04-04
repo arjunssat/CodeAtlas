@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Telemetry Service"
+parent: "Browser Use"
+nav_order: 8
+---
+
 # Chapter 8: Telemetry Service - Helping Improve the Project (Optional)
 
 In the [previous chapter](07_data_structures__views_.md), we explored the essential blueprints (`Data Structures (Views)`) that keep communication clear and consistent between all the parts of `Browser Use`. We saw how components like the [Agent](01_agent.md) and the [Action Controller & Registry](05_action_controller___registry.md) use these blueprints to exchange information reliably.

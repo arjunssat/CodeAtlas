@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Browser Use"
+nav_order: 4
+has_children: true
+---
+
 # Tutorial: Browser Use
 
 **Browser Use** is a project that allows an *AI agent* to control a web browser and perform tasks automatically.
