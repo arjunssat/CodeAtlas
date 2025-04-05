@@ -14,13 +14,15 @@ This is a tutorial project of [Pocket Flow](https://github.com/The-Pocket/Pocket
 
 - Check out the [Substack Post](https://zacharyhuang.substack.com/p/ai-codebase-knowledge-builder-full) for more!
 
-## ⭐ Example Tutorials for Popular GitHub Repositories!
+## ⭐ Example Results for Popular GitHub Repositories!
 
 <p align="center">
     <img 
       src="./assets/example.png" width="600"
     />
 </p>
+
+🤯 All these tutorials are generated **entirely by AI** by crawling the GitHub repo!
 
 - [AutoGen Core](https://the-pocket.github.io/Tutorial-Codebase-Knowledge/AutoGen%20Core) - Build AI teams that talk, think, and solve problems together like coworkers!
 
