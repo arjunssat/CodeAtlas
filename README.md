@@ -91,5 +91,12 @@ The application will crawl the repository, analyze the codebase structure, gener
 
 - The secret weapon is [Pocket Flow](https://github.com/The-Pocket/PocketFlow), a 100-line LLM framework that lets Agents (e.g., Cursor AI) build for you
   
-- Step-by-step YouTube development tutorial coming soon! Please subscribe to my [YouTube Channel](https://www.youtube.com/@ZacharyLLM?sub_confirmation=1)
+- Check out the Step-by-step YouTube development tutorial: 
 
+<br>
+<div align="center">
+  <a href="https://youtu.be/AFY67zOpbSo" target="_blank">
+    <img src="./assets/youtube_thumbnail.png" width="500" alt="IMAGE ALT TEXT" style="cursor: pointer;">
+  </a>
+</div>
+<br>
