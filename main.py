@@ -1,7 +1,10 @@
+import dotenv
 import os
 import argparse
 # Import the function that creates the flow
 from flow import create_tutorial_flow
+
+dotenv.load_dotenv()
 
 # Default file patterns
 DEFAULT_INCLUDE_PATTERNS = {
