@@ -20,6 +20,7 @@ logger.addHandler(file_handler)
 # Simple cache configuration
 cache_file = "llm_cache.json"
 
+# By default, we Google Gemini 2.5 pro, as it shows great performance for code understanding
 def call_llm(prompt: str, use_cache: bool = True) -> str:
     # Log the prompt
     logger.info(f"PROMPT: {prompt}")
@@ -43,6 +44,7 @@ def call_llm(prompt: str, use_cache: bool = True) -> str:
     # Call the LLM if not in cache or cache disabled
     client = genai.Client(
         vertexai=True, 
+        # TODO: change to your own project id and location
         project=os.getenv("GEMINI_PROJECT_ID", "your-project-id"),
         location=os.getenv("GEMINI_LOCATION", "us-central1")
     )
@@ -76,6 +78,38 @@ def call_llm(prompt: str, use_cache: bool = True) -> str:
             logger.error(f"Failed to save cache: {e}")
     
     return response_text
+
+# # Use Anthropic Claude 3.7 Sonnet Extended Thinking
+# def call_llm(prompt, use_cache: bool = True):
+#     from anthropic import Anthropic
+#     client = Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY", "your-api-key"))
+#     response = client.messages.create(
+#         model="claude-3-7-sonnet-20250219",
+#         max_tokens=21000,
+#         thinking={
+#             "type": "enabled",
+#             "budget_tokens": 20000
+#         },
+#         messages=[
+#             {"role": "user", "content": prompt}
+#         ]
+#     )
+#     return response.content[1].text
+
+# # Use OpenAI o1
+# def call_llm(prompt, use_cache: bool = True):    
+#     from openai import OpenAI
+#     client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", "your-api-key"))
+#     r = client.chat.completions.create(
+#         model="o1",
+#         messages=[{"role": "user", "content": prompt}],
+#         response_format={
+#             "type": "text"
+#         },
+#         reasoning_effort="medium",
+#         store=False
+#     )
+#     return r.choices[0].message.content
 
 if __name__ == "__main__":
     test_prompt = "Hello, how are you?"
