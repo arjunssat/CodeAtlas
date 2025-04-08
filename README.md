@@ -70,12 +70,20 @@ This is a tutorial project of [Pocket Flow](https://github.com/The-Pocket/Pocket
    pip install -r requirements.txt
    ```
 
-3. Set up LLM in [`utils/call_llm.py`](./utils/call_llm.py) by providing credentials (API key or project name). We highly recommend the latest models with thinking capabilities (Gemini Pro 2.5, Claude 3.7 with thinking, O1). You can verify if it is correctly set up by running:
+3. Set up LLM in [`utils/call_llm.py`](./utils/call_llm.py) by providing credentials. By default, you can use the AI Studio key with this client for Gemini Pro 2.5:
+
+   ```python
+   client = genai.Client(
+     api_key=os.getenv("GEMINI_API_KEY", "your-api_key"),
+   )
+   ```
+  
+   You can use your own models. We highly recommend the latest models with thinking capabilities (Claude 3.7 with thinking, O1). You can verify that it is correctly set up by running:
    ```bash
    python utils/call_llm.py
    ```
 
-4. Generate a complete codebase tutorial by running the main script:
+7. Generate a complete codebase tutorial by running the main script:
     ```bash
     python main.py https://github.com/username/repo --include "*.py" "*.js" --exclude "tests/*" --max-size 50000
     ```
