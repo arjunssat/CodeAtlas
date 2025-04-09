@@ -8,22 +8,27 @@ dotenv.load_dotenv()
 
 # Default file patterns
 DEFAULT_INCLUDE_PATTERNS = {
-    "*.py", "*.js", "*.ts", "*.go", "*.java", "*.pyi", "*.pyx", 
+    "*.py", "*.js", "*.jsx", "*.ts", "*.tsx", "*.go", "*.java", "*.pyi", "*.pyx", 
     "*.c", "*.cc", "*.cpp", "*.h", "*.md", "*.rst", "Dockerfile", 
-    "Makefile", "*.yaml", "*.yml"
+    "Makefile", "*.yaml", "*.yml",
 }
 
 DEFAULT_EXCLUDE_PATTERNS = {
     "*test*", "tests/*", "docs/*", "examples/*", "v1/*", 
     "dist/*", "build/*", "experimental/*", "deprecated/*", 
-    "legacy/*", ".git/*", ".github/*"
+    "legacy/*", ".git/*", ".github/*", ".next/*", ".vscode/*", "obj/*", "bin/*", "node_modules/*", "*.log"
 }
 
 # --- Main Function ---
 def main():
-    parser = argparse.ArgumentParser(description="Generate a tutorial for a GitHub codebase.")
-    parser.add_argument("repo_url", help="URL of the public GitHub repository.")
-    parser.add_argument("-n", "--name", help="Project name (optional, derived from URL if omitted).")
+    parser = argparse.ArgumentParser(description="Generate a tutorial for a GitHub codebase or local directory.")
+    
+    # Create mutually exclusive group for source
+    source_group = parser.add_mutually_exclusive_group(required=True)
+    source_group.add_argument("--repo", help="URL of the public GitHub repository.")
+    source_group.add_argument("--dir", help="Path to local directory.")
+    
+    parser.add_argument("-n", "--name", help="Project name (optional, derived from repo/directory if omitted).")
     parser.add_argument("-t", "--token", help="GitHub personal access token (optional, reads from GITHUB_TOKEN env var if not provided).")
     parser.add_argument("-o", "--output", default="output", help="Base directory for output (default: ./output).")
     parser.add_argument("-i", "--include", nargs="+", help="Include file patterns (e.g. '*.py' '*.js'). Defaults to common code files if not specified.")
@@ -32,14 +37,17 @@ def main():
 
     args = parser.parse_args()
 
-    # Get GitHub token from argument or environment variable
-    github_token = args.token or os.environ.get('GITHUB_TOKEN')
-    if not github_token:
-        print("Warning: No GitHub token provided. You might hit rate limits for public repositories.")
+    # Get GitHub token from argument or environment variable if using repo
+    github_token = None
+    if args.repo:
+        github_token = args.token or os.environ.get('GITHUB_TOKEN')
+        if not github_token:
+            print("Warning: No GitHub token provided. You might hit rate limits for public repositories.")
 
     # Initialize the shared dictionary with inputs
     shared = {
-        "repo_url": args.repo_url,
+        "repo_url": args.repo,
+        "local_dir": args.dir,
         "project_name": args.name, # Can be None, FetchRepo will derive it
         "github_token": github_token,
         "output_dir": args.output, # Base directory for CombineTutorial output
@@ -58,7 +66,7 @@ def main():
         "final_output_dir": None
     }
 
-    print(f"Starting tutorial generation for: {args.repo_url}")
+    print(f"Starting tutorial generation for: {args.repo or args.dir}")
 
     # Create the flow instance
     tutorial_flow = create_tutorial_flow()
