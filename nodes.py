@@ -1,72 +1,9 @@
 import os
 import yaml
-import fnmatch
 from pocketflow import Node, BatchNode
 from utils.crawl_github_files import crawl_github_files
-from utils.call_llm import call_llm # Assuming you have this utility
-
-def crawl_local_files(directory, include_patterns=None, exclude_patterns=None, max_file_size=None, use_relative_paths=True):
-    """
-    Crawl files in a local directory with similar interface as crawl_github_files.
-    
-    Args:
-        directory (str): Path to local directory
-        include_patterns (set): File patterns to include (e.g. {"*.py", "*.js"})
-        exclude_patterns (set): File patterns to exclude (e.g. {"tests/*"})
-        max_file_size (int): Maximum file size in bytes
-        use_relative_paths (bool): Whether to use paths relative to directory
-        
-    Returns:
-        dict: {"files": {filepath: content}}
-    """
-    if not os.path.isdir(directory):
-        raise ValueError(f"Directory does not exist: {directory}")
-        
-    files_dict = {}
-    
-    for root, _, files in os.walk(directory):
-        for filename in files:
-            filepath = os.path.join(root, filename)
-            
-            # Get path relative to directory if requested
-            if use_relative_paths:
-                relpath = os.path.relpath(filepath, directory)
-            else:
-                relpath = filepath
-                
-            # Check if file matches any include pattern
-            included = False
-            if include_patterns:
-                for pattern in include_patterns:
-                    if fnmatch.fnmatch(relpath, pattern):
-                        included = True
-                        break
-            else:
-                included = True
-                
-            # Check if file matches any exclude pattern
-            excluded = False
-            if exclude_patterns:
-                for pattern in exclude_patterns:
-                    if fnmatch.fnmatch(relpath, pattern):
-                        excluded = True
-                        break
-                        
-            if not included or excluded:
-                continue
-                
-            # Check file size
-            if max_file_size and os.path.getsize(filepath) > max_file_size:
-                continue
-                
-            try:
-                with open(filepath, 'r', encoding='utf-8') as f:
-                    content = f.read()
-                files_dict[relpath] = content
-            except Exception as e:
-                print(f"Warning: Could not read file {filepath}: {e}")
-                
-    return {"files": files_dict}
+from utils.call_llm import call_llm 
+from utils.crawl_local_files import crawl_local_files
 
 # Helper to create context from files, respecting limits (basic example)
 def create_llm_context(files_data):
