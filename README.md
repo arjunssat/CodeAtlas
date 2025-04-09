@@ -85,10 +85,14 @@ This is a tutorial project of [Pocket Flow](https://github.com/The-Pocket/Pocket
 
 7. Generate a complete codebase tutorial by running the main script:
     ```bash
-    python main.py https://github.com/username/repo --include "*.py" "*.js" --exclude "tests/*" --max-size 50000
+    # Analyze a GitHub repository
+    python main.py --repo https://github.com/username/repo --include "*.py" "*.js" --exclude "tests/*" --max-size 50000
+
+    # Or, analyze a local directory
+    python main.py --dir /path/to/your/codebase --include "*.py" --exclude "*test*"
     ```
-    - `repo_url` - URL of the GitHub repository (required)
-    - `-n, --name` - Project name (optional, derived from URL if omitted)
+    - `--repo` or `--dir` - Specify either a GitHub repo URL or a local directory path (required, mutually exclusive)
+    - `-n, --name` - Project name (optional, derived from URL/directory if omitted)
     - `-t, --token` - GitHub token (or set GITHUB_TOKEN environment variable)
     - `-o, --output` - Output directory (default: ./output)
     - `-i, --include` - Files to include (e.g., "*.py" "*.js")

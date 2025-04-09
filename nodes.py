@@ -5,17 +5,6 @@ from utils.crawl_github_files import crawl_github_files
 from utils.call_llm import call_llm 
 from utils.crawl_local_files import crawl_local_files
 
-# Helper to create context from files, respecting limits (basic example)
-def create_llm_context(files_data):
-    context = ""
-    file_info = [] # Store tuples of (index, path)
-    for i, (path, content) in enumerate(files_data):
-        entry = f"--- File Index {i}: {path} ---\n{content}\n\n"
-        context += entry
-        file_info.append((i, path))
-
-    return context, file_info # file_info is list of (index, path)
-
 # Helper to get content for specific file indices
 def get_content_for_indices(files_data, indices):
     content_map = {}
@@ -87,6 +76,18 @@ class IdentifyAbstractions(Node):
     def prep(self, shared):
         files_data = shared["files"]
         project_name = shared["project_name"]  # Get project name
+        
+        # Helper to create context from files, respecting limits (basic example)
+        def create_llm_context(files_data):
+            context = ""
+            file_info = [] # Store tuples of (index, path)
+            for i, (path, content) in enumerate(files_data):
+                entry = f"--- File Index {i}: {path} ---\n{content}\n\n"
+                context += entry
+                file_info.append((i, path))
+
+            return context, file_info # file_info is list of (index, path)
+
         context, file_info = create_llm_context(files_data)
         # Format file info for the prompt (comment is just a hint for LLM)
         file_listing_for_prompt = "\n".join([f"- {idx} # {path}" for idx, path in file_info])

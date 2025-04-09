@@ -68,8 +68,12 @@ flowchart TD
 1.  **`crawl_github_files`** (`utils/crawl_github_files.py`) - *External Dependency: requests*
     *   *Input*: `repo_url` (str), `token` (str, optional), `max_file_size` (int, optional), `use_relative_paths` (bool, optional), `include_patterns` (set, optional), `exclude_patterns` (set, optional)
     *   *Output*: `dict` containing `files` (dict[str, str]) and `stats`.
-    *   *Necessity*: Required by `FetchRepo` to download and read the source code from GitHub. Handles cloning logic implicitly via API calls, filtering, and file reading.
-2.  **`call_llm`** (`utils/call_llm.py`) - *External Dependency: LLM Provider API (e.g., OpenAI, Anthropic)*
+    *   *Necessity*: Required by `FetchRepo` to download and read source code from GitHub if a `repo_url` is provided. Handles cloning logic implicitly via API calls, filtering, and file reading.
+2.  **`crawl_local_files`** (`utils/crawl_local_files.py`) - *External Dependency: None*
+    *   *Input*: `directory` (str), `max_file_size` (int, optional), `use_relative_paths` (bool, optional), `include_patterns` (set, optional), `exclude_patterns` (set, optional)
+    *   *Output*: `dict` containing `files` (dict[str, str]).
+    *   *Necessity*: Required by `FetchRepo` to read source code from a local directory if a `local_dir` path is provided. Handles directory walking, filtering, and file reading.
+3.  **`call_llm`** (`utils/call_llm.py`) - *External Dependency: LLM Provider API (e.g., OpenAI, Anthropic)*
     *   *Input*: `prompt` (str)
     *   *Output*: `response` (str)
     *   *Necessity*: Used by `IdentifyAbstractions`, `AnalyzeRelationships`, `OrderChapters`, and `WriteChapters` for code analysis and content generation. Needs careful prompt engineering and YAML validation (implicit via `yaml.safe_load` which raises errors).
@@ -105,11 +109,11 @@ shared = {
 > Notes for AI: Carefully decide whether to use Batch/Async Node/Flow. Removed explicit try/except in exec, relying on Node's built-in fault tolerance.
 
 1.  **`FetchRepo`**
-    *   *Purpose*: Download the repository code and load relevant files into memory using the crawler utility.
+    *   *Purpose*: Download the repository code (from GitHub) or read from a local directory, loading relevant files into memory using the appropriate crawler utility.
     *   *Type*: Regular
     *   *Steps*:
-        *   `prep`: Read `repo_url`, optional `github_token`, `output_dir` from shared store. Define `include_patterns` (e.g., `{"*.py", "*.js", "*.md"}`) and `exclude_patterns` (e.g., `{"*test*", "docs/*"}`). Set `max_file_size` and `use_relative_paths` flags. Determine `project_name` from `repo_url` if not present in shared.
-        *   `exec`: Call `crawl_github_files(shared["repo_url"], token=shared["github_token"], include_patterns=..., exclude_patterns=..., max_file_size=..., use_relative_paths=True)`. Convert the resulting `files` dictionary into a list of `(path, content)` tuples.
+        *   `prep`: Read `repo_url` (if provided), `local_dir` (if provided), optional `github_token`, `output_dir` from shared store. Define `include_patterns` (e.g., `{"*.py", "*.js", "*.md"}`) and `exclude_patterns` (e.g., `{"*test*", "docs/*"}`). Set `max_file_size` and `use_relative_paths` flags. Determine `project_name` from `repo_url` or `local_dir` if not present in shared.
+        *   `exec`: If `repo_url` is present, call `crawl_github_files(...)`. Otherwise, call `crawl_local_files(...)`. Convert the resulting `files` dictionary into a list of `(path, content)` tuples.
         *   `post`: Write the list of `files` tuples and the derived `project_name` (if applicable) to the shared store.
 
 2.  **`IdentifyAbstractions`**
