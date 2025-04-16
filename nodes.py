@@ -2,7 +2,7 @@ import os
 import yaml
 from pocketflow import Node, BatchNode
 from utils.crawl_github_files import crawl_github_files
-from utils.call_llm import call_llm 
+from utils.call_llm import call_llm
 from utils.crawl_local_files import crawl_local_files
 
 # Helper to get content for specific file indices
@@ -19,7 +19,7 @@ class FetchRepo(Node):
         repo_url = shared.get("repo_url")
         local_dir = shared.get("local_dir")
         project_name = shared.get("project_name")
-        
+
         if not project_name:
             # Basic name derivation from URL or directory
             if repo_url:
@@ -63,7 +63,7 @@ class FetchRepo(Node):
                 max_file_size=prep_res["max_file_size"],
                 use_relative_paths=prep_res["use_relative_paths"]
             )
-            
+
         # Convert dict to list of tuples: [(path, content), ...]
         files_list = list(result.get("files", {}).items())
         print(f"Fetched {len(files_list)} files.")
@@ -76,7 +76,7 @@ class IdentifyAbstractions(Node):
     def prep(self, shared):
         files_data = shared["files"]
         project_name = shared["project_name"]  # Get project name
-        
+
         # Helper to create context from files, respecting limits (basic example)
         def create_llm_context(files_data):
             context = ""
@@ -117,7 +117,7 @@ Format the output as a YAML list of dictionaries:
 
 ```yaml
 - name: Query Processing
-  description: | 
+  description: |
     Explains what the abstraction does.
     It's like a central dispatcher routing requests.
   file_indices:
@@ -286,7 +286,7 @@ Now, provide the YAML output:
                  validated_relationships.append({
                      "from": from_idx,
                      "to": to_idx,
-                     "label": rel["label"] 
+                     "label": rel["label"]
                  })
              except (ValueError, TypeError):
                   raise ValueError(f"Could not parse indices from relationship: {rel}")
@@ -416,7 +416,7 @@ class WriteChapters(BatchNode):
                 all_chapters.append(f"{chapter_num}. [{chapter_name}]({filename})")
                 # Store mapping of chapter index to filename for linking
                 chapter_filenames[abstraction_index] = {"num": chapter_num, "name": chapter_name, "filename": filename}
-        
+
         # Create a formatted string with all chapters
         full_chapter_listing = "\n".join(all_chapters)
 
@@ -428,18 +428,21 @@ class WriteChapters(BatchNode):
                 related_file_indices = abstraction_details.get("files", [])
                 # Get content using helper, passing indices
                 related_files_content_map = get_content_for_indices(files_data, related_file_indices)
-                
+
                 # Get previous chapter info for transitions
                 prev_chapter = None
                 if i > 0:
                     prev_idx = chapter_order[i-1]
                     prev_chapter = chapter_filenames[prev_idx]
-                
+
                 # Get next chapter info for transitions
                 next_chapter = None
                 if i < len(chapter_order) - 1:
                     next_idx = chapter_order[i+1]
                     next_chapter = chapter_filenames[next_idx]
+
+                # Get language from shared store, default to English
+                language = shared.get("language", "english")
 
                 items_to_process.append({
                     "chapter_num": i + 1,
@@ -451,6 +454,7 @@ class WriteChapters(BatchNode):
                     "chapter_filenames": chapter_filenames,  # Add chapter filenames mapping
                     "prev_chapter": prev_chapter,  # Add previous chapter info
                     "next_chapter": next_chapter,  # Add next chapter info
+                    "language": language,  # Add language for multi-language support
                     # previous_chapters_summary will be added dynamically in exec
                 })
             else:
@@ -476,8 +480,16 @@ class WriteChapters(BatchNode):
         # Use the temporary instance variable
         previous_chapters_summary = "\n---\n".join(self.chapters_written_so_far)
 
+        # Get language from item, default to English
+        language = item.get("language", "english")
+
+        # Add language instruction if not English
+        language_instruction = ""
+        if language.lower() != "english":
+            language_instruction = f"Write this tutorial chapter in {language}. Ensure all explanations, examples, and comments are in {language}.\n\n"
 
         prompt = f"""
+{language_instruction}
 Write a very beginner-friendly tutorial chapter (in Markdown format) for the project `{project_name}` about the concept: "{abstraction_name}". This is Chapter {chapter_num}.
 
 Concept Details:
@@ -502,11 +514,11 @@ Instructions for the chapter:
 
 - If the abstraction is complex, break it down into key concepts. Explain each concept one-by-one in a very beginner-friendly way.
 
-- Explain how to use this abstraction to solve the use case. Give example inputs and outputs for code snippets (if the output isn't values, describe at a high level what will happen). 
+- Explain how to use this abstraction to solve the use case. Give example inputs and outputs for code snippets (if the output isn't values, describe at a high level what will happen).
 
 - Each code block should be BELOW 20 lines! If longer code blocks are needed, break them down into smaller pieces and walk through them one-by-one. Aggresively simplify the code to make it minimal. Use comments to skip non-important implementation details. Each code block should have a beginner friendly explanation right after it.
 
-- Describe the internal implementation to help understand what's under the hood. First provide a non-code or code-light walkthrough on what happens step-by-step when the abstraction is called. It's recommended to use a simple sequenceDiagram with a dummy example - keep it minimal with at most 5 participants to ensure clarity. If participant name has space, use: 
+- Describe the internal implementation to help understand what's under the hood. First provide a non-code or code-light walkthrough on what happens step-by-step when the abstraction is called. It's recommended to use a simple sequenceDiagram with a dummy example - keep it minimal with at most 5 participants to ensure clarity. If participant name has space, use:
 `participant QP as Query Processing`
 
 - Then dive deeper into code for the internal implementation with references to files. Provide example code blocks, but make them similarly simple and beginner-friendly.
@@ -610,13 +622,13 @@ class CombineTutorial(Node):
                 # Use chapter number (i+1) for ordering filename
                 filename = f"{i+1:02d}_{safe_name}.md"
                 index_content += f"{i+1}. [{abstraction_name}]({filename})\n"
-                
+
                 # Add attribution to chapter content
                 chapter_content = chapters_content[i]
                 if not chapter_content.endswith("\n\n"):
                     chapter_content += "\n\n"
                 chapter_content += "---\n\nGenerated by [AI Codebase Knowledge Builder](https://github.com/The-Pocket/Tutorial-Codebase-Knowledge)"
-                
+
                 # Store filename and corresponding content
                 chapter_files.append({"filename": filename, "content": chapter_content})
             else:
