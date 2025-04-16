@@ -96,16 +96,17 @@ class IdentifyAbstractions(Node):
 
     def exec(self, prep_res):
         context, file_listing_for_prompt, file_count, project_name, language = prep_res  # Unpack project name and language
-        print(f"Identifying abstractions in {language.capitalize()} using LLM...")
+        print(f"Identifying abstractions using LLM...")
 
-        # Add language instruction and hints if not English
+        # Add language instruction and hints only if not English
         language_instruction = ""
         name_lang_hint = ""
         desc_lang_hint = ""
         if language.lower() != "english":
             language_instruction = f"IMPORTANT: Generate the `name` and `description` for each abstraction in **{language.capitalize()}** language. Do NOT use English for these fields.\n\n"
-            name_lang_hint = f" # (value in {language.capitalize()})"
-            desc_lang_hint = f" # (value in {language.capitalize()})"
+            # Keep specific hints here as name/description are primary targets
+            name_lang_hint = f" (value in {language.capitalize()})"
+            desc_lang_hint = f" (value in {language.capitalize()})"
 
         prompt = f"""
 For the project `{project_name}`:
@@ -186,7 +187,7 @@ Format the output as a YAML list of dictionaries:
                 "files": item["files"]
             })
 
-        print(f"Identified {len(validated_abstractions)} abstractions (in {language.capitalize()}).")
+        print(f"Identified {len(validated_abstractions)} abstractions.")
         return validated_abstractions
 
     def post(self, shared, prep_res, exec_res):
@@ -229,33 +230,32 @@ class AnalyzeRelationships(Node):
 
     def exec(self, prep_res):
         context, abstraction_listing, project_name, language = prep_res  # Unpack project name and language
-        print(f"Analyzing relationships in {language.capitalize()} using LLM...")
+        print(f"Analyzing relationships using LLM...")
 
-        # Add language instruction and hints if not English
+        # Add language instruction and hints only if not English
         language_instruction = ""
-        summary_lang_hint = ""
-        label_lang_hint = ""
+        lang_hint = ""
+        list_lang_note = ""
         if language.lower() != "english":
             language_instruction = f"IMPORTANT: Generate the `summary` and relationship `label` fields in **{language.capitalize()}** language. Do NOT use English for these fields.\n\n"
-            summary_lang_hint = f" (in {language.capitalize()})"
-            label_lang_hint = f" # (value in {language.capitalize()})"
-
+            lang_hint = f" (in {language.capitalize()})"
+            list_lang_note = f" (Names might be in {language.capitalize()})" # Note for the input list
 
         prompt = f"""
 Based on the following abstractions and relevant code snippets from the project `{project_name}`:
 
-List of Abstraction Indices and Names (Names might be in {language.capitalize()}):
+List of Abstraction Indices and Names{list_lang_note}:
 {abstraction_listing}
 
 Context (Abstractions, Descriptions, Code):
 {context}
 
 {language_instruction}Please provide:
-1. A high-level `summary` of the project's main purpose and functionality in a few beginner-friendly sentences{summary_lang_hint}. Use markdown formatting with **bold** and *italic* text to highlight important concepts.
+1. A high-level `summary` of the project's main purpose and functionality in a few beginner-friendly sentences{lang_hint}. Use markdown formatting with **bold** and *italic* text to highlight important concepts.
 2. A list (`relationships`) describing the key interactions between these abstractions. For each relationship, specify:
     - `from_abstraction`: Index of the source abstraction (e.g., `0 # AbstractionName1`)
     - `to_abstraction`: Index of the target abstraction (e.g., `1 # AbstractionName2`)
-    - `label`: A brief label for the interaction **in just a few words**{label_lang_hint} (e.g., "Manages", "Inherits", "Uses").
+    - `label`: A brief label for the interaction **in just a few words**{lang_hint} (e.g., "Manages", "Inherits", "Uses").
     Ideally the relationship should be backed by one abstraction calling or passing parameters to another.
     Simplify the relationship and exclude those non-important ones.
 
@@ -265,15 +265,15 @@ Format the output as YAML:
 
 ```yaml
 summary: |
-  A brief, simple explanation of the project{summary_lang_hint}.
+  A brief, simple explanation of the project{lang_hint}.
   Can span multiple lines with **bold** and *italic* for emphasis.
 relationships:
   - from_abstraction: 0 # AbstractionName1
     to_abstraction: 1 # AbstractionName2
-    label: "Manages"{label_lang_hint}
+    label: "Manages"{lang_hint}
   - from_abstraction: 2 # AbstractionName3
     to_abstraction: 0 # AbstractionName1
-    label: "Provides config"{label_lang_hint}
+    label: "Provides config"{lang_hint}
   # ... other relationships
 ```
 
@@ -317,7 +317,7 @@ Now, provide the YAML output:
              except (ValueError, TypeError):
                   raise ValueError(f"Could not parse indices from relationship: {rel}")
 
-        print(f"Generated project summary and relationship details (in {language.capitalize()}).")
+        print("Generated project summary and relationship details.")
         return {
             "summary": relationships_data["summary"], # Potentially translated summary
             "details": validated_relationships # Store validated, index-based relationships with potentially translated labels
@@ -334,6 +334,7 @@ class OrderChapters(Node):
         abstractions = shared["abstractions"] # Name/description might be translated
         relationships = shared["relationships"] # Summary/label might be translated
         project_name = shared["project_name"]  # Get project name
+        language = shared.get("language", "english") # Get language
 
         # Prepare context for the LLM
         abstraction_info_for_prompt = []
@@ -342,24 +343,33 @@ class OrderChapters(Node):
         abstraction_listing = "\n".join(abstraction_info_for_prompt)
 
         # Use potentially translated summary and labels
-        context = f"Project Summary:\n{relationships['summary']}\n\n"
+        summary_note = ""
+        if language.lower() != "english":
+             summary_note = f" (Note: Project Summary might be in {language.capitalize()})"
+
+        context = f"Project Summary{summary_note}:\n{relationships['summary']}\n\n"
         context += "Relationships (Indices refer to abstractions above):\n"
         for rel in relationships['details']:
              from_name = abstractions[rel['from']]['name']
              to_name = abstractions[rel['to']]['name']
              # Use potentially translated 'label'
-             context += f"- From {rel['from']} ({from_name}) to {rel['to']} ({to_name}): {rel['label']}\n"
+             context += f"- From {rel['from']} ({from_name}) to {rel['to']} ({to_name}): {rel['label']}\n" # Label might be translated
 
-        return abstraction_listing, context, len(abstractions), project_name
+        list_lang_note = ""
+        if language.lower() != "english":
+             list_lang_note = f" (Names might be in {language.capitalize()})"
+
+        return abstraction_listing, context, len(abstractions), project_name, list_lang_note
 
     def exec(self, prep_res):
-        abstraction_listing, context, num_abstractions, project_name = prep_res
+        abstraction_listing, context, num_abstractions, project_name, list_lang_note = prep_res
         print("Determining chapter order using LLM...")
-        # No language variation needed here, just ordering based on structure
+        # No language variation needed here in prompt instructions, just ordering based on structure
+        # The input names might be translated, hence the note.
         prompt = f"""
 Given the following project abstractions and their relationships for the project ```` {project_name} ````:
 
-Abstractions (Index # Name):
+Abstractions (Index # Name){list_lang_note}:
 {abstraction_listing}
 
 Context about relationships and project summary:
@@ -487,7 +497,7 @@ class WriteChapters(BatchNode):
             else:
                 print(f"Warning: Invalid abstraction index {abstraction_index} in chapter_order. Skipping.")
 
-        print(f"Preparing to write {len(items_to_process)} chapters in {language.capitalize()}...")
+        print(f"Preparing to write {len(items_to_process)} chapters...")
         return items_to_process # Iterable for BatchNode
 
     def exec(self, item):
@@ -497,7 +507,7 @@ class WriteChapters(BatchNode):
         chapter_num = item["chapter_num"]
         project_name = item.get("project_name")
         language = item.get("language", "english")
-        print(f"Writing chapter {chapter_num} for: {abstraction_name} (in {language.capitalize()}) using LLM...")
+        print(f"Writing chapter {chapter_num} for: {abstraction_name} using LLM...")
 
         # Prepare file context string from the map
         file_context_str = "\n\n".join(
@@ -509,54 +519,72 @@ class WriteChapters(BatchNode):
         # Use the temporary instance variable
         previous_chapters_summary = "\n---\n".join(self.chapters_written_so_far)
 
-        # Add language instruction if not English - the chapter content itself needs translation
+        # Add language instruction and context notes only if not English
         language_instruction = ""
+        concept_details_note = ""
+        structure_note = ""
+        prev_summary_note = ""
+        instruction_lang_note = ""
+        mermaid_lang_note = ""
+        code_comment_note = ""
+        link_lang_note = ""
+        tone_note = ""
         if language.lower() != "english":
-            language_instruction = f"IMPORTANT: Write this ENTIRE tutorial chapter in **{language.capitalize()}** language. The concept name '{abstraction_name}' and its description are already provided in {language.capitalize()}. You MUST translate ALL other content including explanations, examples, code comments (unless essential for syntax), and technical terms into {language.capitalize()}. DO NOT use English anywhere except in code syntax, required proper nouns or where specified. The entire output MUST be in {language.capitalize()} only.\n\n"
+            lang_cap = language.capitalize()
+            language_instruction = f"IMPORTANT: Write this ENTIRE tutorial chapter in **{lang_cap}**. Some input context (like concept name, description, chapter list, previous summary) might already be in {lang_cap}, but you MUST translate ALL other generated content including explanations, examples, technical terms, and potentially code comments into {lang_cap}. DO NOT use English anywhere except in code syntax, required proper nouns, or when specified. The entire output MUST be in {lang_cap}.\n\n"
+            concept_details_note = f" (Note: Provided in {lang_cap})"
+            structure_note = f" (Note: Chapter names might be in {lang_cap})"
+            prev_summary_note = f" (Note: This summary might be in {lang_cap})"
+            instruction_lang_note = f" (in {lang_cap})"
+            mermaid_lang_note = f" (Use {lang_cap} for labels/text if appropriate)"
+            code_comment_note = f" (Translate to {lang_cap} if possible, otherwise keep minimal English for clarity)"
+            link_lang_note = f" (Use the {lang_cap} chapter title from the structure above)"
+            tone_note = f" (appropriate for {lang_cap} readers)"
+
 
         prompt = f"""
 {language_instruction}Write a very beginner-friendly tutorial chapter (in Markdown format) for the project `{project_name}` about the concept: "{abstraction_name}". This is Chapter {chapter_num}.
 
-Concept Details (already in {language.capitalize()}):
+Concept Details{concept_details_note}:
 - Name: {abstraction_name}
 - Description:
 {abstraction_description}
 
-Complete Tutorial Structure (Chapter names might be in {language.capitalize()}):
+Complete Tutorial Structure{structure_note}:
 {item["full_chapter_listing"]}
 
-Context from previous chapters (summary, also in {language.capitalize()}):
+Context from previous chapters{prev_summary_note}:
 {previous_chapters_summary if previous_chapters_summary else "This is the first chapter."}
 
 Relevant Code Snippets (Code itself remains unchanged):
 {file_context_str if file_context_str else "No specific code snippets provided for this abstraction."}
 
-Instructions for the chapter (Translate explanations into {language.capitalize()}):
-- Start with a clear heading (e.g., `# Chapter {chapter_num}: {abstraction_name}`). Use the provided {language.capitalize()} name.
+Instructions for the chapter (Generate content in {language.capitalize()} unless specified otherwise):
+- Start with a clear heading (e.g., `# Chapter {chapter_num}: {abstraction_name}`). Use the provided concept name.
 
-- If this is not the first chapter, begin with a brief transition from the previous chapter (in {language.capitalize()}), referencing it with a proper Markdown link using its {language.capitalize()} name.
+- If this is not the first chapter, begin with a brief transition from the previous chapter{instruction_lang_note}, referencing it with a proper Markdown link using its name{link_lang_note}.
 
-- Begin with a high-level motivation explaining what problem this abstraction solves (in {language.capitalize()}). Start with a central use case as a concrete example. The whole chapter should guide the reader to understand how to solve this use case. Make it very minimal and friendly to beginners.
+- Begin with a high-level motivation explaining what problem this abstraction solves{instruction_lang_note}. Start with a central use case as a concrete example. The whole chapter should guide the reader to understand how to solve this use case. Make it very minimal and friendly to beginners.
 
-- If the abstraction is complex, break it down into key concepts. Explain each concept one-by-one in a very beginner-friendly way (in {language.capitalize()}).
+- If the abstraction is complex, break it down into key concepts. Explain each concept one-by-one in a very beginner-friendly way{instruction_lang_note}.
 
-- Explain how to use this abstraction to solve the use case (in {language.capitalize()}). Give example inputs and outputs for code snippets (if the output isn't values, describe at a high level what will happen in {language.capitalize()}).
+- Explain how to use this abstraction to solve the use case{instruction_lang_note}. Give example inputs and outputs for code snippets (if the output isn't values, describe at a high level what will happen{instruction_lang_note}).
 
-- Each code block should be BELOW 20 lines! If longer code blocks are needed, break them down into smaller pieces and walk through them one-by-one. Aggresively simplify the code to make it minimal. Use comments (translate to {language.capitalize()} if possible, otherwise keep minimal English for clarity) to skip non-important implementation details. Each code block should have a beginner friendly explanation right after it (in {language.capitalize()}).
+- Each code block should be BELOW 20 lines! If longer code blocks are needed, break them down into smaller pieces and walk through them one-by-one. Aggresively simplify the code to make it minimal. Use comments{code_comment_note} to skip non-important implementation details. Each code block should have a beginner friendly explanation right after it{instruction_lang_note}.
 
-- Describe the internal implementation to help understand what's under the hood (in {language.capitalize()}). First provide a non-code or code-light walkthrough on what happens step-by-step when the abstraction is called (in {language.capitalize()}). It's recommended to use a simple sequenceDiagram with a dummy example - keep it minimal with at most 5 participants to ensure clarity. If participant name has space, use: `participant QP as Query Processing` (Use the {language.capitalize()} name if appropriate for participant labels).
+- Describe the internal implementation to help understand what's under the hood{instruction_lang_note}. First provide a non-code or code-light walkthrough on what happens step-by-step when the abstraction is called{instruction_lang_note}. It's recommended to use a simple sequenceDiagram with a dummy example - keep it minimal with at most 5 participants to ensure clarity. If participant name has space, use: `participant QP as Query Processing`. {mermaid_lang_note}.
 
-- Then dive deeper into code for the internal implementation with references to files. Provide example code blocks, but make them similarly simple and beginner-friendly. Explain in {language.capitalize()}.
+- Then dive deeper into code for the internal implementation with references to files. Provide example code blocks, but make them similarly simple and beginner-friendly. Explain{instruction_lang_note}.
 
-- IMPORTANT: When you need to refer to other core abstractions covered in other chapters, ALWAYS use proper Markdown links like this: [Chapter Title](filename.md). Use the Complete Tutorial Structure above to find the correct filename and the (potentially {language.capitalize()}) chapter title. Example: "we will talk about [Query Processing](03_query_processing.md) in Chapter 3". Translate the surrounding text.
+- IMPORTANT: When you need to refer to other core abstractions covered in other chapters, ALWAYS use proper Markdown links like this: [Chapter Title](filename.md). Use the Complete Tutorial Structure above to find the correct filename and the chapter title{link_lang_note}. Translate the surrounding text.
 
-- Use mermaid diagrams to illustrate complex concepts (```mermaid``` format). Translate labels/text within diagrams where appropriate.
+- Use mermaid diagrams to illustrate complex concepts (```mermaid``` format). {mermaid_lang_note}.
 
-- Heavily use analogies and examples throughout (in {language.capitalize()}) to help beginners understand.
+- Heavily use analogies and examples throughout{instruction_lang_note} to help beginners understand.
 
-- End the chapter with a brief conclusion that summarizes what was learned (in {language.capitalize()}) and provides a transition to the next chapter (in {language.capitalize()}). If there is a next chapter, use a proper Markdown link: [Next Chapter Title](next_chapter_filename). Use the {language.capitalize()} title.
+- End the chapter with a brief conclusion that summarizes what was learned{instruction_lang_note} and provides a transition to the next chapter{instruction_lang_note}. If there is a next chapter, use a proper Markdown link: [Next Chapter Title](next_chapter_filename){link_lang_note}.
 
-- Ensure the tone is welcoming and easy for a newcomer to understand (appropriate for {language.capitalize()} readers).
+- Ensure the tone is welcoming and easy for a newcomer to understand{tone_note}.
 
 - Output *only* the Markdown content for this chapter.
 
@@ -608,7 +636,7 @@ class CombineTutorial(Node):
             # Use potentially translated name, sanitize for Mermaid ID and label
             sanitized_name = abstr['name'].replace('"', '')
             node_label = sanitized_name # Using sanitized name only
-            mermaid_lines.append(f'    {node_id}["{node_label}"]')
+            mermaid_lines.append(f'    {node_id}["{node_label}"]') # Node label uses potentially translated name
         # Add edges for relationships using potentially translated labels
         for rel in relationships_data['details']:
             from_node_id = f"A{rel['from']}"
@@ -618,22 +646,24 @@ class CombineTutorial(Node):
             max_label_len = 30
             if len(edge_label) > max_label_len:
                 edge_label = edge_label[:max_label_len-3] + "..."
-            mermaid_lines.append(f'    {from_node_id} -- "{edge_label}" --> {to_node_id}')
+            mermaid_lines.append(f'    {from_node_id} -- "{edge_label}" --> {to_node_id}') # Edge label uses potentially translated label
 
         mermaid_diagram = "\n".join(mermaid_lines)
         # --- End Mermaid ---
 
         # --- Prepare index.md content ---
-        index_content = f"# Tutorial: {project_name}\n\n" 
+        index_content = f"# Tutorial: {project_name}\n\n"
         index_content += f"{relationships_data['summary']}\n\n" # Use the potentially translated summary directly
-        index_content += f"**Source Repository:** [{repo_url}]({repo_url})\n\n" # English "Source Repository"
+        # Keep fixed strings in English
+        index_content += f"**Source Repository:** [{repo_url}]({repo_url})\n\n"
 
         # Add Mermaid diagram for relationships (diagram itself uses potentially translated names/labels)
         index_content += "```mermaid\n"
         index_content += mermaid_diagram + "\n"
         index_content += "```\n\n"
 
-        index_content += f"## Chapters\n\n" # English "Chapters"
+        # Keep fixed strings in English
+        index_content += f"## Chapters\n\n"
 
         chapter_files = []
         # Generate chapter links based on the determined order, using potentially translated names
@@ -650,8 +680,8 @@ class CombineTutorial(Node):
                 chapter_content = chapters_content[i] # Potentially translated content
                 if not chapter_content.endswith("\n\n"):
                     chapter_content += "\n\n"
-
-                chapter_content += f"---\n\nGenerated by [AI Codebase Knowledge Builder](https://github.com/The-Pocket/Tutorial-Codebase-Knowledge)" # English "Generated by"
+                # Keep fixed strings in English
+                chapter_content += f"---\n\nGenerated by [AI Codebase Knowledge Builder](https://github.com/The-Pocket/Tutorial-Codebase-Knowledge)"
 
                 # Store filename and corresponding content
                 chapter_files.append({"filename": filename, "content": chapter_content})
@@ -659,7 +689,7 @@ class CombineTutorial(Node):
                  print(f"Warning: Mismatch between chapter order, abstractions, or content at index {i} (abstraction index {abstraction_index}). Skipping file generation for this entry.")
 
         # Add attribution to index content (using English fixed string)
-        index_content += f"\n\n---\n\nGenerated by [AI Codebase Knowledge Builder](https://github.com/The-Pocket/Tutorial-Codebase-Knowledge)" # English "Generated by"
+        index_content += f"\n\n---\n\nGenerated by [AI Codebase Knowledge Builder](https://github.com/The-Pocket/Tutorial-Codebase-Knowledge)"
 
         return {
             "output_path": output_path,

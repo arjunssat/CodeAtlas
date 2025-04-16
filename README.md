@@ -92,7 +92,11 @@ This is a tutorial project of [Pocket Flow](https://github.com/The-Pocket/Pocket
 
     # Or, analyze a local directory
     python main.py --dir /path/to/your/codebase --include "*.py" --exclude "*test*"
+
+    # Or, generate a tutorial in Chinese
+    python main.py --repo https://github.com/username/repo --language "Chinese"
     ```
+
     - `--repo` or `--dir` - Specify either a GitHub repo URL or a local directory path (required, mutually exclusive)
     - `-n, --name` - Project name (optional, derived from URL/directory if omitted)
     - `-t, --token` - GitHub token (or set GITHUB_TOKEN environment variable)
@@ -102,15 +106,7 @@ This is a tutorial project of [Pocket Flow](https://github.com/The-Pocket/Pocket
     - `-s, --max-size` - Maximum file size in bytes (default: 100KB)
     - `--language` - Language for the generated tutorial (default: "english")
 
-    To generate tutorials in languages other than English, add the `--language` parameter:
-
-    ```bash
-    # Generate a tutorial in Spanish
-    python main.py --repo https://github.com/username/repo --language "Spanish"
-    ```
-
 The application will crawl the repository, analyze the codebase structure, generate tutorial content in the specified language, and save the output in the specified directory (default: ./output).
-
 
 ## 💡 Development Tutorial
 
