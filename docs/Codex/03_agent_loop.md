@@ -35,9 +35,9 @@ The Agent Loop is responsible for:
     *   A request to perform an action (a "function call"): "I need to run this command: `python -c 'print(\"hello world\")'`"
 4.  Showing you the text part of the response in the [Terminal UI](01_terminal_ui__ink_components_.md).
 5.  Handling the "function call":
-    *   Checking if it needs your permission based on the [Approval Policy](04_approval_policy___security_.md).
+    *   Checking if it needs your permission based on the [Approval Policy](04_approval_policy___security.md).
     *   If needed, asking you "Allow command?" via the UI.
-    *   If approved, actually running the command using the [Command Execution & Sandboxing](06_command_execution___sandboxing_.md) system.
+    *   If approved, actually running the command using the [Command Execution & Sandboxing](06_command_execution___sandboxing.md) system.
 6.  Getting the result of the command (the output "hello world").
 7.  Sending that result back to the AI ("I ran the command, and it printed 'hello world'").
 8.  Getting the AI's final response (maybe: "Great, the script ran successfully!").
@@ -76,11 +76,11 @@ graph TD
 
 1.  **Input:** Gets input from you (via the [Input Handling](02_input_handling__textbuffer_editor_.md)).
 2.  **AI Call:** Sends the current conversation state (including your latest input and any previous steps) to the AI model (OpenAI API).
-3.  **Response Processing:** Receives the AI's response. This could be simple text, or it could include a request to use a tool (like running a shell command). This is covered more in [Response & Tool Call Handling](05_response___tool_call_handling_.md).
+3.  **Response Processing:** Receives the AI's response. This could be simple text, or it could include a request to use a tool (like running a shell command). This is covered more in [Response & Tool Call Handling](05_response___tool_call_handling.md).
 4.  **Tool Handling:** If the AI requested a tool:
-    *   Check the [Approval Policy](04_approval_policy___security_.md).
+    *   Check the [Approval Policy](04_approval_policy___security.md).
     *   Potentially ask you for confirmation via the [Terminal UI](01_terminal_ui__ink_components_.md).
-    *   If approved, execute the tool via [Command Execution & Sandboxing](06_command_execution___sandboxing_.md).
+    *   If approved, execute the tool via [Command Execution & Sandboxing](06_command_execution___sandboxing.md).
     *   Package the tool's result (e.g., command output) to send back to the AI in the next step.
 5.  **Update State:** Adds the AI's message and any tool results to the conversation history. Shows updates in the UI.
 6.  **Loop:** If the task isn't finished (e.g., because a tool was used and the AI needs to react to the result), it sends the updated conversation back to the AI (Step 2). If the task *is* finished, it waits for your next input.
@@ -320,7 +320,7 @@ export class AgentLoop {
     *   If a tool call is found, it calls `handleFunctionCall`.
 *   **`handleFunctionCall()`:**
     *   Parses the details of the tool request (e.g., the command arguments).
-    *   Uses `handleExecCommand` (which contains logic related to [Approval Policy](04_approval_policy___security_.md) and [Command Execution](06_command_execution___sandboxing_.md)) to potentially run the command, using the `getCommandConfirmation` callback if needed.
+    *   Uses `handleExecCommand` (which contains logic related to [Approval Policy](04_approval_policy___security.md) and [Command Execution](06_command_execution___sandboxing.md)) to potentially run the command, using the `getCommandConfirmation` callback if needed.
     *   Formats the result of the tool execution (e.g., command output) into a specific `function_call_output` message.
     *   Returns this output message. The `run` method adds this to `turnInput`, so the *next* iteration of the `while` loop will send this result back to the AI, letting it know what happened.
 *   **Finally:** Once the `while` loop finishes (meaning the AI didn't request any more tools in its last response), it signals loading is done (`onLoading(false)`).
@@ -329,11 +329,11 @@ This loop ensures that the conversation flows logically, handling text, tool req
 
 ## Conclusion
 
-The Agent Loop is the central orchestrator within Codex. It acts like a diligent assistant, taking your requests, interacting with the powerful AI model, managing tools like shell commands, ensuring safety through approvals, and keeping the conversation state updated. It connects the [Terminal UI](01_terminal_ui__ink_components_.md) where you interact, the [Input Handling](02_input_handling__textbuffer_editor_.md) that captures your text, the AI model that provides intelligence, and the systems that actually execute actions ([Command Execution & Sandboxing](06_command_execution___sandboxing_.md)).
+The Agent Loop is the central orchestrator within Codex. It acts like a diligent assistant, taking your requests, interacting with the powerful AI model, managing tools like shell commands, ensuring safety through approvals, and keeping the conversation state updated. It connects the [Terminal UI](01_terminal_ui__ink_components_.md) where you interact, the [Input Handling](02_input_handling__textbuffer_editor_.md) that captures your text, the AI model that provides intelligence, and the systems that actually execute actions ([Command Execution & Sandboxing](06_command_execution___sandboxing.md)).
 
 Understanding the Agent Loop helps you see how Codex manages the complex back-and-forth required to turn your natural language requests into concrete actions. But when the Agent Loop wants to run a command suggested by the AI, how does Codex decide whether to ask for your permission first? That crucial safety mechanism is the topic of our next chapter.
 
-Next up: [Approval Policy & Security](04_approval_policy___security_.md)
+Next up: [Approval Policy & Security](04_approval_policy___security.md)
 
 ---
 

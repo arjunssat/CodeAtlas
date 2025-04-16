@@ -7,7 +7,7 @@ nav_order: 5
 
 # Chapter 5: Response & Tool Call Handling
 
-In the [previous chapter](04_approval_policy___security_.md), we learned how Codex decides *if* it's allowed to perform an action suggested by the AI, acting like a security guard based on the rules you set. But how does Codex understand the AI's response in the first place, especially when the AI wants to do something specific, like run a command or change a file?
+In the [previous chapter](04_approval_policy___security.md), we learned how Codex decides *if* it's allowed to perform an action suggested by the AI, acting like a security guard based on the rules you set. But how does Codex understand the AI's response in the first place, especially when the AI wants to do something specific, like run a command or change a file?
 
 That's where **Response & Tool Call Handling** comes in. Think of this part of Codex as its "ears" and "hands." It listens carefully to the instructions coming back from the AI model (the "response") and, if the AI asks to perform an action (a "tool call"), it figures out *exactly* what the AI wants to do (like which command to run or what file change to make) and gets ready to do it.
 
@@ -97,7 +97,7 @@ sequenceDiagram
     *   The **tool name** (e.g., `shell`) is identified.
     *   The **arguments** string is extracted.
     *   The arguments string (which is often JSON) is parsed to get the actual details (e.g., the `command` array `["git", "status"]`).
-5.  **Prepare for Action:** The Agent Loop now knows the specific tool and its arguments. It packages this information (tool name + parsed arguments) and prepares for the next stage: checking the [Approval Policy & Security](04_approval_policy___security_.md) and, if approved, proceeding to [Command Execution & Sandboxing](06_command_execution___sandboxing_.md).
+5.  **Prepare for Action:** The Agent Loop now knows the specific tool and its arguments. It packages this information (tool name + parsed arguments) and prepares for the next stage: checking the [Approval Policy & Security](04_approval_policy___security.md) and, if approved, proceeding to [Command Execution & Sandboxing](06_command_execution___sandboxing.md).
 
 ## Under the Hood: Parsing the Details
 
@@ -189,7 +189,7 @@ private async handleFunctionCall(item: ResponseFunctionToolCall): Promise<Array<
 *   If an item is a `function_call`, the `handleFunctionCall` helper is called.
 *   `handleFunctionCall` extracts the `name` and `arguments`.
 *   It crucially calls `parseToolCallArguments` (from `utils/parsers.ts`) to turn the JSON string `arguments` into a usable object.
-*   Based on the `name` (`shell`, `apply_patch`), it calls the appropriate execution handler (like `handleExecCommand`), passing the parsed arguments. This handler coordinates with the [Approval Policy & Security](04_approval_policy___security_.md) and [Command Execution & Sandboxing](06_command_execution___sandboxing_.md) systems.
+*   Based on the `name` (`shell`, `apply_patch`), it calls the appropriate execution handler (like `handleExecCommand`), passing the parsed arguments. This handler coordinates with the [Approval Policy & Security](04_approval_policy___security.md) and [Command Execution & Sandboxing](06_command_execution___sandboxing.md) systems.
 
 ### In the Parsers (`parsers.ts`)
 
@@ -370,7 +370,7 @@ function TerminalChatResponseToolCall({ message }: { message: ResponseFunctionTo
 
 ## Conclusion
 
-You've now seen how Codex acts as an interpreter for the AI. It doesn't just receive text; it receives structured instructions. The **Response & Tool Call Handling** system is responsible for parsing these instructions, figuring out if the AI wants to use a tool (like `shell` or `apply_patch`), and extracting the precise arguments needed for that tool. This crucial step translates the AI's intentions into actionable details that Codex can then use to interact with your system, always respecting the rules set by the [Approval Policy & Security](04_approval_policy___security_.md).
+You've now seen how Codex acts as an interpreter for the AI. It doesn't just receive text; it receives structured instructions. The **Response & Tool Call Handling** system is responsible for parsing these instructions, figuring out if the AI wants to use a tool (like `shell` or `apply_patch`), and extracting the precise arguments needed for that tool. This crucial step translates the AI's intentions into actionable details that Codex can then use to interact with your system, always respecting the rules set by the [Approval Policy & Security](04_approval_policy___security.md).
 
 Now that Codex understands *what* command the AI wants to run (e.g., `git status`), how does it actually *execute* that command safely, especially if running in `full-auto` mode? That's the topic of our next chapter.
 

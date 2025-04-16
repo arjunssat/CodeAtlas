@@ -7,7 +7,7 @@ nav_order: 6
 
 # Chapter 6: Command Execution & Sandboxing
 
-In the [previous chapter](05_response___tool_call_handling.md), we learned how Codex listens to the AI and understands when it wants to use a tool, like running a specific shell command (`git status` or `npm install`). We also know from the [Approval Policy & Security](04_approval_policy___security_.md) chapter that Codex checks if it *should* run the command based on your chosen safety level.
+In the [previous chapter](05_response___tool_call_handling.md), we learned how Codex listens to the AI and understands when it wants to use a tool, like running a specific shell command (`git status` or `npm install`). We also know from the [Approval Policy & Security](04_approval_policy___security.md) chapter that Codex checks if it *should* run the command based on your chosen safety level.
 
 But once Codex has the command and permission (either from you or automatically), how does it actually *run* that command? And how does it do it safely, especially if you've given it more freedom in `full-auto` mode?
 
@@ -35,15 +35,15 @@ This system takes a command requested by the AI (like `python script.py` or `git
     *   **How (Examples):**
         *   **macOS Seatbelt:** Uses a built-in macOS feature (`sandbox-exec`) with a specific policy file to strictly control what the command can access (e.g., only allow writing to the project folder, block network access).
         *   **Docker Container:** Runs the command inside a lightweight container (like the one defined in `codex-cli/Dockerfile`). This container has only specific tools installed and can have network rules applied (using `iptables`/`ipset` via `init_firewall.sh`) to limit internet access.
-    *   **When:** Typically used automatically in `full-auto` mode (as decided by the [Approval Policy & Security](04_approval_policy___security_.md) check), or potentially if a specific command is flagged as needing extra caution.
+    *   **When:** Typically used automatically in `full-auto` mode (as decided by the [Approval Policy & Security](04_approval_policy___security.md) check), or potentially if a specific command is flagged as needing extra caution.
     *   **Pros:** Significantly reduces the risk of accidental damage from faulty or malicious commands suggested by the AI.
     *   **Cons:** Might prevent a command from working if it legitimately needs access to something the sandbox blocks (like a specific system file or network resource). The setup can be more complex.
 
 ## How It Works: From Approval to Execution
 
-The Command Execution system doesn't decide *whether* to run a command – that's the job of the [Approval Policy & Security](04_approval_policy___security_.md). This system comes into play *after* the approval check.
+The Command Execution system doesn't decide *whether* to run a command – that's the job of the [Approval Policy & Security](04_approval_policy___security.md). This system comes into play *after* the approval check.
 
-Remember the `handleExecCommand` function from the [Agent Loop](03_agent_loop.md) chapter? It first calls `canAutoApprove` ([Approval Policy & Security](04_approval_policy___security_.md)). If the command is approved (either by policy or by you), `canAutoApprove` tells `handleExecCommand` *whether* sandboxing is needed (`runInSandbox: true` or `runInSandbox: false`).
+Remember the `handleExecCommand` function from the [Agent Loop](03_agent_loop.md) chapter? It first calls `canAutoApprove` ([Approval Policy & Security](04_approval_policy___security.md)). If the command is approved (either by policy or by you), `canAutoApprove` tells `handleExecCommand` *whether* sandboxing is needed (`runInSandbox: true` or `runInSandbox: false`).
 
 ```typescript
 // File: codex-cli/src/utils/agent/handle-exec-command.ts (Simplified Snippet)
@@ -349,7 +349,7 @@ USER node
 
 ## Conclusion
 
-You've reached the end of the workshop tour! The **Command Execution & Sandboxing** system is Codex's way of actually *doing* things on the command line when instructed by the AI. It carefully considers the safety level decided by the [Approval Policy & Security](04_approval_policy___security_.md) and chooses the right execution method: direct "raw" execution for trusted commands, or running inside a protective "sandbox" (like macOS Seatbelt or a Docker container) for potentially riskier operations, especially in `full-auto` mode. This layered approach allows Codex to be powerful while providing crucial safety mechanisms against unintended consequences.
+You've reached the end of the workshop tour! The **Command Execution & Sandboxing** system is Codex's way of actually *doing* things on the command line when instructed by the AI. It carefully considers the safety level decided by the [Approval Policy & Security](04_approval_policy___security.md) and chooses the right execution method: direct "raw" execution for trusted commands, or running inside a protective "sandbox" (like macOS Seatbelt or a Docker container) for potentially riskier operations, especially in `full-auto` mode. This layered approach allows Codex to be powerful while providing crucial safety mechanisms against unintended consequences.
 
 We've seen how Codex handles input, talks to the AI, checks policies, and executes commands. But how does Codex know *which* AI model to use, what your API key is, or which approval mode you prefer? All these settings need to be managed.
 

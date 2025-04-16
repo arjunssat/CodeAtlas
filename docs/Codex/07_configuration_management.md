@@ -7,7 +7,7 @@ nav_order: 7
 
 # Chapter 7: Configuration Management
 
-In the [previous chapter](06_command_execution___sandboxing_.md), we saw how Codex carefully executes commands, using sandboxing for safety when needed. But how does Codex remember your preferences between sessions? For instance, how does it know which AI model you like to use, or whether you prefer `auto-edit` mode? And how can you give Codex persistent instructions about how you want it to behave?
+In the [previous chapter](06_command_execution___sandboxing.md), we saw how Codex carefully executes commands, using sandboxing for safety when needed. But how does Codex remember your preferences between sessions? For instance, how does it know which AI model you like to use, or whether you prefer `auto-edit` mode? And how can you give Codex persistent instructions about how you want it to behave?
 
 This is where **Configuration Management** comes in. Think of it like the settings menu or preferences file for Codex.
 
@@ -17,7 +17,7 @@ Imagine you prefer using the powerful `gpt-4o` model instead of the default `o4-
 
 Configuration Management solves this by allowing Codex to:
 
-1.  **Load Default Settings:** Read a special file to know your preferred model, default [Approval Policy](04_approval_policy___security_.md) mode, etc.
+1.  **Load Default Settings:** Read a special file to know your preferred model, default [Approval Policy](04_approval_policy___security.md) mode, etc.
 2.  **Load Custom Instructions:** Read other special files containing your personal guidelines or project-specific rules for the AI.
 
 This way, Codex behaves consistently according to your setup without needing constant reminders. It's like setting up your favorite text editor with your preferred theme and plugins – you do it once, and it remembers.
