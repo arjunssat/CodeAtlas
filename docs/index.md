@@ -24,6 +24,7 @@ This is a tutorial project of [Pocket Flow](https://github.com/The-Pocket/Pocket
 - [Browser Use](./Browser Use/index.md) - Let AI surf the web for you, clicking buttons and filling forms like a digital assistant!
 - [Celery](./Celery/index.md) - Supercharge your app with background tasks that run while you sleep!
 - [Click](./Click/index.md) - Turn Python functions into slick command-line tools with just a decorator!
+- [Codex](./Codex/index.md) - Turn plain English into working code with this AI terminal wizard!
 - [Crawl4AI](./Crawl4AI/index.md) - Train your AI to extract exactly what matters from any website!
 - [CrewAI](./CrewAI/index.md) - Assemble a dream team of AI specialists to tackle impossible problems!
 - [DSPy](./DSPy/index.md) - Build LLM apps like Lego blocks that optimize themselves!
