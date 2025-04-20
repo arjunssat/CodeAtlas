@@ -66,6 +66,8 @@ class FetchRepo(Node):
 
         # Convert dict to list of tuples: [(path, content), ...]
         files_list = list(result.get("files", {}).items())
+        if len(files_list) == 0:
+            raise(ValueError("Failed to fetch files"))
         print(f"Fetched {len(files_list)} files.")
         return files_list
 
