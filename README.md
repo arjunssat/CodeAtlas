@@ -66,6 +66,7 @@ This is a tutorial project of [Pocket Flow](https://github.com/The-Pocket/Pocket
 
 - [SmolaAgents](https://the-pocket.github.io/Tutorial-Codebase-Knowledge/SmolaAgents) - Build tiny AI agents that punch way above their weight class!
 
+- Showcase Your AI-Generated Tutorials in [Discussions](https://github.com/The-Pocket/Tutorial-Codebase-Knowledge/discussions)!
 
 ## 🚀 Getting Started
 
