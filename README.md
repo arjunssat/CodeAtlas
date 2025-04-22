@@ -16,6 +16,8 @@ This is a tutorial project of [Pocket Flow](https://github.com/The-Pocket/Pocket
 
 - Check out the [Substack Post Tutorial](https://zacharyhuang.substack.com/p/ai-codebase-knowledge-builder-full) for more!
 
+&nbsp;&nbsp;**🔸 🎉 Reached Hacker News Front Page** (April 2025) with >800 up‑votes:  [Discussion »](https://news.ycombinator.com/item?id=43739456D)
+
 ## ⭐ Example Results for Popular GitHub Repositories!
 
 <p align="center">
