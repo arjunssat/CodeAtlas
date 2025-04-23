@@ -202,7 +202,9 @@ def crawl_github_files(
         part_index = 5 if '/' in ref else 4
         specific_path = join_parts(part_index) if part_index < len(path_parts) else ""
     else:
-        ref = "main"  # Default branch
+        # Dont put the ref param to quiery
+        # and let Github decide default branch
+        ref = None
         specific_path = ""
     
     # Dictionary to store path -> content mapping
@@ -212,7 +214,7 @@ def crawl_github_files(
     def fetch_contents(path):
         """Fetch contents of the repository at a specific path and commit"""
         url = f"https://api.github.com/repos/{owner}/{repo}/contents/{path}"
-        params = {"ref": ref}
+        params = {"ref": ref} if ref != None else {}
         
         response = requests.get(url, headers=headers, params=params)
         
