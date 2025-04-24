@@ -151,12 +151,12 @@ def crawl_github_files(
                 print(f"Error 404: Repository not found or is private.\n"
                       f"If this is a private repository, please provide a valid GitHub token via the 'token' argument or set the GITHUB_TOKEN environment variable.")
             else:
-                print(f"Error 404: Path '{path}' not found in repository or insufficient permissions with the provided token.\n"
-                      f"Please verify the token has access to this repository and the path exists.")
+                print(f"Error 404: Repository not found or insufficient permissions with the provided token.\n"
+                      f"Please verify the repository exists and the token has access to this repository.")
             return []
             
         if response.status_code != 200:
-            print(f"Error fetching {path}: {response.status_code} - {response.text}")
+            print(f"Error fetching the branches of {owner}/{path}: {response.status_code} - {response.text}")
             return []
 
         return response.json()
