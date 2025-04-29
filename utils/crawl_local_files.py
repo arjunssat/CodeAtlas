@@ -83,7 +83,6 @@ def crawl_local_files(directory, include_patterns=None, exclude_patterns=None, m
                         excluded = True
                         break
 
-            # --- Inclusion Check (remains the same) ---
             included = False
             if include_patterns:
                 for pattern in include_patterns:
@@ -97,7 +96,6 @@ def crawl_local_files(directory, include_patterns=None, exclude_patterns=None, m
             # Skip if not included or if excluded (by either method)
             if not included or excluded:
                 continue
-            # --- End Exclusion/Inclusion Logic ---
 
             # Check file size
             if max_file_size and os.path.getsize(filepath) > max_file_size:
