@@ -14,8 +14,10 @@ DEFAULT_INCLUDE_PATTERNS = {
 }
 
 DEFAULT_EXCLUDE_PATTERNS = {
+    "assets/*", "data/*", "examples/*", "images/*", "public/*", "static/*", "temp/*",
+    "docs/*", 
     "venv/*", ".venv/*", "*test*", "tests/*", "docs/*", "examples/*", "v1/*",
-    "dist/*", "build/*", "experimental/*", "deprecated/*",
+    "dist/*", "build/*", "experimental/*", "deprecated/*", "misc/*", 
     "legacy/*", ".git/*", ".github/*", ".next/*", ".vscode/*", "obj/*", "bin/*", "node_modules/*", "*.log"
 }
 
@@ -36,6 +38,8 @@ def main():
     parser.add_argument("-s", "--max-size", type=int, default=100000, help="Maximum file size in bytes (default: 100000, about 100KB).")
     # Add language parameter for multi-language support
     parser.add_argument("--language", default="english", help="Language for the generated tutorial (default: english)")
+    # Add use_cache parameter to control LLM caching
+    parser.add_argument("--no-cache", action="store_true", help="Disable LLM response caching (default: caching enabled)")
 
     args = parser.parse_args()
 
@@ -61,6 +65,9 @@ def main():
 
         # Add language for multi-language support
         "language": args.language,
+        
+        # Add use_cache flag (inverse of no-cache flag)
+        "use_cache": not args.no_cache,
 
         # Outputs will be populated by the nodes
         "files": [],
@@ -73,6 +80,7 @@ def main():
 
     # Display starting message with repository/directory and language
     print(f"Starting tutorial generation for: {args.repo or args.dir} in {args.language.capitalize()} language")
+    print(f"LLM caching: {'Disabled' if args.no_cache else 'Enabled'}")
 
     # Create the flow instance
     tutorial_flow = create_tutorial_flow()

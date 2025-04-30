@@ -1,9 +1,12 @@
 import os
 import fnmatch
+from tqdm import tqdm
 
 def crawl_local_files(directory, include_patterns=None, exclude_patterns=None, max_file_size=None, use_relative_paths=True):
     """
     Crawl files in a local directory with similar interface as crawl_github_files.
+    Implements efficient folder-level filtering to skip entire directories that match exclude patterns,
+    significantly improving performance when excluding large directory trees.
     
     Args:
         directory (str): Path to local directory
@@ -20,53 +23,78 @@ def crawl_local_files(directory, include_patterns=None, exclude_patterns=None, m
         
     files_dict = {}
     
-    for root, _, files in os.walk(directory):
-        for filename in files:
-            filepath = os.path.join(root, filename)
-            
+    for root, dirs, files in os.walk(directory):
+        print(f"root: {root}")
+        # Check if current directory should be excluded
+        if exclude_patterns:
             # Get path relative to directory if requested
-            if use_relative_paths:
-                relpath = os.path.relpath(filepath, directory)
-            else:
-                relpath = filepath
+            rel_root = os.path.relpath(root, directory) if use_relative_paths else root
+            
+            # Handle the case where rel_root is the current directory
+            if rel_root == '.':
+                rel_root = ''
+            
+            # Check if directory matches any exclude pattern
+            for pattern in exclude_patterns:
+                # Normalize pattern to handle both forward and backward slashes
+                norm_pattern = pattern.replace("/", os.path.sep)
                 
-            # Check if file matches any include pattern
-            included = False
-            if include_patterns:
-                for pattern in include_patterns:
-                    if fnmatch.fnmatch(relpath, pattern):
-                        included = True
-                        break
-            else:
-                included = True
-                
-            # Check if file matches any exclude pattern
-            excluded = False
-            if exclude_patterns:
-                for pattern in exclude_patterns:
-                    if fnmatch.fnmatch(relpath, pattern):
-                        excluded = True
-                        break
+                # Check if the directory matches the pattern
+                if fnmatch.fnmatch(rel_root, norm_pattern) or \
+                   fnmatch.fnmatch(os.path.join(rel_root, ''), norm_pattern + os.path.sep):
+                    # Skip this directory and all subdirectories
+                    dirs[:] = []  # Clear dirs list to prevent further traversal
+                    print(f"Skipping directory: {rel_root} (matches pattern {pattern})")
+                    break
+            else:   
+            # print(root)
+                for filename in files:
+                    filepath = os.path.join(root, filename)
+                    
+                    # Get path relative to directory if requested
+                    if use_relative_paths:
+                        relpath = os.path.relpath(filepath, directory)
+                    else:
+                        relpath = filepath
                         
-            if not included or excluded:
-                continue
-                
-            # Check file size
-            if max_file_size and os.path.getsize(filepath) > max_file_size:
-                continue
-                
-            try:
-                with open(filepath, 'r', encoding='utf-8') as f:
-                    content = f.read()
-                files_dict[relpath] = content
-            except Exception as e:
-                print(f"Warning: Could not read file {filepath}: {e}")
+                    # Check if file matches any include pattern
+                    included = False
+                    if include_patterns:
+                        for pattern in include_patterns:
+                            if fnmatch.fnmatch(relpath, pattern):
+                                included = True
+                                break
+                    else:
+                        included = True
+                        
+                    # Check if file matches any exclude pattern
+                    excluded = False
+                    if exclude_patterns:
+                        for pattern in exclude_patterns:
+                            if fnmatch.fnmatch(relpath, pattern) or fnmatch.fnmatch(relpath, pattern.replace("/", "\\")):
+                                print(relpath, pattern)
+                                excluded = True
+                                break
+                                
+                    if not included or excluded:
+                        continue
+                        
+                    # Check file size
+                    if max_file_size and os.path.getsize(filepath) > max_file_size:
+                        continue
+                        
+                    try:
+                        with open(filepath, 'r', encoding='utf-8') as f:
+                            content = f.read()
+                        files_dict[relpath] = content
+                    except Exception as e:
+                        print(f"Warning: Could not read file {filepath}: {e}")
                 
     return {"files": files_dict}
 
 if __name__ == "__main__":
     print("--- Crawling parent directory ('..') ---")
-    files_data = crawl_local_files("..", exclude_patterns={"*.pyc", "__pycache__/*", ".git/*", "output/*"})
+    files_data = crawl_local_files("..", exclude_patterns={"*.pyc", "__pycache__/*",".venv/*", ".git/*","docs/*", "output/*"})
     print(f"Found {len(files_data['files'])} files:")
     for path in files_data["files"]:
         print(f"  {path}")

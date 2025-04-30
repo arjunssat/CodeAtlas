@@ -1,9 +1,12 @@
 import os
+import re
 import yaml
 from pocketflow import Node, BatchNode
 from utils.crawl_github_files import crawl_github_files
 from utils.call_llm import call_llm
 from utils.crawl_local_files import crawl_local_files
+from utils.fix_yaml import add_indentation
+
 
 # Helper to get content for specific file indices
 def get_content_for_indices(files_data, indices):
@@ -79,6 +82,7 @@ class IdentifyAbstractions(Node):
         files_data = shared["files"]
         project_name = shared["project_name"]  # Get project name
         language = shared.get("language", "english") # Get language
+        use_cache = shared.get("use_cache", True)  # Get use_cache flag, default to True
 
         # Helper to create context from files, respecting limits (basic example)
         def create_llm_context(files_data):
@@ -94,10 +98,10 @@ class IdentifyAbstractions(Node):
         context, file_info = create_llm_context(files_data)
         # Format file info for the prompt (comment is just a hint for LLM)
         file_listing_for_prompt = "\n".join([f"- {idx} # {path}" for idx, path in file_info])
-        return context, file_listing_for_prompt, len(files_data), project_name, language # Return language
+        return context, file_listing_for_prompt, len(files_data), project_name, language, use_cache # Return use_cache
 
     def exec(self, prep_res):
-        context, file_listing_for_prompt, file_count, project_name, language = prep_res  # Unpack project name and language
+        context, file_listing_for_prompt, file_count, project_name, language, use_cache = prep_res  # Unpack use_cache
         print(f"Identifying abstractions using LLM...")
 
         # Add language instruction and hints only if not English
@@ -117,7 +121,7 @@ Codebase Context:
 {context}
 
 {language_instruction}Analyze the codebase context.
-Identify the top 5-10 core most important abstractions to help those new to the codebase.
+Identify the top 5-20 core most important abstractions to help those new to the codebase.
 
 For each abstraction, provide:
 1. A concise `name`{name_lang_hint}.
@@ -144,12 +148,14 @@ Format the output as a YAML list of dictionaries:
     Another core concept, similar to a blueprint for objects.{desc_lang_hint}
   file_indices:
     - 5 # path/to/another.js
-# ... up to 10 abstractions
+# ... up to 20 abstractions
 ```"""
-        response = call_llm(prompt)
+        response = call_llm(prompt, use_cache=use_cache)  # Pass use_cache parameter
 
         # --- Validation ---
         yaml_str = response.strip().split("```yaml")[1].split("```")[0].strip()
+        # add whitespace to fix llm generation error(except -)
+        yaml_str = add_indentation(yaml_str)
         abstractions = yaml.safe_load(yaml_str)
 
         if not isinstance(abstractions, list):
@@ -203,6 +209,7 @@ class AnalyzeRelationships(Node):
         files_data = shared["files"]
         project_name = shared["project_name"]  # Get project name
         language = shared.get("language", "english") # Get language
+        use_cache = shared.get("use_cache", True)  # Get use_cache flag, default to True
 
         # Create context with abstraction names, indices, descriptions, and relevant file snippets
         context = "Identified Abstractions:\n"
@@ -230,10 +237,10 @@ class AnalyzeRelationships(Node):
         )
         context += file_context_str
 
-        return context, "\n".join(abstraction_info_for_prompt), project_name, language # Return language
+        return context, "\n".join(abstraction_info_for_prompt), project_name, language, use_cache # Return use_cache
 
     def exec(self, prep_res):
-        context, abstraction_listing, project_name, language = prep_res  # Unpack project name and language
+        context, abstraction_listing, project_name, language, use_cache = prep_res  # Unpack use_cache
         print(f"Analyzing relationships using LLM...")
 
         # Add language instruction and hints only if not English
@@ -339,6 +346,7 @@ class OrderChapters(Node):
         relationships = shared["relationships"] # Summary/label might be translated
         project_name = shared["project_name"]  # Get project name
         language = shared.get("language", "english") # Get language
+        use_cache = shared.get("use_cache", True)  # Get use_cache flag, default to True
 
         # Prepare context for the LLM
         abstraction_info_for_prompt = []
@@ -363,10 +371,10 @@ class OrderChapters(Node):
         if language.lower() != "english":
              list_lang_note = f" (Names might be in {language.capitalize()})"
 
-        return abstraction_listing, context, len(abstractions), project_name, list_lang_note
+        return abstraction_listing, context, len(abstractions), project_name, list_lang_note, use_cache  # Return use_cache
 
     def exec(self, prep_res):
-        abstraction_listing, context, num_abstractions, project_name, list_lang_note = prep_res
+        abstraction_listing, context, num_abstractions, project_name, list_lang_note, use_cache = prep_res  # Unpack use_cache
         print("Determining chapter order using LLM...")
         # No language variation needed here in prompt instructions, just ordering based on structure
         # The input names might be translated, hence the note.
@@ -437,10 +445,12 @@ Now, provide the YAML output:
 class WriteChapters(BatchNode):
     def prep(self, shared):
         chapter_order = shared["chapter_order"] # List of indices
-        abstractions = shared["abstractions"]   # List of dicts, name/desc potentially translated
-        files_data = shared["files"]
-        language = shared.get("language", "english") # Get language
-
+        abstractions = shared["abstractions"] # List of {"name": str, "description": str, "files": [int]}
+        files_data = shared["files"] # List of (path, content) tuples
+        project_name = shared["project_name"]
+        language = shared.get("language", "english")
+        use_cache = shared.get("use_cache", True)  # Get use_cache flag, default to True
+        
         # Get already written chapters to provide context
         # We store them temporarily during the batch run, not in shared memory yet
         # The 'previous_chapters_summary' will be built progressively in the exec context
