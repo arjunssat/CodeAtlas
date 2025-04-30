@@ -56,12 +56,23 @@ class FetchRepo(Node):
             )
         else:
             print(f"Crawling directory: {prep_res['local_dir']}...")
+
+            def progress_callback(processed, total):
+                percentage = (processed / total) * 100 if total > 0 else 0
+                rounded_percentage = int(percentage)
+                if rounded_percentage > progress_callback.last_reported:
+                    progress_callback.last_reported = rounded_percentage
+                    print(f"\033[92mProgress: {processed}/{total} files ({rounded_percentage}%)\033[0m")
+
+            progress_callback.last_reported = -1
+
             result = crawl_local_files(
                 directory=prep_res["local_dir"],
                 include_patterns=prep_res["include_patterns"],
                 exclude_patterns=prep_res["exclude_patterns"],
                 max_file_size=prep_res["max_file_size"],
-                use_relative_paths=prep_res["use_relative_paths"]
+                use_relative_paths=prep_res["use_relative_paths"],
+                progress_callback=progress_callback
             )
 
         # Convert dict to list of tuples: [(path, content), ...]
