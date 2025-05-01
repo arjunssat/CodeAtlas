@@ -2,10 +2,16 @@ import os
 import fnmatch
 import pathspec
 
-def crawl_local_files(directory, include_patterns=None, exclude_patterns=None, max_file_size=None, use_relative_paths=True):
+
+def crawl_local_files(
+    directory,
+    include_patterns=None,
+    exclude_patterns=None,
+    max_file_size=None,
+    use_relative_paths=True,
+):
     """
     Crawl files in a local directory with similar interface as crawl_github_files.
-
     Args:
         directory (str): Path to local directory
         include_patterns (set): File patterns to include (e.g. {"*.py", "*.js"})
@@ -22,16 +28,20 @@ def crawl_local_files(directory, include_patterns=None, exclude_patterns=None, m
     files_dict = {}
 
     # --- Load .gitignore ---
-    gitignore_path = os.path.join(directory, '.gitignore')
+    gitignore_path = os.path.join(directory, ".gitignore")
     gitignore_spec = None
     if os.path.exists(gitignore_path):
         try:
-            with open(gitignore_path, 'r', encoding='utf-8') as f:
+            with open(gitignore_path, "r", encoding="utf-8") as f:
                 gitignore_patterns = f.readlines()
-            gitignore_spec = pathspec.PathSpec.from_lines('gitwildmatch', gitignore_patterns)
+            gitignore_spec = pathspec.PathSpec.from_lines(
+                "gitwildmatch", gitignore_patterns
+            )
             print(f"Loaded .gitignore patterns from {gitignore_path}")
         except Exception as e:
-            print(f"Warning: Could not read or parse .gitignore file {gitignore_path}: {e}")
+            print(
+                f"Warning: Could not read or parse .gitignore file {gitignore_path}: {e}"
+            )
     # --- End Load .gitignore ---
 
     for root, dirs, files in os.walk(directory):
@@ -44,15 +54,17 @@ def crawl_local_files(directory, include_patterns=None, exclude_patterns=None, m
             # Check against .gitignore (important for directories)
             if gitignore_spec and gitignore_spec.match_file(dirpath_rel):
                 excluded_dirs.add(d)
-                continue # Skip further checks if gitignored
+                continue  # Skip further checks if gitignored
 
             # Check against standard exclude_patterns
             if exclude_patterns:
                 for pattern in exclude_patterns:
                     # Match pattern against full relative path or directory name itself
-                    if fnmatch.fnmatch(dirpath_rel, pattern) or fnmatch.fnmatch(d, pattern):
-                         excluded_dirs.add(d)
-                         break
+                    if fnmatch.fnmatch(dirpath_rel, pattern) or fnmatch.fnmatch(
+                        d, pattern
+                    ):
+                        excluded_dirs.add(d)
+                        break
 
         # Modify dirs in-place: remove excluded ones
         # Iterate over a copy (.copy()) because we are modifying the list during iteration
@@ -102,7 +114,7 @@ def crawl_local_files(directory, include_patterns=None, exclude_patterns=None, m
                 continue
 
             try:
-                with open(filepath, 'r', encoding='utf-8') as f:
+                with open(filepath, "r", encoding="utf-8") as f:
                     content = f.read()
                 files_dict[relpath] = content
             except Exception as e:
@@ -110,9 +122,20 @@ def crawl_local_files(directory, include_patterns=None, exclude_patterns=None, m
 
     return {"files": files_dict}
 
+
 if __name__ == "__main__":
     print("--- Crawling parent directory ('..') ---")
-    files_data = crawl_local_files("..", exclude_patterns={"*.pyc", "__pycache__/*", ".git/*", "output/*"})
+    files_data = crawl_local_files(
+        "..",
+        exclude_patterns={
+            "*.pyc",
+            "__pycache__/*",
+            ".venv/*",
+            ".git/*",
+            "docs/*",
+            "output/*",
+        },
+    )
     print(f"Found {len(files_data['files'])} files:")
     for path in files_data["files"]:
         print(f"  {path}")
