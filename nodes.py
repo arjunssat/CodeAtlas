@@ -86,6 +86,7 @@ class IdentifyAbstractions(Node):
         project_name = shared["project_name"]  # Get project name
         language = shared.get("language", "english")  # Get language
         use_cache = shared.get("use_cache", True)  # Get use_cache flag, default to True
+        max_abstraction_num = shared.get("max_abstraction_num", 10)  # Get max_abstraction_num, default to 20
 
         # Helper to create context from files, respecting limits (basic example)
         def create_llm_context(files_data):
@@ -110,7 +111,8 @@ class IdentifyAbstractions(Node):
             project_name,
             language,
             use_cache,
-        )  # Return use_cache
+            max_abstraction_num,
+        )  # Return all parameters
 
     def exec(self, prep_res):
         (
@@ -120,7 +122,8 @@ class IdentifyAbstractions(Node):
             project_name,
             language,
             use_cache,
-        ) = prep_res  # Unpack use_cache
+            max_abstraction_num,
+        ) = prep_res  # Unpack all parameters
         print(f"Identifying abstractions using LLM...")
 
         # Add language instruction and hints only if not English
@@ -140,7 +143,7 @@ Codebase Context:
 {context}
 
 {language_instruction}Analyze the codebase context.
-Identify the top 5-20 core most important abstractions to help those new to the codebase.
+Identify the top 5-{max_abstraction_num} core most important abstractions to help those new to the codebase.
 
 For each abstraction, provide:
 1. A concise `name`{name_lang_hint}.
@@ -167,7 +170,7 @@ Format the output as a YAML list of dictionaries:
     Another core concept, similar to a blueprint for objects.{desc_lang_hint}
   file_indices:
     - 5 # path/to/another.js
-# ... up to 20 abstractions
+# ... up to {max_abstraction_num} abstractions
 ```"""
         response = call_llm(prompt, use_cache=use_cache)  # Pass use_cache parameter
 
