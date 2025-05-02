@@ -47,7 +47,7 @@ def call_llm(prompt: str, use_cache: bool = True) -> str:
             logger.info(f"RESPONSE: {cache[prompt]}")
             return cache[prompt]
 
-    # Call the LLM if not in cache or cache disabled
+    # # Call the LLM if not in cache or cache disabled
     # client = genai.Client(
     #     vertexai=True,
     #     # TODO: change to your own project id and location
@@ -59,8 +59,8 @@ def call_llm(prompt: str, use_cache: bool = True) -> str:
     client = genai.Client(
         api_key=os.getenv("GEMINI_API_KEY", ""),
     )
-    # model = os.getenv("GEMINI_MODEL", "gemini-2.5-pro-exp-03-25")
-    model = os.getenv("GEMINI_MODEL", "gemini-2.0-flash-exp")
+    model = os.getenv("GEMINI_MODEL", "gemini-2.5-pro-exp-03-25")
+    # model = os.getenv("GEMINI_MODEL", "gemini-2.5-flash-preview-04-17")
     
     response = client.models.generate_content(model=model, contents=[prompt])
     response_text = response.text

@@ -247,29 +247,32 @@ class AnalyzeRelationships(Node):
         language = shared.get("language", "english")  # Get language
         use_cache = shared.get("use_cache", True)  # Get use_cache flag, default to True
 
+        # Get the actual number of abstractions directly
+        num_abstractions = len(abstractions)
+
         # Create context with abstraction names, indices, descriptions, and relevant file snippets
-        context = "Identified Abstractions:\n"
+        context = "Identified Abstractions:\\n"
         all_relevant_indices = set()
         abstraction_info_for_prompt = []
         for i, abstr in enumerate(abstractions):
             # Use 'files' which contains indices directly
             file_indices_str = ", ".join(map(str, abstr["files"]))
             # Abstraction name and description might be translated already
-            info_line = f"- Index {i}: {abstr['name']} (Relevant file indices: [{file_indices_str}])\n  Description: {abstr['description']}"
-            context += info_line + "\n"
+            info_line = f"- Index {i}: {abstr['name']} (Relevant file indices: [{file_indices_str}])\\n  Description: {abstr['description']}"
+            context += info_line + "\\n"
             abstraction_info_for_prompt.append(
                 f"{i} # {abstr['name']}"
             )  # Use potentially translated name here too
             all_relevant_indices.update(abstr["files"])
 
-        context += "\nRelevant File Snippets (Referenced by Index and Path):\n"
+        context += "\\nRelevant File Snippets (Referenced by Index and Path):\\n"
         # Get content for relevant files using helper
         relevant_files_content_map = get_content_for_indices(
             files_data, sorted(list(all_relevant_indices))
         )
         # Format file content for context
-        file_context_str = "\n\n".join(
-            f"--- File: {idx_path} ---\n{content}"
+        file_context_str = "\\n\\n".join(
+            f"--- File: {idx_path} ---\\n{content}"
             for idx_path, content in relevant_files_content_map.items()
         )
         context += file_context_str
@@ -277,15 +280,21 @@ class AnalyzeRelationships(Node):
         return (
             context,
             "\n".join(abstraction_info_for_prompt),
+            num_abstractions, # Pass the actual count
             project_name,
             language,
             use_cache,
         )  # Return use_cache
 
     def exec(self, prep_res):
-        context, abstraction_listing, project_name, language, use_cache = (
-            prep_res  # Unpack use_cache
-        )
+        (
+            context,
+            abstraction_listing,
+            num_abstractions, # Receive the actual count
+            project_name,
+            language,
+            use_cache,
+         ) = prep_res  # Unpack use_cache
         print(f"Analyzing relationships using LLM...")
 
         # Add language instruction and hints only if not English
@@ -335,7 +344,7 @@ relationships:
 
 Now, provide the YAML output:
 """
-        response = call_llm(prompt)
+        response = call_llm(prompt, use_cache=use_cache)
 
         # --- Validation ---
         yaml_str = response.strip().split("```yaml")[1].split("```")[0].strip()
@@ -354,7 +363,6 @@ Now, provide the YAML output:
 
         # Validate relationships structure
         validated_relationships = []
-        num_abstractions = len(abstraction_listing.split("\n"))
         for rel in relationships_data["relationships"]:
             # Check for 'label' key
             if not isinstance(rel, dict) or not all(
