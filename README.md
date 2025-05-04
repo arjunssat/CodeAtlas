@@ -73,13 +73,16 @@ This is a tutorial project of [Pocket Flow](https://github.com/The-Pocket/Pocket
 ## 🚀 Getting Started
 
 1. Clone this repository
+   ```bash
+   git clone https://github.com/The-Pocket/PocketFlow-Tutorial-Codebase-Knowledge
+   ```
 
-2. Install dependencies:
+3. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-3. Set up LLM in [`utils/call_llm.py`](./utils/call_llm.py) by providing credentials. By default, you can use the AI Studio key with this client for Gemini Pro 2.5:
+4. Set up LLM in [`utils/call_llm.py`](./utils/call_llm.py) by providing credentials. By default, you can use the AI Studio key with this client for Gemini Pro 2.5:
 
    ```python
    client = genai.Client(
@@ -92,7 +95,7 @@ This is a tutorial project of [Pocket Flow](https://github.com/The-Pocket/Pocket
    python utils/call_llm.py
    ```
 
-4. Generate a complete codebase tutorial by running the main script:
+5. Generate a complete codebase tutorial by running the main script:
     ```bash
     # Analyze a GitHub repository
     python main.py --repo https://github.com/username/repo --include "*.py" "*.js" --exclude "tests/*" --max-size 50000
