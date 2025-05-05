@@ -156,7 +156,7 @@ def crawl_github_files(
             return []
             
         if response.status_code != 200:
-            print(f"Error fetching the branches of {owner}/{path}: {response.status_code} - {response.text}")
+            print(f"Error fetching the branches of {owner}/{repo}: {response.status_code} - {response.text}")
             return []
 
         return response.json()
