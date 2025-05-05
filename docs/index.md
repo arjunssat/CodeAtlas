@@ -20,8 +20,8 @@ This is a tutorial project of [Pocket Flow](https://github.com/The-Pocket/Pocket
 
 ## Example Tutorials for Popular GitHub Repositories
 
-- [AutoGen Core](./AutoGen Core/index.md) - Build AI teams that talk, think, and solve problems together like coworkers!
-- [Browser Use](./Browser Use/index.md) - Let AI surf the web for you, clicking buttons and filling forms like a digital assistant!
+- [AutoGen Core](./AutoGen%20Core/index.md) - Build AI teams that talk, think, and solve problems together like coworkers!
+- [Browser Use](./Browser%20Use/index.md) - Let AI surf the web for you, clicking buttons and filling forms like a digital assistant!
 - [Celery](./Celery/index.md) - Supercharge your app with background tasks that run while you sleep!
 - [Click](./Click/index.md) - Turn Python functions into slick command-line tools with just a decorator!
 - [Codex](./Codex/index.md) - Turn plain English into working code with this AI terminal wizard!
@@ -30,13 +30,13 @@ This is a tutorial project of [Pocket Flow](https://github.com/The-Pocket/Pocket
 - [DSPy](./DSPy/index.md) - Build LLM apps like Lego blocks that optimize themselves!
 - [FastAPI](./FastAPI/index.md) - Create APIs at lightning speed with automatic docs that clients will love!
 - [Flask](./Flask/index.md) - Craft web apps with minimal code that scales from prototype to production!
-- [Google A2A](./Google A2A/index.md) - The universal language that lets AI agents collaborate across borders!
+- [Google A2A](./Google%20A2A/index.md) - The universal language that lets AI agents collaborate across borders!
 - [LangGraph](./LangGraph/index.md) - Design AI agents as flowcharts where each step remembers what happened before!
 - [LevelDB](./LevelDB/index.md) - Store data at warp speed with Google's engine that powers blockchains!
-- [MCP Python SDK](./MCP Python SDK/index.md) - Build powerful apps that communicate through an elegant protocol without sweating the details!
-- [NumPy Core](./NumPy Core/index.md) - Master the engine behind data science that makes Python as fast as C!
+- [MCP Python SDK](./MCP%20Python%20SDK/index.md) - Build powerful apps that communicate through an elegant protocol without sweating the details!
+- [NumPy Core](./NumPy%20Core/index.md) - Master the engine behind data science that makes Python as fast as C!
 - [OpenManus](./OpenManus/index.md) - Build AI agents with digital brains that think, learn, and use tools just like humans do!
-- [Pydantic Core](./Pydantic Core/index.md) - Validate data at rocket speed with just Python type hints!
+- [Pydantic Core](./Pydantic%20Core/index.md) - Validate data at rocket speed with just Python type hints!
 - [Requests](./Requests/index.md) - Talk to the internet in Python with code so simple it feels like cheating!
 - [SmolaAgents](./SmolaAgents/index.md) - Build tiny AI agents that punch way above their weight class!
 
