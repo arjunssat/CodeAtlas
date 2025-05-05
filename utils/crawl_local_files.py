@@ -2,13 +2,13 @@ import os
 import fnmatch
 import pathspec
 
+
 def crawl_local_files(
     directory,
     include_patterns=None,
     exclude_patterns=None,
     max_file_size=None,
     use_relative_paths=True,
-    progress_callback=None,
 ):
     """
     Crawl files in a local directory with similar interface as crawl_github_files.
@@ -18,7 +18,6 @@ def crawl_local_files(
         exclude_patterns (set): File patterns to exclude (e.g. {"tests/*"})
         max_file_size (int): Maximum file size in bytes
         use_relative_paths (bool): Whether to use paths relative to directory
-        progress_callback (callable): Function to report progress, takes (processed, total) as arguments
 
     Returns:
         dict: {"files": {filepath: content}}
@@ -91,28 +90,41 @@ def crawl_local_files(
         else:
             included = True
 
+        processed_files += 1 # Increment processed count regardless of inclusion/exclusion
+
+        status = "processed"
         if not included or excluded:
-            processed_files += 1
-            if progress_callback:
-                progress_callback(processed_files, total_files)
-            continue
+            status = "skipped (excluded)"
+            # Print progress for skipped files due to exclusion
+            if total_files > 0:
+                percentage = (processed_files / total_files) * 100
+                rounded_percentage = int(percentage)
+                print(f"\033[92mProgress: {processed_files}/{total_files} ({rounded_percentage}%) {relpath} [{status}]\033[0m")
+            continue # Skip to next file if not included or excluded
 
         if max_file_size and os.path.getsize(filepath) > max_file_size:
-            processed_files += 1
-            if progress_callback:
-                progress_callback(processed_files, total_files)
-            continue
+            status = "skipped (size limit)"
+            # Print progress for skipped files due to size limit
+            if total_files > 0:
+                percentage = (processed_files / total_files) * 100
+                rounded_percentage = int(percentage)
+                print(f"\033[92mProgress: {processed_files}/{total_files} ({rounded_percentage}%) {relpath} [{status}]\033[0m")
+            continue # Skip large files
 
+        # --- File is being processed ---        
         try:
             with open(filepath, "r", encoding="utf-8") as f:
                 content = f.read()
             files_dict[relpath] = content
         except Exception as e:
             print(f"Warning: Could not read file {filepath}: {e}")
+            status = "skipped (read error)"
 
-        processed_files += 1
-        if progress_callback:
-            progress_callback(processed_files, total_files)
+        # --- Print progress for processed or error files ---
+        if total_files > 0:
+            percentage = (processed_files / total_files) * 100
+            rounded_percentage = int(percentage)
+            print(f"\033[92mProgress: {processed_files}/{total_files} ({rounded_percentage}%) {relpath} [{status}]\033[0m")
 
     return {"files": files_dict}
 
