@@ -131,7 +131,7 @@ The application will crawl the repository, analyze the codebase structure, gener
 <br>
 <div align="center">
   <a href="https://youtu.be/AFY67zOpbSo" target="_blank">
-    <img src="./assets/youtube_thumbnail.png" width="500" alt="IMAGE ALT TEXT" style="cursor: pointer;">
+    <img src="./assets/youtube_thumbnail.png" width="500" alt="Pocket Flow Codebase Tutorial" style="cursor: pointer;">
   </a>
 </div>
 <br>
