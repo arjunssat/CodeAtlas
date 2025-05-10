@@ -18,17 +18,17 @@ Additionally, it demonstrates an **A2A (Agent-to-Agent) Communication Framework*
 
 ```mermaid
 flowchart TD
-    A0["Node (`BaseNode`, `Node`, `AsyncNode`)
+    A0["Node (<code>BaseNode</code>, <code>Node</code>, <code>AsyncNode</code>)
 "]
-    A1["Flow (`Flow`, `AsyncFlow`)
+    A1["Flow (<code>Flow</code>, <code>AsyncFlow</code>)
 "]
-    A2["Shared State (`shared` dictionary)
+    A2["Shared State (<code>shared</code> dictionary)
 "]
     A3["Actions / Transitions
 "]
-    A4["Batch Processing (`BatchNode`, `BatchFlow`, `AsyncParallelBatchNode`)
+    A4["Batch Processing (<code>BatchNode</code>, <code>BatchFlow</code>, <code>AsyncParallelBatchNode</code>)
 "]
-    A5["Asynchronous Processing (`AsyncNode`, `AsyncFlow`)
+    A5["Asynchronous Processing (<code>AsyncNode</code>, <code>AsyncFlow</code>)
 "]
     A6["A2A (Agent-to-Agent) Communication Framework
 "]
