@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Asynchronous Processing (AsyncNode, AsyncFlow)"
+parent: "PocketFlow"
+nav_order: 5
+---
+
 # Chapter 5: Asynchronous Processing (`AsyncNode`, `AsyncFlow`)
 
 In [Chapter 4: Flow (`Flow`, `AsyncFlow`)](04_flow___flow____asyncflow__.md), we learned how `Flow` and `AsyncFlow` orchestrate sequences of [Nodes (`BaseNode`, `Node`, `AsyncNode`)](02_node___basenode____node____asyncnode__.md) to create complete applications. Now, we're going to zoom in on a powerful feature that `AsyncFlow` enables: **Asynchronous Processing**. This is key to building AI applications that feel responsive and can handle tasks that involve waiting, like calling web APIs or interacting with users.

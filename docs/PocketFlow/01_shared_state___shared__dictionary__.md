@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Shared State (Shared Dictionary)"
+parent: "PocketFlow"
+nav_order: 1
+---
+
 # Chapter 1: Shared State (`shared` dictionary)
 
 Welcome to your first step into the world of PocketFlow! Building powerful AI applications often involves breaking down complex tasks into smaller, manageable steps. But how do these steps communicate with each other? How does one part of your AI know what another part has done or figured out? That's where the **`shared` dictionary** comes into play.

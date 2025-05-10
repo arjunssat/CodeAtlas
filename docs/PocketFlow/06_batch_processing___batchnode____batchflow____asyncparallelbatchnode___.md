@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Batch Processing (BatchNode, BatchFlow, AsyncParallelBatchNode)"
+parent: "PocketFlow"
+nav_order: 6
+---
+
 # Chapter 6: Batch Processing (`BatchNode`, `BatchFlow`, `AsyncParallelBatchNode`)
 
 In [Chapter 5: Asynchronous Processing (`AsyncNode`, `AsyncFlow`)](05_asynchronous_processing___asyncnode____asyncflow___.md), we explored how `AsyncNode` and `AsyncFlow` help build responsive applications that can handle waiting for tasks like API calls. Now, what if you need to perform a similar operation on *many* different items? For example, imagine you have a document, and you want to translate it into ten different languages. Doing this one by one, or even coordinating many asynchronous calls manually, can be cumbersome. PocketFlow provides specialized tools for exactly this: **Batch Processing**.

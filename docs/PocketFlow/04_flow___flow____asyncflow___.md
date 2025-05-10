@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Flow (Flow, AsyncFlow)"
+parent: "PocketFlow"
+nav_order: 4
+---
+
 # Chapter 4: Flow (`Flow`, `AsyncFlow`)
 
 In [Chapter 3: Actions / Transitions](03_actions___transitions__.md), we saw how individual [Nodes (`BaseNode`, `Node`, `AsyncNode`)](02_node___basenode____node____asyncnode__.md) can decide what should happen next by returning "action" strings, and how these actions lead to "transitions" between Nodes. But what actually manages this sequence? What's the conductor of this orchestra of Nodes? That's where **Flows** come in!

@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Node (BaseNode, Node, AsyncNode)"
+parent: "PocketFlow"
+nav_order: 2
+---
+
 # Chapter 2: Node (`BaseNode`, `Node`, `AsyncNode`)
 
 In [Chapter 1: Shared State (`shared` dictionary)](01_shared_state___shared__dictionary__.md), we learned how different parts of a PocketFlow workflow can communicate using the `shared` dictionary. Now, let's meet the actual "workers" that perform the tasks and use this shared information: **Nodes**.

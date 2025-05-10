@@ -1,3 +1,10 @@
+---
+layout: default
+title: "A2A (Agent-to-Agent) Communication Framework"
+parent: "PocketFlow"
+nav_order: 7
+---
+
 # Chapter 7: A2A (Agent-to-Agent) Communication Framework
 
 Welcome to the final chapter of our PocketFlow journey! In [Chapter 6: Batch Processing (`BatchNode`, `BatchFlow`, `AsyncParallelBatchNode`)](06_batch_processing___batchnode____batchflow____asyncparallelbatchnode___.md), we saw how to process multiple items or run workflows repeatedly. Now, we'll explore how to make your PocketFlow agents available to the wider world, allowing them to communicate with other systems or agents using a standard "language."

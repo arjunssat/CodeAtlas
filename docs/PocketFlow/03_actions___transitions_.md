@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Actions / Transitions"
+parent: "PocketFlow"
+nav_order: 3
+---
+
 # Chapter 3: Actions / Transitions
 
 In [Chapter 2: Node (`BaseNode`, `Node`, `AsyncNode`)](02_node___basenode____node____asyncnode___.md), we learned that Nodes are the individual workers in our PocketFlow application, each performing a specific task. We also touched upon the `post` method of a Node, mentioning that it can return an "action" string. Now, it's time to explore exactly what these "actions" are and how they create "transitions," guiding the workflow dynamically.
