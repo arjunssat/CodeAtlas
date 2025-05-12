@@ -122,6 +122,19 @@ This is a tutorial project of [Pocket Flow](https://github.com/The-Pocket/Pocket
 
 The application will crawl the repository, analyze the codebase structure, generate tutorial content in the specified language, and save the output in the specified directory (default: ./output).
 
+## 🐳 Running with Docker
+
+To run this project in a Docker container:
+
+### 1. Build the Docker image
+  ```bash
+docker build -t pocketflow-app .
+
+### 2.Run the conatainer
+docker run -it --rm pocketflow-app
+
+
+
 ## 💡 Development Tutorial
 
 - I built using [**Agentic Coding**](https://zacharyhuang.substack.com/p/agentic-coding-the-most-fun-way-to), the fastest development paradigm, where humans simply [design](docs/design.md) and agents [code](flow.py).
