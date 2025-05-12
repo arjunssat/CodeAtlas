@@ -143,6 +143,8 @@ The application will crawl the repository, analyze the codebase structure, gener
 
 To run this project in a Docker container:
 
+Make sure before building the docker image you need to setup the google api key in utils/call_llm.py.
+
 ### 1. Build the Docker image
   ```bash
 docker build -t pocketflow-app .
@@ -150,5 +152,10 @@ docker build -t pocketflow-app .
 
 ### 2.Run the conatainer
   ```bash
-docker run -it --rm pocketflow-app
+docker run -it --rm -v <path_to_output_directory>:/app/output pocketflow-app --repo <repository_link>
+
+example:
+
+docker run -it --rm -v C:\Users\srinadh\PocketFlow-Tutorial-Codebase-Knowledge\output:/app/output pocketflow-app --repo https://github.com/srinadhkesineni/CI-CD.git
+
 ```
