@@ -123,6 +123,7 @@ def call_llm(prompt: str, use_cache: bool = True) -> str:
 
 # Use OpenRouter API
 # def call_llm(prompt: str, use_cache: bool = True) -> str:
+#     import requests
 #     # Log the prompt
 #     logger.info(f"PROMPT: {prompt}")
 
