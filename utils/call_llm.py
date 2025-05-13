@@ -89,6 +89,34 @@ def call_llm(prompt: str, use_cache: bool = True) -> str:
     return response_text
 
 
+# # Use Azure OpenAI
+# def call_llm(prompt, use_cache: bool = True):
+#     from openai import AzureOpenAI
+
+#     endpoint = "https://<azure openai name>.openai.azure.com/"
+#     deployment = "<deployment name>"
+
+#     subscription_key = "<azure openai key>"
+#     api_version = "<api version>"
+
+#     client = AzureOpenAI(
+#         api_version=api_version,
+#         azure_endpoint=endpoint,
+#         api_key=subscription_key,
+#     )
+
+#     r = client.chat.completions.create(
+#         model=deployment,
+#         messages=[{"role": "user", "content": prompt}],
+#         response_format={
+#             "type": "text"
+#         },
+#         max_completion_tokens=40000,
+#         reasoning_effort="medium",
+#         store=False
+#     )
+#     return r.choices[0].message.content
+
 # # Use Anthropic Claude 3.7 Sonnet Extended Thinking
 # def call_llm(prompt, use_cache: bool = True):
 #     from anthropic import Anthropic
