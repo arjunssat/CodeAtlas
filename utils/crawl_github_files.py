@@ -104,7 +104,7 @@ def crawl_github_files(
 
                     # Read content
                     try:
-                        with open(abs_path, "r", encoding="utf-8") as f:
+                        with open(abs_path, "r", encoding="utf-8-sig") as f:
                             content = f.read()
                         files[rel_path] = content
                         print(f"Added {rel_path} ({file_size} bytes)")
