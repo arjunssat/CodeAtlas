@@ -15,7 +15,7 @@ log_file = os.path.join(
 logger = logging.getLogger("llm_logger")
 logger.setLevel(logging.INFO)
 logger.propagate = False  # Prevent propagation to root logger
-file_handler = logging.FileHandler(log_file)
+file_handler = logging.FileHandler(log_file, encoding='utf-8')
 file_handler.setFormatter(
     logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
 )
@@ -36,7 +36,7 @@ def call_llm(prompt: str, use_cache: bool = True) -> str:
         cache = {}
         if os.path.exists(cache_file):
             try:
-                with open(cache_file, "r") as f:
+                with open(cache_file, "r", encoding="utf-8") as f:
                     cache = json.load(f)
             except:
                 logger.warning(f"Failed to load cache, starting with empty cache")
@@ -73,7 +73,7 @@ def call_llm(prompt: str, use_cache: bool = True) -> str:
         cache = {}
         if os.path.exists(cache_file):
             try:
-                with open(cache_file, "r") as f:
+                with open(cache_file, "r", encoding="utf-8") as f:
                     cache = json.load(f)
             except:
                 pass
@@ -81,7 +81,7 @@ def call_llm(prompt: str, use_cache: bool = True) -> str:
         # Add to cache and save
         cache[prompt] = response_text
         try:
-            with open(cache_file, "w") as f:
+            with open(cache_file, "w", encoding="utf-8") as f:
                 json.dump(cache, f)
         except Exception as e:
             logger.error(f"Failed to save cache: {e}")
@@ -161,7 +161,7 @@ def call_llm(prompt: str, use_cache: bool = True) -> str:
 #         cache = {}
 #         if os.path.exists(cache_file):
 #             try:
-#                 with open(cache_file, "r") as f:
+#                 with open(cache_file, "r", encoding="utf-8") as f:
 #                     cache = json.load(f)
 #             except:
 #                 logger.warning(f"Failed to load cache, starting with empty cache")
@@ -211,7 +211,7 @@ def call_llm(prompt: str, use_cache: bool = True) -> str:
 #         cache = {}
 #         if os.path.exists(cache_file):
 #             try:
-#                 with open(cache_file, "r") as f:
+#                 with open(cache_file, "r", encoding="utf-8") as f:
 #                     cache = json.load(f)
 #             except:
 #                 pass
@@ -219,7 +219,7 @@ def call_llm(prompt: str, use_cache: bool = True) -> str:
 #         # Add to cache and save
 #         cache[prompt] = response_text
 #         try:
-#             with open(cache_file, "w") as f:
+#             with open(cache_file, "w", encoding="utf-8") as f:
 #                 json.dump(cache, f)
 #         except Exception as e:
 #             logger.error(f"Failed to save cache: {e}")
