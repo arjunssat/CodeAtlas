@@ -1,1 +1,108 @@
-[]
+[
+  {
+    "id": "cortex",
+    "name": "Cortex",
+    "files": [
+      {
+        "name": "01_environment_configuration_.md",
+        "path": "/output/cortex/01_environment_configuration_.md"
+      },
+      {
+        "name": "02_data_models_.md",
+        "path": "/output/cortex/02_data_models_.md"
+      },
+      {
+        "name": "03_database_layer__sqlalchemy__.md",
+        "path": "/output/cortex/03_database_layer__sqlalchemy__.md"
+      },
+      {
+        "name": "04_database_migrations__alembic__.md",
+        "path": "/output/cortex/04_database_migrations__alembic__.md"
+      },
+      {
+        "name": "05_agent_management_system_.md",
+        "path": "/output/cortex/05_agent_management_system_.md"
+      },
+      {
+        "name": "06_authentication_and_authorization__rbac__.md",
+        "path": "/output/cortex/06_authentication_and_authorization__rbac__.md"
+      },
+      {
+        "name": "07_fastapi_application_core_.md",
+        "path": "/output/cortex/07_fastapi_application_core_.md"
+      },
+      {
+        "name": "index.md",
+        "path": "/output/cortex/index.md"
+      }
+    ]
+  },
+  {
+    "id": "LMS_platform",
+    "name": "Lms Platform",
+    "files": [
+      {
+        "name": "01_database_object_models__sqlalchemy_orm__.md",
+        "path": "/output/LMS_platform/01_database_object_models__sqlalchemy_orm__.md"
+      },
+      {
+        "name": "02_database_session_management_.md",
+        "path": "/output/LMS_platform/02_database_session_management_.md"
+      },
+      {
+        "name": "03_fastapi_application_structure_.md",
+        "path": "/output/LMS_platform/03_fastapi_application_structure_.md"
+      },
+      {
+        "name": "04_user_authentication___authorization_.md",
+        "path": "/output/LMS_platform/04_user_authentication___authorization_.md"
+      },
+      {
+        "name": "05_content_versioning___soft_deletion_.md",
+        "path": "/output/LMS_platform/05_content_versioning___soft_deletion_.md"
+      },
+      {
+        "name": "06_ai_assisted_content_generation_.md",
+        "path": "/output/LMS_platform/06_ai_assisted_content_generation_.md"
+      },
+      {
+        "name": "07_docker_service_orchestration_.md",
+        "path": "/output/LMS_platform/07_docker_service_orchestration_.md"
+      },
+      {
+        "name": "index.md",
+        "path": "/output/LMS_platform/index.md"
+      }
+    ]
+  },
+  {
+    "id": "Opzta_Talent_Acquisition",
+    "name": "Opzta Talent Acquisition",
+    "files": [
+      {
+        "name": "01_application_workflow_.md",
+        "path": "/output/Opzta_Talent_Acquisition/01_application_workflow_.md"
+      },
+      {
+        "name": "02_job_vacancy_.md",
+        "path": "/output/Opzta_Talent_Acquisition/02_job_vacancy_.md"
+      },
+      {
+        "name": "03_candidate_profile_.md",
+        "path": "/output/Opzta_Talent_Acquisition/03_candidate_profile_.md"
+      },
+      {
+        "name": "04_user__recruiter_hiring_manager__.md",
+        "path": "/output/Opzta_Talent_Acquisition/04_user__recruiter_hiring_manager__.md"
+      },
+      {
+        "name": "05_talent_pool_.md",
+        "path": "/output/Opzta_Talent_Acquisition/05_talent_pool_.md"
+      },
+      {
+        "name": "index.md",
+        "path": "/output/Opzta_Talent_Acquisition/index.md"
+      }
+    ]
+  }
+]

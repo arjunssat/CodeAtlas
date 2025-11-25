@@ -59,13 +59,21 @@ def crawl_github_files(
 
         return include_file
 
-    # Detect SSH URL (git@ or .git suffix)
-    is_ssh_url = repo_url.startswith("git@") or repo_url.endswith(".git")
+    # Detect if we should use git clone (SSH, .git suffix, or non-GitHub URL)
+    parsed_url = urlparse(repo_url)
+    is_github = parsed_url.netloc == "github.com"
+    is_ssh_url = repo_url.startswith("git@")
+    
+    # Use git clone if:
+    # 1. It's an SSH URL
+    # 2. It ends with .git
+    # 3. It's NOT a GitHub URL (e.g. GitLab, Bitbucket, AWS CodeCommit)
+    use_git_clone = is_ssh_url or repo_url.endswith(".git") or not is_github
 
-    if is_ssh_url:
+    if use_git_clone:
         # Clone repo via SSH to temp dir
         with tempfile.TemporaryDirectory() as tmpdirname:
-            print(f"Cloning SSH repo {repo_url} to temp dir {tmpdirname} ...")
+            print(f"Cloning repo {repo_url} to temp dir {tmpdirname} ...")
             try:
                 repo = git.Repo.clone_from(repo_url, tmpdirname)
             except Exception as e:
@@ -120,7 +128,7 @@ def crawl_github_files(
                     "base_path": None,
                     "include_patterns": include_patterns,
                     "exclude_patterns": exclude_patterns,
-                    "source": "ssh_clone"
+                    "source": "git_clone"
                 }
             }
 
