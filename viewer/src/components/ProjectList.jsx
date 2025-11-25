@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Layers, ArrowRight, BookOpen, Download, Loader2, Code2 } from 'lucide-react';
-import { getProjects, getMarkdown } from '../lib/api';
+import { Layers, ArrowRight, BookOpen, Download, Loader2, Code2, Trash2 } from 'lucide-react';
+import { getProjects, getMarkdown, deleteProject } from '../lib/api';
 import html2pdf from 'html2pdf.js';
 import ReactMarkdown from 'react-markdown';
 import { renderToStaticMarkup } from 'react-dom/server';
@@ -115,6 +115,23 @@ export default function ProjectList() {
         }
     };
 
+    const handleDelete = async (e, project) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if (!window.confirm(`Are you sure you want to delete "${project.name}"? This action cannot be undone.`)) {
+            return;
+        }
+
+        try {
+            await deleteProject(project.id);
+            setProjects(projects.filter(p => p.id !== project.id));
+        } catch (err) {
+            console.error('Failed to delete project:', err);
+            alert('Failed to delete project. See console for details.');
+        }
+    };
+
     if (loading) {
         return (
             <div className="flex items-center justify-center min-h-screen bg-slate-100">
@@ -201,6 +218,13 @@ export default function ProjectList() {
                                             ) : (
                                                 <Download className="w-5 h-5" />
                                             )}
+                                        </button>
+                                        <button
+                                            onClick={(e) => handleDelete(e, project)}
+                                            className="inline-flex items-center justify-center p-2 rounded-full bg-gray-100 text-gray-600 hover:bg-red-100 hover:text-red-600 transition-colors"
+                                            title="Delete Project"
+                                        >
+                                            <Trash2 className="w-5 h-5" />
                                         </button>
                                         <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
                                             Generated

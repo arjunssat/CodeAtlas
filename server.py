@@ -144,6 +144,25 @@ async def ingest_project(request: IngestRequest, background_tasks: BackgroundTas
     background_tasks.add_task(run_ingestion_process, request)
     return {"message": "Ingestion started", "source": request.source}
 
+@app.delete("/api/projects/{project_id}")
+async def delete_project(project_id: str):
+    """Deletes a project and its generated content."""
+    try:
+        project_path = os.path.join("output", project_id)
+        if not os.path.exists(project_path):
+            raise HTTPException(status_code=404, detail="Project not found")
+        
+        import shutil
+        shutil.rmtree(project_path)
+        
+        # Regenerate manifest
+        subprocess.run([sys.executable, "generate_manifest.py"], check=True)
+        
+        return {"message": f"Project {project_id} deleted successfully"}
+    except Exception as e:
+        logger.error(f"Error deleting project: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
 @app.websocket("/ws/logs/{client_id}")
 async def websocket_endpoint(websocket: WebSocket, client_id: str):
     await manager.connect(websocket)

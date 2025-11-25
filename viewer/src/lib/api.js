@@ -33,3 +33,11 @@ export async function ingestProject(data) {
     if (!response.ok) throw new Error('Failed to start ingestion');
     return await response.json();
 }
+
+export async function deleteProject(projectId) {
+    const response = await fetch(`${API_BASE_URL}/projects/${projectId}`, {
+        method: 'DELETE',
+    });
+    if (!response.ok) throw new Error('Failed to delete project');
+    return await response.json();
+}
