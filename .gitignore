@@ -107,3 +107,14 @@ uv.lock
 
 docs/*.pdf
 docs/design-cn.md
+
+
+############################################################
+# 🔐 Environment & Secrets
+# These files contain sensitive keys and system credentials.
+############################################################
+.env
+.env.*
+.env.sample
+*.key
+*.pem
