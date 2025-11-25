@@ -7,7 +7,7 @@ has_children: true
 
 # Tutorial: AutoGen Core 
 
-> This tutorial is AI-generated! To learn more, check out [AI Codebase Knowledge Builder](https://github.com/The-Pocket/Tutorial-Codebase-Knowledge)
+> This tutorial is AI-generated!
 
 AutoGen Core<sup>[View Repo](https://github.com/microsoft/autogen/tree/e45a15766746d95f8cfaaa705b0371267bec812e/python/packages/autogen-core/src/autogen_core)</sup> helps you build applications with multiple **_Agents_** that can work together.
 Think of it like creating a team of specialized workers (*Agents*) who can communicate and use tools to solve problems.

@@ -93,12 +93,32 @@ class IdentifyAbstractions(Node):
         def create_llm_context(files_data):
             context = ""
             file_info = []  # Store tuples of (index, path)
+            
+            # Approximate token limit (250k tokens ~ 1M chars). 
+            # Let's be safe and use 30k chars for context to leave room for prompt/response.
+            MAX_TOTAL_CHARS = 30000 
+            MAX_FILE_CHARS = 2000 # Truncate large files
+            
+            current_chars = 0
+            
             for i, (path, content) in enumerate(files_data):
+                # Truncate content if too long
+                if len(content) > MAX_FILE_CHARS:
+                    content = content[:MAX_FILE_CHARS] + "...(truncated)"
+                
                 entry = f"--- File Index {i}: {path} ---\n{content}\n\n"
+                
+                # Check if adding this entry exceeds total limit
+                if current_chars + len(entry) > MAX_TOTAL_CHARS:
+                    print(f"Warning: Context limit reached. Stopping context accumulation at file {i}/{len(files_data)}.")
+                    # Stop adding to file_info to avoid blowing up the prompt with thousands of filenames
+                    break
+                
                 context += entry
+                current_chars += len(entry)
                 file_info.append((i, path))
 
-            return context, file_info  # file_info is list of (index, path)
+            return context, file_info
 
         context, file_info = create_llm_context(files_data)
         # Format file info for the prompt (comment is just a hint for LLM)
@@ -173,7 +193,13 @@ Format the output as a YAML list of dictionaries:
     - 5 # path/to/another.js
 # ... up to {max_abstraction_num} abstractions
 ```"""
-        response = call_llm(prompt, use_cache=(use_cache and self.cur_retry == 0))  # Use cache only if enabled and not retrying
+        try:
+            response = call_llm(prompt, use_cache=(use_cache and self.cur_retry == 0))  # Use cache only if enabled and not retrying
+        except Exception as e:
+            print(f"LLM Call Failed: {e}")
+            import traceback
+            traceback.print_exc()
+            raise e
 
         # --- Validation ---
         yaml_str = response.strip().split("```yaml")[1].split("```")[0].strip()
@@ -590,32 +616,12 @@ class WriteChapters(BatchNode):
                 related_files_content_map = get_content_for_indices(
                     files_data, related_file_indices
                 )
-
-                # Get previous chapter info for transitions (uses potentially translated name)
-                prev_chapter = None
-                if i > 0:
-                    prev_idx = chapter_order[i - 1]
-                    prev_chapter = chapter_filenames[prev_idx]
-
-                # Get next chapter info for transitions (uses potentially translated name)
-                next_chapter = None
-                if i < len(chapter_order) - 1:
-                    next_idx = chapter_order[i + 1]
-                    next_chapter = chapter_filenames[next_idx]
-
                 items_to_process.append(
                     {
-                        "chapter_num": i + 1,
-                        "abstraction_index": abstraction_index,
-                        "abstraction_details": abstraction_details,  # Has potentially translated name/desc
+                        "abstraction_details": abstraction_details,
                         "related_files_content_map": related_files_content_map,
-                        "project_name": shared["project_name"],  # Add project name
-                        "full_chapter_listing": full_chapter_listing,  # Add the full chapter listing (uses potentially translated names)
-                        "chapter_filenames": chapter_filenames,  # Add chapter filenames mapping (uses potentially translated names)
-                        "prev_chapter": prev_chapter,  # Add previous chapter info (uses potentially translated name)
-                        "next_chapter": next_chapter,  # Add next chapter info (uses potentially translated name)
-                        "language": language,  # Add language for multi-language support
-                        "use_cache": use_cache, # Pass use_cache flag
+                        "chapter_num": i + 1,
+                        "full_chapter_listing": full_chapter_listing,
                         # previous_chapters_summary will be added dynamically in exec
                     }
                 )
@@ -826,30 +832,18 @@ class CombineTutorial(Node):
                     c if c.isalnum() else "_" for c in abstraction_name
                 ).lower()
                 filename = f"{i+1:02d}_{safe_name}.md"
-                index_content += f"{i+1}. [{abstraction_name}]({filename})\n"  # Use potentially translated name in link text
-
-                # Add attribution to chapter content (using English fixed string)
-                chapter_content = chapters_content[i]  # Potentially translated content
-                if not chapter_content.endswith("\n\n"):
-                    chapter_content += "\n\n"
-                # Keep fixed strings in English
-                chapter_content += f"---\n\nGenerated by [AI Codebase Knowledge Builder](https://github.com/The-Pocket/Tutorial-Codebase-Knowledge)"
-
-                # Store filename and corresponding content
-                chapter_files.append({"filename": filename, "content": chapter_content})
-            else:
-                print(
-                    f"Warning: Mismatch between chapter order, abstractions, or content at index {i} (abstraction index {abstraction_index}). Skipping file generation for this entry."
-                )
-
-        # Add attribution to index content (using English fixed string)
-        index_content += f"\n\n---\n\nGenerated by [AI Codebase Knowledge Builder](https://github.com/The-Pocket/Tutorial-Codebase-Knowledge)"
+                # Add to chapter_files list
+                chapter_files.append({
+                    "filename": filename,
+                    "content": chapters_content[i]
+                })
 
         return {
             "output_path": output_path,
             "index_content": index_content,
-            "chapter_files": chapter_files,  # List of {"filename": str, "content": str}
+            "chapter_files": chapter_files,
         }
+
 
     def exec(self, prep_res):
         output_path = prep_res["output_path"]
@@ -857,6 +851,7 @@ class CombineTutorial(Node):
         chapter_files = prep_res["chapter_files"]
 
         print(f"Combining tutorial into directory: {output_path}")
+        print("Creating output directory...")
         # Rely on Node's built-in retry/fallback
         os.makedirs(output_path, exist_ok=True)
 

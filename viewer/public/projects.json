@@ -1,0 +1,82 @@
+[
+  {
+    "id": "cortex_augment",
+    "name": "Cortex Augment",
+    "files": [
+      {
+        "name": "01_api_server_.md",
+        "path": "/output/cortex_augment/01_api_server_.md"
+      },
+      {
+        "name": "02_application_configuration_.md",
+        "path": "/output/cortex_augment/02_application_configuration_.md"
+      },
+      {
+        "name": "03_vector_database_manager_.md",
+        "path": "/output/cortex_augment/03_vector_database_manager_.md"
+      },
+      {
+        "name": "04_data_ingestion_service_.md",
+        "path": "/output/cortex_augment/04_data_ingestion_service_.md"
+      },
+      {
+        "name": "05_rag_conversation_engine_.md",
+        "path": "/output/cortex_augment/05_rag_conversation_engine_.md"
+      },
+      {
+        "name": "06_batch_test_case_generator_.md",
+        "path": "/output/cortex_augment/06_batch_test_case_generator_.md"
+      },
+      {
+        "name": "07_rag_model_evaluation_system_.md",
+        "path": "/output/cortex_augment/07_rag_model_evaluation_system_.md"
+      },
+      {
+        "name": "08_service_management_.md",
+        "path": "/output/cortex_augment/08_service_management_.md"
+      },
+      {
+        "name": "index.md",
+        "path": "/output/cortex_augment/index.md"
+      }
+    ]
+  },
+  {
+    "id": "LMS Platform",
+    "name": "Lms Platform",
+    "files": [
+      {
+        "name": "01_core_lms_domain_entities_.md",
+        "path": "/output/LMS Platform/01_core_lms_domain_entities_.md"
+      },
+      {
+        "name": "02_database_object_relational_mapping__orm__.md",
+        "path": "/output/LMS Platform/02_database_object_relational_mapping__orm__.md"
+      },
+      {
+        "name": "03_authentication_and_authorization_.md",
+        "path": "/output/LMS Platform/03_authentication_and_authorization_.md"
+      },
+      {
+        "name": "04_fastapi_application_core_.md",
+        "path": "/output/LMS Platform/04_fastapi_application_core_.md"
+      },
+      {
+        "name": "05_content_versioning_system_.md",
+        "path": "/output/LMS Platform/05_content_versioning_system_.md"
+      },
+      {
+        "name": "06_ai_llm_content_generation_.md",
+        "path": "/output/LMS Platform/06_ai_llm_content_generation_.md"
+      },
+      {
+        "name": "07_containerized_deployment_.md",
+        "path": "/output/LMS Platform/07_containerized_deployment_.md"
+      },
+      {
+        "name": "index.md",
+        "path": "/output/LMS Platform/index.md"
+      }
+    ]
+  }
+]

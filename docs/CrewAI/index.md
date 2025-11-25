@@ -7,7 +7,7 @@ has_children: true
 
 # Tutorial: CrewAI
 
-> This tutorial is AI-generated! To learn more, check out [AI Codebase Knowledge Builder](https://github.com/The-Pocket/Tutorial-Codebase-Knowledge)
+> This tutorial is AI-generated!
 
 **CrewAI**<sup>[View Repo](https://github.com/crewAIInc/crewAI/tree/e723e5ca3fb7e4cb890c4befda47746aedbd7408/src/crewai)</sup> is a framework for orchestrating *autonomous AI agents*.
 Think of it like building a specialized team (a **Crew**) where each member (**Agent**) has a role, goal, and tools.

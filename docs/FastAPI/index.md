@@ -7,7 +7,7 @@ has_children: true
 
 # Tutorial: FastAPI
 
-> This tutorial is AI-generated! To learn more, check out [AI Codebase Knowledge Builder](https://github.com/The-Pocket/Tutorial-Codebase-Knowledge)
+> This tutorial is AI-generated!
 
 FastAPI<sup>[View Repo](https://github.com/fastapi/fastapi/tree/628c34e0cae200564d191c95d7edea78c88c4b5e/fastapi)</sup> is a modern, *high-performance* web framework for building APIs with Python.
 It's designed to be **easy to use**, fast to code, and ready for production.

@@ -7,7 +7,7 @@ has_children: true
 
 # Tutorial: Codex
 
-> This tutorial is AI-generated! To learn more, check out [AI Codebase Knowledge Builder](https://github.com/The-Pocket/Tutorial-Codebase-Knowledge)
+> This tutorial is AI-generated!
 
 Codex<sup>[View Repo](https://github.com/openai/codex)</sup> is a command-line interface (CLI) tool that functions as an **AI coding assistant**.
 It runs in your terminal, allowing you to chat with an AI model (like *GPT-4o*) to understand, modify, and generate code within your projects.

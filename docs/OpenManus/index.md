@@ -7,7 +7,7 @@ has_children: true
 
 # Tutorial: OpenManus
 
-> This tutorial is AI-generated! To learn more, check out [AI Codebase Knowledge Builder](https://github.com/The-Pocket/Tutorial-Codebase-Knowledge)
+> This tutorial is AI-generated!
 
 OpenManus<sup>[View Repo](https://github.com/mannaandpoem/OpenManus/tree/f616c5d43d02d93ccc6e55f11666726d6645fdc2)</sup> is a framework for building autonomous *AI agents*.
 Think of it like a digital assistant that can perform tasks. It uses a central **brain** (an `LLM` like GPT-4) to understand requests and decide what to do next.

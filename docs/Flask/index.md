@@ -7,7 +7,7 @@ has_children: true
 
 # Tutorial: Flask
 
-> This tutorial is AI-generated! To learn more, check out [AI Codebase Knowledge Builder](https://github.com/The-Pocket/Tutorial-Codebase-Knowledge)
+> This tutorial is AI-generated!
 
 Flask<sup>[View Repo](https://github.com/pallets/flask/tree/ab8149664182b662453a563161aa89013c806dc9/src/flask)</sup> is a lightweight **web framework** for Python.
 It helps you build web applications by handling incoming *web requests* and sending back *responses*.
