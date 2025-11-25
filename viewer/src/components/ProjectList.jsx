@@ -4,13 +4,14 @@ import { Layers, ArrowRight, BookOpen, Download, Loader2, Code2 } from 'lucide-r
 import { getProjects, getMarkdown } from '../lib/api';
 import html2pdf from 'html2pdf.js';
 import ReactMarkdown from 'react-markdown';
-import { createRoot } from 'react-dom/client';
+import { renderToStaticMarkup } from 'react-dom/server';
 
 export default function ProjectList() {
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [downloadingId, setDownloadingId] = useState(null);
+    const [pdfError, setPdfError] = useState(null);
 
     useEffect(() => {
         getProjects()
@@ -25,6 +26,7 @@ export default function ProjectList() {
 
         if (downloadingId) return;
         setDownloadingId(project.id);
+        setPdfError(null);
 
         try {
             const filePromises = project.files.map(async (file) => {
@@ -34,72 +36,80 @@ export default function ProjectList() {
 
             const files = await Promise.all(filePromises);
 
-            const container = document.createElement('div');
-            container.className = 'pdf-container';
-            // Use off-screen positioning instead of display: none to ensure rendering
-            container.style.position = 'absolute';
-            container.style.left = '-9999px';
-            container.style.top = '0';
-            container.style.width = '800px'; // Fixed width for consistent PDF layout
-            container.style.padding = '40px';
-            container.style.fontFamily = 'Arial, sans-serif';
-            container.style.backgroundColor = 'white'; // Ensure background is white
-
-            const contentHtml = files.map(file => `
-        <div class="chapter" style="page-break-before: always; margin-bottom: 40px;">
-          <h1 style="color: #2563eb; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px; margin-bottom: 20px;">${file.name.replace('.md', '')}</h1>
-          <div class="markdown-body">
-            <div id="render-${file.name.replace(/\s+/g, '-')}" class="render-target"></div>
-          </div>
-        </div>
-      `).join('');
-
-            container.innerHTML = `
-        <div style="text-align: center; margin-bottom: 60px; padding-top: 100px;">
-          <h1 style="font-size: 48px; color: #1e293b; margin-bottom: 20px;">${project.name}</h1>
-          <p style="font-size: 18px; color: #64748b;">Ai generated</p>
-        </div>
-        ${contentHtml}
-      `;
-
-            document.body.appendChild(container);
-
-            const roots = [];
-            for (const file of files) {
-                const targetId = `render-${file.name.replace(/\s+/g, '-')}`;
-                const target = container.querySelector(`[id="${targetId}"]`);
-                if (target) {
-                    const root = createRoot(target);
-                    roots.push(root);
-                    // Render synchronously-ish
-                    root.render(
-                        <div className="prose prose-slate max-w-none">
-                            <ReactMarkdown>{file.content}</ReactMarkdown>
-                        </div>
-                    );
-                }
+            if (files.some(f => !f.content)) {
+                throw new Error("Some files failed to load content.");
             }
 
-            // Wait for React to render and images to load (if any)
-            await new Promise(resolve => setTimeout(resolve, 2000));
+            // Generate HTML content synchronously
+            const contentHtml = files.map(file => {
+                const markdownHtml = renderToStaticMarkup(
+                    <div className="prose prose-slate max-w-none">
+                        <ReactMarkdown>{file.content}</ReactMarkdown>
+                    </div>
+                );
 
-            const opt = {
-                margin: [10, 10],
-                filename: `${project.name}_documentation.pdf`,
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2, useCORS: true, logging: false },
-                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-            };
+                return `
+                    <div class="chapter">
+                        <h1 class="chapter-title">${file.name.replace('.md', '')}</h1>
+                        <div class="markdown-body">
+                            ${markdownHtml}
+                        </div>
+                    </div>
+                `;
+            }).join('');
 
-            await html2pdf().set(opt).from(container).save();
+            const fullHtml = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>${project.name} - Documentation</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; padding: 40px; max-width: 800px; mx-auto; }
+                        .chapter { page-break-before: always; margin-bottom: 40px; }
+                        .chapter:first-child { page-break-before: avoid; }
+                        .chapter-title { color: #2563eb; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px; margin-bottom: 20px; }
+                        .markdown-body { line-height: 1.6; }
+                        pre { background: #f1f5f9; padding: 15px; border-radius: 5px; overflow-x: auto; }
+                        code { font-family: monospace; }
+                        img { max-width: 100%; }
+                        @media print {
+                            body { padding: 0; }
+                            @page { margin: 2cm; }
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div style="text-align: center; margin-bottom: 60px; padding-top: 50px;">
+                        <h1 style="font-size: 48px; color: #1e293b; margin-bottom: 20px;">${project.name}</h1>
+                        <p style="font-size: 18px; color: #64748b;">AI Generated Documentation</p>
+                    </div>
+                    ${contentHtml}
+                    <script>
+                        window.onload = function() {
+                            setTimeout(function() {
+                                window.print();
+                                // window.close(); // Keep open for debugging
+                            }, 1000);
+                        }
+                    </script>
+                </body>
+                </html>
+            `;
 
-            // Cleanup
-            roots.forEach(root => root.unmount());
-            document.body.removeChild(container);
+            console.log("Generated HTML Length:", fullHtml.length);
+            console.log("First 500 chars of HTML:", fullHtml.substring(0, 500));
+
+            const printWindow = window.open('', '_blank');
+            if (!printWindow) {
+                throw new Error("Popup blocked. Please allow popups for this site.");
+            }
+            printWindow.document.write(fullHtml);
+            printWindow.document.close(); // Ensure document is closed for rendering to start
 
         } catch (err) {
             console.error('PDF generation failed:', err);
-            alert('Failed to generate PDF. See console for details.');
+            setPdfError(err.toString());
+            alert(`Failed to generate PDF: ${err.message}`);
         } finally {
             setDownloadingId(null);
         }
@@ -129,6 +139,18 @@ export default function ProjectList() {
 
     return (
         <div className="min-h-screen bg-slate-100 font-sans">
+            {pdfError && (
+                <div className="fixed bottom-4 right-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded z-50 shadow-lg max-w-lg">
+                    <strong className="font-bold">PDF Generation Error: </strong>
+                    <span className="block sm:inline break-words">{pdfError}</span>
+                    <button
+                        onClick={() => setPdfError(null)}
+                        className="absolute top-0 bottom-0 right-0 px-4 py-3"
+                    >
+                        <span className="text-red-500 font-bold">×</span>
+                    </button>
+                </div>
+            )}
             {/* Hero Section */}
             <div className="bg-white border-b border-gray-200">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center relative">
